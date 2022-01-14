@@ -1,11 +1,12 @@
 package com.example.gb_pprog.presentation.firstfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.gb_pprog.data.network.model.RetrofitTranslateDto
 import com.example.gb_pprog.databinding.FragmentFirstBinding
+import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.presenter.FirstPresenter
 import com.example.gb_pprog.presentation.firstfragment.presenter.FirstView
 import moxy.MvpAppCompatFragment
@@ -15,6 +16,10 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
 
     private val presenter by moxyPresenter {
         FirstPresenter()
+    }
+
+    private val adapter by lazy {
+        FirstAdapter()
     }
 
     private var _binding: FragmentFirstBinding? = null
@@ -31,6 +36,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.ffRv.adapter = adapter
         binding.ffTil.setEndIconOnClickListener {
             presenter.translate(binding.ffTiet.text.toString())
         }
@@ -41,9 +47,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         _binding = null
     }
 
-    override fun getTranslateData(word: String) {
-        binding.ffTestTv.text = word
+    override fun getTranslateData(data: RetrofitTranslateDto) {
+        adapter.submitList(data)
     }
-
-
 }
