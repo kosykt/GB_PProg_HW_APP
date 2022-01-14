@@ -2,7 +2,6 @@ package com.example.gb_pprog.presentation.firstfragment.presenter
 
 import com.example.gb_pprog.data.network.ApiHolder
 import com.example.gb_pprog.data.network.DataSourceNetwork
-import com.example.gb_pprog.data.repository.DataSourceRepository
 import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.domain.SearchWordUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

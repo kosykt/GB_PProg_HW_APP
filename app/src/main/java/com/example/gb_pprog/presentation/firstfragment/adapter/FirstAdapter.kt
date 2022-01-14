@@ -5,15 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gb_pprog.data.network.model.RetrofitTranslateDto
+import com.example.gb_pprog.data.network.model.RetrofitTranslateDtoItem
 import com.example.gb_pprog.databinding.FfItemBinding
-import com.example.gb_pprog.domain.model.DomainModelItem
 
 class FirstAdapter() :
-    ListAdapter<DomainModelItem, FirstAdapter.FirstViewHolder>(FirstItemCallback) {
+    ListAdapter<RetrofitTranslateDtoItem, FirstAdapter.FirstViewHolder>(FirstItemCallback) {
 
     inner class FirstViewHolder(private val vb: FfItemBinding) : RecyclerView.ViewHolder(vb.root) {
 
-        fun showTranslate(dto: DomainModelItem){
+        fun showTranslate(dto: RetrofitTranslateDtoItem) {
             vb.ffItemTv.text = dto.meanings[0].translation.text
         }
     }
@@ -34,17 +35,17 @@ class FirstAdapter() :
 }
 
 
-object FirstItemCallback : DiffUtil.ItemCallback<DomainModelItem>() {
+object FirstItemCallback : DiffUtil.ItemCallback<RetrofitTranslateDtoItem>() {
     override fun areItemsTheSame(
-        oldItem: DomainModelItem,
-        newItem: DomainModelItem
+        oldItem: RetrofitTranslateDtoItem,
+        newItem: RetrofitTranslateDtoItem
     ): Boolean {
         return oldItem == newItem
     }
 
     override fun areContentsTheSame(
-        oldItem: DomainModelItem,
-        newItem: DomainModelItem
+        oldItem: RetrofitTranslateDtoItem,
+        newItem: RetrofitTranslateDtoItem
     ): Boolean {
         return oldItem == newItem
     }

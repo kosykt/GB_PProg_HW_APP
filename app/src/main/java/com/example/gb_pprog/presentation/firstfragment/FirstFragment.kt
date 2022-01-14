@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.gb_pprog.data.network.model.RetrofitTranslateDto
 import com.example.gb_pprog.databinding.FragmentFirstBinding
-import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.presenter.FirstPresenter
 import com.example.gb_pprog.presentation.firstfragment.presenter.FirstView
@@ -48,7 +47,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         _binding = null
     }
 
-    override fun getTranslateData(data: DomainModel) {
+    override fun getTranslateData(data: RetrofitTranslateDto) {
         adapter.submitList(data)
     }
 
