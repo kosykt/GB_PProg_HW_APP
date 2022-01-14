@@ -6,5 +6,5 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface FirstView : MvpView {
 
     @AddToEndSingle
-    fun getTranslateData(inputWord: String)
+    fun getTranslateData(word: String)
 }

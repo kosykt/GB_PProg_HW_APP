@@ -1,7 +1,7 @@
 package com.example.gb_pprog.presentation.firstfragment
 
 import android.os.Bundle
-import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +32,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ffTil.setEndIconOnClickListener {
-            getTranslateData(binding.ffTiet.text.toString())
+            presenter.translate(binding.ffTiet.text.toString())
         }
     }
 
@@ -41,7 +41,9 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         _binding = null
     }
 
-    override fun getTranslateData(inputWord: String) {
-
+    override fun getTranslateData(word: String) {
+        binding.ffTestTv.text = word
     }
+
+
 }
