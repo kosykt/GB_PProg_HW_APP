@@ -15,6 +15,7 @@
         app:counterEnabled="true"
         app:endIconCheckable="true"
         app:endIconDrawable="@drawable/ic_baseline_search_24"
+        android:background="@color/ff_text_input_layout_background"
         app:endIconMode="custom"
         app:layout_constraintBottom_toTopOf="@id/ff_rv"
         app:layout_constraintEnd_toEndOf="parent"
