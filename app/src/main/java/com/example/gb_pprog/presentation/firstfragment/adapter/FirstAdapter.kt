@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gb_pprog.data.network.model.RetrofitTranslateDto
 import com.example.gb_pprog.data.network.model.RetrofitTranslateDtoItem
 import com.example.gb_pprog.databinding.FfItemBinding
 
