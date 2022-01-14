@@ -1,6 +1,8 @@
 package com.example.gb_pprog.presentation.firstfragment.presenter
 
 import com.example.gb_pprog.data.network.ApiHolder
+import com.example.gb_pprog.data.network.DataSourceNetwork
+import com.example.gb_pprog.data.repository.DataSourceRepository
 import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.domain.SearchWordUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -10,7 +12,8 @@ import moxy.MvpPresenter
 class FirstPresenter() : MvpPresenter<FirstView>() {
 
     private val retrofitService = ApiHolder.retrofitService
-    private val domainRepository = DomainRepositoryImpl(retrofitService)
+    private val dataSource = DataSourceNetwork(retrofitService)
+    private val domainRepository = DomainRepositoryImpl(dataSource)
     private val searchWordUseCase = SearchWordUseCase(domainRepository)
 
     fun translate(word: String) {
