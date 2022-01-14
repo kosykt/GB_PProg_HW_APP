@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface RetrofitService {
 
     @GET("words/search")
-    fun getNetworkData(@Query("search") word: String): Observable<RetrofitTranslateDto>
+    fun getNetworkData(@Query("search") word: String): Observable<List<RetrofitTranslateDto>>
 }

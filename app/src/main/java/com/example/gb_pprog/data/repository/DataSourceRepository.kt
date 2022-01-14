@@ -5,5 +5,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface DataSourceRepository {
 
-    fun getData(word: String): Observable<RetrofitTranslateDto>
+    fun getData(word: String): Observable<List<RetrofitTranslateDto>>
 }

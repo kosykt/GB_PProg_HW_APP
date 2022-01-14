@@ -47,7 +47,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         _binding = null
     }
 
-    override fun getTranslateData(data: RetrofitTranslateDto) {
+    override fun getTranslateData(data: List<RetrofitTranslateDto>) {
         adapter.submitList(data)
     }
 

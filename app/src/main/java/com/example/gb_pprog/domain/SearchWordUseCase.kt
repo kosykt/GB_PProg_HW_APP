@@ -5,5 +5,5 @@ import io.reactivex.rxjava3.core.Observable
 
 class SearchWordUseCase(private val domainRepository: DomainRepository) {
 
-    fun execute(word: String): Observable<RetrofitTranslateDto> = domainRepository.translate(word)
+    fun execute(word: String): Observable<List<RetrofitTranslateDto>> = domainRepository.translate(word)
 }

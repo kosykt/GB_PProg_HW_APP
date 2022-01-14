@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Observable
 
 class DomainRepositoryImpl(private val dataSource: DataSourceRepository) : DomainRepository {
 
-    override fun translate(word: String): Observable<RetrofitTranslateDto> {
+    override fun translate(word: String): Observable<List<RetrofitTranslateDto>> {
         return dataSource.getData(word)
     }
 }

@@ -7,5 +7,5 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface FirstView : MvpView {
 
     @AddToEndSingle
-    fun getTranslateData(data: RetrofitTranslateDto)
+    fun getTranslateData(data: List<RetrofitTranslateDto>)
 }

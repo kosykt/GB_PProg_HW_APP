@@ -5,5 +5,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface DomainRepository {
 
-    fun translate(word: String): Observable<RetrofitTranslateDto>
+    fun translate(word: String): Observable<List<RetrofitTranslateDto>>
 }

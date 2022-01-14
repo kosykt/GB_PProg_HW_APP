@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Observable
 
 class DataSourceNetwork(private val retrofitService: RetrofitService) : DataSourceRepository {
 
-    override fun getData(word: String): Observable<RetrofitTranslateDto> {
+    override fun getData(word: String): Observable<List<RetrofitTranslateDto>> {
         return retrofitService.getNetworkData(word)
     }
 }
