@@ -48,11 +48,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
 
     private fun initTextInputLayout() {
         binding.ffTil.editText?.doOnTextChanged { _, _, _, _ ->
-            if (binding.ffTiet.text.isNullOrEmpty()){
-                binding.ffTil.error = getString(R.string.ff_til_hint_text_is_null_or_empty)
-            }else{
-                binding.ffTil.error = null
-            }
+            binding.ffTil.error = null
         }
         binding.ffTil.setEndIconOnClickListener {
             if (binding.ffTiet.text.isNullOrEmpty()) {
