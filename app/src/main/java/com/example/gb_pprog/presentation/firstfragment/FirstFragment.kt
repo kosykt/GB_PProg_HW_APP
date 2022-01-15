@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FragmentFirstBinding
@@ -40,19 +41,25 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         super.onViewCreated(view, savedInstanceState)
         binding.ffRv.adapter = adapter
         initTextInputLayout()
-
     }
 
     private fun initTextInputLayout() {
-        binding.ffTil.editText?.doOnTextChanged { _, _, _, _ ->
-            binding.ffTil.error = null
-        }
-        binding.ffTil.setEndIconOnClickListener {
-            if (binding.ffTiet.text.isNullOrEmpty()) {
-                binding.ffTil.error = getString(R.string.ff_til_error_tiet_is_empty)
-            } else {
-                presenter.translate(binding.ffTiet.text.toString())
-                binding.ffLoadingIv.visibility = View.VISIBLE
+        binding.ffTil.apply {
+            isStartIconVisible = false
+            editText?.doOnTextChanged { _, _, _, _ ->
+                binding.ffTil.error = null
+                binding.ffTil.isStartIconVisible = false
+            }
+            setEndIconOnClickListener {
+                if (binding.ffTiet.text.isNullOrEmpty()) {
+                    error = getString(R.string.ff_til_error_tiet_is_empty)
+                } else {
+                    presenter.translate(binding.ffTiet.text.toString())
+                    binding.ffLoadingIv.visibility = View.VISIBLE
+                }
+            }
+            setStartIconOnClickListener {
+                Toast.makeText(context, "voice", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -64,10 +71,10 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
 
     override fun getTranslateData(data: List<DomainModel>) {
         binding.ffLoadingIv.visibility = View.GONE
+        binding.ffTil.isStartIconVisible = true
         if (data.isEmpty()){
             binding.ffTil.error = getString(R.string.ff_til_error_incorrect_input)
         }
         adapter.submitList(data)
     }
-
 }

@@ -16,6 +16,7 @@
         app:counterEnabled="true"
         app:counterMaxLength="@integer/ff_til_input_max_counter"
         app:endIconCheckable="true"
+        app:startIconDrawable="@drawable/ic_baseline_record_voice_over_24"
         app:endIconDrawable="@drawable/ic_baseline_search_24"
         app:endIconMode="custom"
         app:layout_constraintBottom_toTopOf="@id/ff_rv"
@@ -30,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTintMode="screen"
-            android:inputType="text"
+            android:inputType="textNoSuggestions"
             android:maxLength="@integer/ff_tiet_input_max_counter" />
     </com.google.android.material.textfield.TextInputLayout>
 
