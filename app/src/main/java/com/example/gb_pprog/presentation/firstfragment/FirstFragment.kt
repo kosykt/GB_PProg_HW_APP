@@ -45,7 +45,6 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
 
     private fun initTextInputLayout() {
         binding.ffTil.apply {
-            isStartIconVisible = false
             editText?.doOnTextChanged { _, _, _, _ ->
                 binding.ffTil.error = null
             }
@@ -70,7 +69,6 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
 
     override fun getTranslateData(data: List<DomainModel>) {
         binding.ffLoadingIv.visibility = View.GONE
-        binding.ffTil.isStartIconVisible = true
         if (data.isEmpty()){
             binding.ffTil.error = getString(R.string.ff_til_error_incorrect_input)
         }
