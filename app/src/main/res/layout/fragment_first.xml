@@ -16,7 +16,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/ff_til_hint_text"
         app:placeholderText="@string/ff_til_place_holder_text"
-        app:helperText="@string/ff_til_helper_text"
         app:counterMaxLength="@integer/ff_til_input_max_counter"
         app:endIconDrawable="@drawable/ic_baseline_search_24"
         app:endIconMode="custom"

@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
@@ -40,26 +42,24 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ffRv.adapter = adapter
-        binding.ffTil.setEndIconOnClickListener {
-            if (binding.ffTiet.text.isNullOrEmpty()) {
-                refreshView(R.string.ff_til_hint_text_is_null_or_empty, R.color.ff_til_hint_error)
-            } else {
-                refreshView(R.string.ff_til_hint_text, R.color.purple_700)
-                presenter.translate(binding.ffTiet.text.toString())
-            }
-        }
+        initTextInputLayout()
+
     }
 
-    private fun refreshView(hintText: Int, hintColor: Int) {
-        adapter.submitList(null)
-        binding.ffTil.apply {
-            hint = getString(hintText)
-            hintTextColor = ColorStateList.valueOf(
-                ContextCompat.getColor(
-                    requireContext(),
-                    hintColor
-                )
-            )
+    private fun initTextInputLayout() {
+        binding.ffTil.editText?.doOnTextChanged { _, _, _, _ ->
+            if (binding.ffTiet.text.isNullOrEmpty()){
+                binding.ffTil.error = getString(R.string.ff_til_hint_text_is_null_or_empty)
+            }else{
+                binding.ffTil.error = null
+            }
+        }
+        binding.ffTil.setEndIconOnClickListener {
+            if (binding.ffTiet.text.isNullOrEmpty()) {
+                binding.ffTil.error = getString(R.string.ff_til_hint_text_is_null_or_empty)
+            }else{
+                presenter.translate(binding.ffTiet.text.toString())
+            }
         }
     }
 
