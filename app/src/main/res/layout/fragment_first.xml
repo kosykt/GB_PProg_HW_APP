@@ -8,29 +8,29 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ff_til"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/ff_til_hint_text"
         android:padding="@dimen/ff_til_padding"
         app:counterEnabled="true"
-        app:endIconCheckable="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="@string/ff_til_hint_text"
-        app:placeholderText="@string/ff_til_place_holder_text"
         app:counterMaxLength="@integer/ff_til_input_max_counter"
+        app:endIconCheckable="true"
         app:endIconDrawable="@drawable/ic_baseline_search_24"
         app:endIconMode="custom"
         app:layout_constraintBottom_toTopOf="@id/ff_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintVertical_chainStyle="packed"
+        app:placeholderText="@string/ff_til_place_holder_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ff_tiet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:backgroundTintMode="screen"
+            android:inputType="text"
             android:maxLength="@integer/ff_tiet_input_max_counter" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,11 +39,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ff_til"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/ff_item" />
 
 
