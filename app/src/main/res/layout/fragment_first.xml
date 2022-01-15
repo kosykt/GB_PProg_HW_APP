@@ -27,6 +27,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ff_tiet"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTintMode="screen"
@@ -46,5 +47,16 @@
         app:layout_constraintVertical_chainStyle="packed"
         tools:listitem="@layout/ff_item" />
 
+    <ImageView
+        android:id="@+id/ff_loading_iv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/loading_animation"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ff_rv"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

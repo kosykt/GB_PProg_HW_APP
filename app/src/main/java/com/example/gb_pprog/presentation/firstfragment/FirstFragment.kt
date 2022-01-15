@@ -52,6 +52,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
                 binding.ffTil.error = getString(R.string.ff_til_error_tiet_is_empty)
             } else {
                 presenter.translate(binding.ffTiet.text.toString())
+                binding.ffLoadingIv.visibility = View.VISIBLE
             }
         }
     }
@@ -62,6 +63,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
     }
 
     override fun getTranslateData(data: List<DomainModel>) {
+        binding.ffLoadingIv.visibility = View.GONE
         if (data.isEmpty()){
             binding.ffTil.error = getString(R.string.ff_til_error_incorrect_input)
         }
