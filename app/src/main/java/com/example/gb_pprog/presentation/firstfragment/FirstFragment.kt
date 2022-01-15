@@ -1,12 +1,9 @@
 package com.example.gb_pprog.presentation.firstfragment
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FragmentFirstBinding
@@ -52,8 +49,8 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         }
         binding.ffTil.setEndIconOnClickListener {
             if (binding.ffTiet.text.isNullOrEmpty()) {
-                binding.ffTil.error = getString(R.string.ff_til_hint_text_is_null_or_empty)
-            }else{
+                binding.ffTil.error = getString(R.string.ff_til_error_tiet_is_empty)
+            } else {
                 presenter.translate(binding.ffTiet.text.toString())
             }
         }
@@ -65,6 +62,9 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
     }
 
     override fun getTranslateData(data: List<DomainModel>) {
+        if (data.isEmpty()){
+            binding.ffTil.error = getString(R.string.ff_til_error_incorrect_input)
+        }
         adapter.submitList(data)
     }
 
