@@ -48,7 +48,6 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
             isStartIconVisible = false
             editText?.doOnTextChanged { _, _, _, _ ->
                 binding.ffTil.error = null
-                binding.ffTil.isStartIconVisible = false
             }
             setEndIconOnClickListener {
                 if (binding.ffTiet.text.isNullOrEmpty()) {
