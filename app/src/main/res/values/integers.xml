@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="search_wiki_max_counter">30</integer>
+    <integer name="ff_til_input_max_counter">30</integer>
 </resources>

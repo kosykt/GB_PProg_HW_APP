@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">GB_PProg</string>\
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search">Search</string>
+    <string name="app_name">GB_PProg</string>
+    <string name="ff_til_text_hint">Enter a word to translate</string>
 </resources>
