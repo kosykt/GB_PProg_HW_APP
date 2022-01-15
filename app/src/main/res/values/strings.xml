@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">GB_PProg</string>
-    <string name="ff_til_text_hint">Enter a word to translate</string>
+    <string name="ff_til_place_holder_text">Enter a word to translate</string>
+    <string name="ff_til_helper_text">maximum word length</string>
+    <string name="ff_til_hint_text">Translator</string>
+    <string name="ff_til_hint_text_is_null_or_empty">Empty text field</string>
 </resources>

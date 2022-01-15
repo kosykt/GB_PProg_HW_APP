@@ -10,10 +10,12 @@
         android:id="@+id/ff_til"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ff_til_text_hint"
         android:padding="@dimen/ff_til_padding"
         app:counterEnabled="true"
         app:endIconCheckable="true"
+        android:hint="@string/ff_til_hint_text"
+        app:placeholderText="@string/ff_til_place_holder_text"
+        app:helperText="@string/ff_til_helper_text"
         app:counterMaxLength="@integer/ff_til_input_max_counter"
         app:endIconDrawable="@drawable/ic_baseline_search_24"
         android:background="@color/ff_text_input_layout_background"
@@ -29,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="@integer/ff_til_input_max_counter" />
+            android:maxLength="@integer/ff_tiet_input_max_counter" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView

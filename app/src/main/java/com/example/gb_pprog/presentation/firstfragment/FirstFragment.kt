@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
@@ -38,7 +40,12 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         super.onViewCreated(view, savedInstanceState)
         binding.ffRv.adapter = adapter
         binding.ffTil.setEndIconOnClickListener {
-            presenter.translate(binding.ffTiet.text.toString())
+            if (binding.ffTiet.text.isNullOrEmpty()) {
+                binding.ffTil.hint = getString(R.string.ff_til_hint_text_is_null_or_empty)
+            } else {
+                binding.ffTil.hint = ""
+                presenter.translate(binding.ffTiet.text.toString())
+            }
         }
     }
 
