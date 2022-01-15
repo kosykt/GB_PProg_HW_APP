@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="4dp"
-    android:layout_marginEnd="4dp"
+    android:layout_marginStart="@dimen/ff_rv_item_card_margin_start_end"
+    android:layout_marginEnd="@dimen/ff_rv_item_card_margin_start_end"
     android:backgroundTint="@color/ff_item_card_background"
-    android:elevation="4dp"
-    app:cardCornerRadius="8dp"
+    android:elevation="@dimen/ff_rv_item_card_elevation"
+    app:cardCornerRadius="@dimen/ff_rv_item_card_corner_radius"
     app:cardUseCompatPadding="true">
 
     <TextView
@@ -16,9 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/ff_rv_item_tv_margin"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/ff_item_tv_text_size"
         tools:text="Test text" />
 
 </androidx.cardview.widget.CardView>
