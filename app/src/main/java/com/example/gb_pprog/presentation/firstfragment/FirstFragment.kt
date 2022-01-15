@@ -1,10 +1,11 @@
 package com.example.gb_pprog.presentation.firstfragment
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
@@ -41,11 +42,24 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
         binding.ffRv.adapter = adapter
         binding.ffTil.setEndIconOnClickListener {
             if (binding.ffTiet.text.isNullOrEmpty()) {
-                binding.ffTil.hint = getString(R.string.ff_til_hint_text_is_null_or_empty)
+                refreshView(R.string.ff_til_hint_text_is_null_or_empty, R.color.ff_til_hint_error)
             } else {
-                binding.ffTil.hint = ""
+                refreshView(R.string.ff_til_hint_text, R.color.purple_700)
                 presenter.translate(binding.ffTiet.text.toString())
             }
+        }
+    }
+
+    private fun refreshView(hintText: Int, hintColor: Int) {
+        adapter.submitList(null)
+        binding.ffTil.apply {
+            hint = getString(hintText)
+            hintTextColor = ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    requireContext(),
+                    hintColor
+                )
+            )
         }
     }
 
