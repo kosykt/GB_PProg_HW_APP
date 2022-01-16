@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/ff_rv_item_card_margin_start_end"
-    android:layout_marginEnd="@dimen/ff_rv_item_card_margin_start_end"
     android:backgroundTint="@color/ff_item_card_background"
     android:elevation="@dimen/ff_rv_item_card_elevation"
     app:cardCornerRadius="@dimen/ff_rv_item_card_corner_radius"
