@@ -14,10 +14,10 @@
     <color name="primaryLightColor">#62717b</color>
     <color name="primaryDarkColor">#101f27</color>
     <color name="secondaryColor">#90a4ae</color>
-    <color name="secondaryLightColor">#c1d5e0</color>
+    <color name="secondaryLightColor">#EBF7FF</color>
     <color name="secondaryDarkColor">#62757f</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#D8000000</color>
-    <color name="secondaryBackgroundColor">#CBD3D8</color>
+    <color name="secondaryBackgroundColor">#D2E0E8</color>
 
 </resources>
