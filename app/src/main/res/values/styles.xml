@@ -27,6 +27,12 @@
         <item name="android:maxLength">@integer/ff_tiet_input_max_counter</item>
     </style>
 
+    <style name="FfCvStyle" parent="">
+        <item name="android:backgroundTint">@color/secondaryLightColor</item>
+        <item name="android:elevation">@dimen/ff_cv_elevation</item>
+        <item name="cardCornerRadius">@dimen/ff_cv_card_corner_radius</item>
+    </style>
+
     <style name="FfItemCvStyle" parent="">
         <item name="android:backgroundTint">@color/secondaryLightColor</item>
         <item name="android:layout_marginStart">@dimen/ff_item_card_margin_start_end</item>
