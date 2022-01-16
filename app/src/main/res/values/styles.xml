@@ -26,4 +26,19 @@
         <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="android:maxLength">@integer/ff_tiet_input_max_counter</item>
     </style>
+
+    <style name="FfItemCvStyle" parent="">
+        <item name="android:backgroundTint">@color/secondaryLightColor</item>
+        <item name="android:layout_marginStart">@dimen/ff_item_card_margin_start_end</item>
+        <item name="android:layout_marginEnd">@dimen/ff_item_card_margin_start_end</item>
+        <item name="android:elevation">@dimen/ff_item_card_elevation</item>
+        <item name="cardCornerRadius">@dimen/ff_item_card_corner_radius</item>
+    </style>
+
+    <style name="FfItemTvStyle" parent="">
+        <item name="android:layout_gravity">start</item>
+        <item name="android:layout_margin">@dimen/ff_item_tv_margin</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">@dimen/ff_item_tv_text_size</item>
+    </style>
 </resources>

@@ -18,5 +18,6 @@
     <color name="secondaryDarkColor">#62757f</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#D8000000</color>
+    <color name="secondaryBackgroundColor">#CBD3D8</color>
 
 </resources>

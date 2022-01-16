@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondaryBackgroundColor"
     android:padding="@dimen/ff_constraint_layout_padding"
     tools:context=".presentation.firstfragment.FirstFragment">
 
@@ -14,7 +15,6 @@
         android:backgroundTint="@color/secondaryLightColor"
         android:elevation="@dimen/ff_cv_elevation"
         app:cardCornerRadius="@dimen/ff_cv_card_corner_radius"
-        app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toTopOf="@id/ff_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
