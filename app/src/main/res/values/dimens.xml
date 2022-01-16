@@ -8,9 +8,9 @@
     <dimen name="ff_til_padding">8dp</dimen>
     <dimen name="ff_til_layout_margin">4dp</dimen>
 
-    <dimen name="ff_rv_item_card_elevation">4dp</dimen>
-    <dimen name="ff_rv_item_card_corner_radius">16dp</dimen>
+    <dimen name="ff_item_card_elevation">4dp</dimen>
+    <dimen name="ff_item_card_corner_radius">16dp</dimen>
 
-    <dimen name="ff_rv_item_tv_margin">8dp</dimen>
-    <dimen name="ff_rv_item_tv_text_size">24sp</dimen>
+    <dimen name="ff_item_tv_margin">8dp</dimen>
+    <dimen name="ff_item_tv_text_size">24sp</dimen>
 </resources>
