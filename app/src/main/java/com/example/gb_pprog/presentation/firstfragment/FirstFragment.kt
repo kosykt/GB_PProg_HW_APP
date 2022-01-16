@@ -57,6 +57,7 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
                 }
             }
             setStartIconOnClickListener {
+                //TODO как воспроизвести звук?
                 Toast.makeText(context, "voice", Toast.LENGTH_LONG).show()
             }
         }
