@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_margin="@dimen/ff_rv_item_tv_margin"
-        android:textColor="@color/black"
-        android:textSize="@dimen/ff_item_tv_text_size"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/ff_rv_item_tv_text_size"
         tools:text="Test text" />
 
 </androidx.cardview.widget.CardView>

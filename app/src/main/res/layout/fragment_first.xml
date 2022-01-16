@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="@dimen/ff_constraint_layout_padding"
     android:layout_height="match_parent"
+    android:padding="@dimen/ff_constraint_layout_padding"
     tools:context=".presentation.firstfragment.FirstFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ff_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/ff_item_card_background"
+        android:backgroundTint="@color/secondaryLightColor"
         android:elevation="@dimen/ff_cv_elevation"
         app:cardCornerRadius="@dimen/ff_cv_card_corner_radius"
         app:cardUseCompatPadding="true"
@@ -22,28 +22,16 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ff_til"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_margin="@dimen/ff_til_layout_margin"
-            android:hint="@string/ff_til_hint_text"
-            android:padding="@dimen/ff_til_padding"
-            app:counterEnabled="true"
-            app:counterMaxLength="@integer/ff_til_input_max_counter"
-            app:endIconCheckable="true"
-            app:endIconDrawable="@drawable/ic_baseline_search_24"
-            app:endIconMode="custom"
-            app:placeholderText="@string/ff_til_place_holder_text"
-            app:startIconDrawable="@drawable/ic_baseline_record_voice_over_24">
+            style="@style/FfTilStyle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ff_tiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTintMode="screen"
-                android:inputType="textNoSuggestions"
-                android:maxLength="@integer/ff_tiet_input_max_counter" />
+                style="@style/FfTietStyle" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.cardview.widget.CardView>

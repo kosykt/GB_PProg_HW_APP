@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="FfTilStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">@dimen/ff_til_layout_margin</item>
+        <item name="android:hint">@string/ff_til_hint_text</item>
+        <item name="android:padding">@dimen/ff_til_padding</item>
+        <item name="counterEnabled">true</item>
+        <item name="endIconCheckable">true</item>
+        <item name="endIconMode">custom</item>
+        <item name="endIconDrawable">@drawable/ic_baseline_search_24</item>
+        <item name="startIconDrawable">@drawable/ic_baseline_record_voice_over_24</item>
+        <item name="counterMaxLength">@integer/ff_til_input_max_counter</item>
+        <item name="placeholderText">@string/ff_til_place_holder_text</item>
+        <item name="android:textColorHint">@color/secondaryTextColor</item>
+        <item name="boxStrokeColor">@color/secondaryTextColor</item>
+        <item name="counterTextColor">@color/secondaryTextColor</item>
+        <item name="hintTextColor">@color/secondaryTextColor</item>
+        <item name="endIconTint">@color/secondaryTextColor</item>
+        <item name="startIconTint">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="FfTietStyle" parent="">
+        <item name="android:backgroundTintMode">screen</item>
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+        <item name="android:maxLength">@integer/ff_tiet_input_max_counter</item>
+    </style>
+</resources>
