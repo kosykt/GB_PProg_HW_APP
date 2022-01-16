@@ -69,8 +69,15 @@ class FirstFragment : MvpAppCompatFragment(), FirstView {
 
     override fun getTranslateData(data: List<DomainModel>) {
         binding.ffLoadingIv.visibility = View.GONE
-        if (data.isEmpty()){
-            binding.ffTil.error = getString(R.string.ff_til_error_incorrect_input)
+
+        when {
+            data.isEmpty() -> {
+                binding.ffTil.error = getString(R.string.ff_til_error_incorrect_input)
+            }
+            data[0].text != binding.ffTiet.text.toString() -> {
+                //TODO придумать как лучше обработать response
+                Toast.makeText(context, "Примерный перевод", Toast.LENGTH_LONG).show()
+            }
         }
         adapter.submitList(data)
     }
