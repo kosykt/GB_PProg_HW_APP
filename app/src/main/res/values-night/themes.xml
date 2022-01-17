@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.GB_PProg" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/test_yellow</item>
+        <item name="colorPrimary">@color/secondaryTextSelectHandle</item>
         <item name="colorPrimaryVariant">@color/secondaryBackgroundColor</item>
         <item name="colorOnPrimary">@color/test_red</item>
         <!-- Secondary brand color. -->
