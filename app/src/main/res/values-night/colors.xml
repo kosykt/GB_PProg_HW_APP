@@ -8,13 +8,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="test_red">#FF0000</color>
+    <color name="test_yellow">#F6FF00</color>
+    <color name="test_green">#26FF00</color>
 
     <color name="secondaryColor">#37464f</color>
-    <color name="secondaryLightColor">#62717b</color>
+    <color name="secondaryLightColor">#202529</color>
     <color name="secondaryDarkColor">#101f27</color>
 
-    <color name="secondaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#BFFFFFFF</color>
 
-    <color name="secondaryBackgroundColor">#2C2E30</color>
+    <color name="secondaryBackgroundColor">#121517</color>
 
 </resources>
