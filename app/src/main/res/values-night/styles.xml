@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="ff_view_style.dark_theme" parent="">
+        <item name="android:background">@color/secondaryBackgroundColor</item>
+    </style>
+
+    <style name="ff_cv_style.dark_theme">
+        <item name="android:backgroundTint">@color/secondaryLightColor</item>
+    </style>
+
     <style name="ff_til_style.dark_theme">
         <item name="android:textColorHint">@color/secondaryTextColor</item>
         <item name="boxStrokeColor">@color/secondaryTextColor</item>
@@ -13,10 +21,6 @@
     <style name="ff_tiet_style.dark_theme">
         <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="android:textColor">@color/secondaryTextColor</item>
-    </style>
-
-    <style name="ff_cv_style.dark_theme">
-        <item name="android:backgroundTint">@color/secondaryLightColor</item>
     </style>
 
     <style name="ff_item_cv_style.dark_theme">

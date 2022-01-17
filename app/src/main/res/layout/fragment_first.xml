@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryBackgroundColor"
-    android:padding="@dimen/ff_constraint_layout_padding"
+    style="?attrFfView"
     tools:context=".presentation.firstfragment.FirstFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ff_cv"
-        style="@style/ff_cv_style"
+        style="?attrFfCv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/ff_rv"
@@ -27,7 +26,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ff_tiet"
-                style="@style/ff_tiet_style"
+                style="?attrFfTiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>

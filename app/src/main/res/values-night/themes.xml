@@ -12,6 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="attrFfView">@style/ff_view_style.dark_theme</item>
+        <item name="attrFfCv">@style/ff_cv_style.dark_theme</item>
         <item name="attrFfTil">@style/ff_til_style.dark_theme</item>
+        <item name="attrFfTiet">@style/ff_tiet_style.dark_theme</item>
+        <item name="attrFfItemCv">@style/ff_item_cv_style.dark_theme</item>
+        <item name="attrFfItemTv">@style/ff_item_tv_style.dark_theme</item>
     </style>
 </resources>
