@@ -8,10 +8,12 @@
         <item name="counterEnabled">true</item>
         <item name="endIconCheckable">true</item>
         <item name="endIconMode">custom</item>
+        <!--Drawables-->
         <item name="endIconDrawable">@drawable/ic_baseline_search_24</item>
         <item name="startIconDrawable">@drawable/ic_baseline_record_voice_over_24</item>
         <item name="counterMaxLength">@integer/ff_til_input_max_counter</item>
         <item name="placeholderText">@string/ff_til_place_holder_text</item>
+        <!--Colors-->
         <item name="android:textColorHint">@color/secondaryTextColor</item>
         <item name="boxStrokeColor">@color/secondaryTextColor</item>
         <item name="counterTextColor">@color/secondaryTextColor</item>
@@ -23,8 +25,8 @@
     <style name="ff_tiet_style" parent="">
         <item name="android:backgroundTintMode">screen</item>
         <item name="android:inputType">text</item>
-        <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="android:maxLength">@integer/ff_tiet_input_max_counter</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
     </style>
 
     <style name="ff_cv_style" parent="">
@@ -47,4 +49,5 @@
         <item name="android:textColor">@color/secondaryTextColor</item>
         <item name="android:textSize">@dimen/ff_item_tv_text_size</item>
     </style>
+
 </resources>

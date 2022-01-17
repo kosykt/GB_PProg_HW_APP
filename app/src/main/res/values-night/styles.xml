@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ff_til_style.dark_theme">
+        <item name="android:textColorHint">@color/secondaryTextColor</item>
+        <item name="boxStrokeColor">@color/secondaryTextColor</item>
+        <item name="counterTextColor">@color/secondaryTextColor</item>
+        <item name="hintTextColor">@color/secondaryTextColor</item>
+        <item name="endIconTint">@color/secondaryTextColor</item>
+        <item name="startIconTint">@color/secondaryTextColor</item>
+    </style>
+
+</resources>
