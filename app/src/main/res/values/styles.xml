@@ -50,4 +50,8 @@
         <item name="android:textSize">@dimen/ff_item_tv_text_size</item>
     </style>
 
+    <style name="ff_item_tv_style.dark_theme">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
 </resources>

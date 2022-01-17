@@ -10,4 +10,21 @@
         <item name="startIconTint">@color/secondaryTextColor</item>
     </style>
 
+    <style name="ff_tiet_style.dark_theme">
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="ff_cv_style.dark_theme">
+        <item name="android:backgroundTint">@color/secondaryLightColor</item>
+    </style>
+
+    <style name="ff_item_cv_style.dark_theme">
+        <item name="android:backgroundTint">@color/secondaryLightColor</item>
+    </style>
+
+    <style name="ff_item_tv_style.dark_theme">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
 </resources>
