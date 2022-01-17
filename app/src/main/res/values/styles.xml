@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="FfTilStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="ff_til_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_margin">@dimen/ff_til_layout_margin</item>
         <item name="android:hint">@string/ff_til_hint_text</item>
         <item name="android:padding">@dimen/ff_til_padding</item>
@@ -20,20 +20,20 @@
         <item name="startIconTint">@color/secondaryTextColor</item>
     </style>
 
-    <style name="FfTietStyle" parent="">
+    <style name="ff_tiet_style" parent="">
         <item name="android:backgroundTintMode">screen</item>
         <item name="android:inputType">text</item>
         <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="android:maxLength">@integer/ff_tiet_input_max_counter</item>
     </style>
 
-    <style name="FfCvStyle" parent="">
+    <style name="ff_cv_style" parent="">
         <item name="android:backgroundTint">@color/secondaryLightColor</item>
         <item name="android:elevation">@dimen/ff_cv_elevation</item>
         <item name="cardCornerRadius">@dimen/ff_cv_card_corner_radius</item>
     </style>
 
-    <style name="FfItemCvStyle" parent="">
+    <style name="ff_item_cv_style" parent="">
         <item name="android:backgroundTint">@color/secondaryLightColor</item>
         <item name="android:layout_marginStart">@dimen/ff_item_card_margin_start_end</item>
         <item name="android:layout_marginEnd">@dimen/ff_item_card_margin_start_end</item>
@@ -41,7 +41,7 @@
         <item name="cardCornerRadius">@dimen/ff_item_card_corner_radius</item>
     </style>
 
-    <style name="FfItemTvStyle" parent="">
+    <style name="ff_item_tv_style" parent="">
         <item name="android:layout_gravity">start</item>
         <item name="android:layout_margin">@dimen/ff_item_tv_margin</item>
         <item name="android:textColor">@color/secondaryTextColor</item>

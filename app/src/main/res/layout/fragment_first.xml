@@ -12,7 +12,7 @@
         android:id="@+id/ff_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/FfCvStyle"
+        style="@style/ff_cv_style"
         app:layout_constraintBottom_toTopOf="@id/ff_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,13 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            style="@style/FfTilStyle">
+            style="@style/ff_til_style">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ff_tiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/FfTietStyle" />
+                style="@style/ff_tiet_style" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.cardview.widget.CardView>

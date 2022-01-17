@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/FfItemCvStyle"
+    style="@style/ff_item_cv_style"
     app:cardUseCompatPadding="true">
 
     <TextView
         android:id="@+id/ff_item_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/FfItemTvStyle"
+        style="@style/ff_item_tv_style"
         tools:text="Test text" />
 
 </androidx.cardview.widget.CardView>
