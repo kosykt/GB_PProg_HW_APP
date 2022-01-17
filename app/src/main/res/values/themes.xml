@@ -21,10 +21,10 @@
         <item name="android:textColorHighlight">@color/secondaryTextColorHighlight</item>
         <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="attrFfView">@style/ff_view_style</item>
-        <item name="attrFfCv">@style/ff_cv_style</item>
+        <item name="attrFfCvInput">@style/ff_cv_input_style</item>
         <item name="attrFfTil">@style/ff_til_style</item>
         <item name="attrFfTiet">@style/ff_tiet_style</item>
         <item name="attrFfItemCv">@style/ff_item_cv_style</item>
-        <item name="attrFfItemTv">@style/ff_item_tv_style</item>
+        <item name="attrFfItemTvTranslate">@style/ff_item_tv_translate_style</item>
     </style>
 </resources>

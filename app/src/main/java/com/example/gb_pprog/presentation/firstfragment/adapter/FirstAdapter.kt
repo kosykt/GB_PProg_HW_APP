@@ -14,7 +14,7 @@ class FirstAdapter() :
     inner class FirstViewHolder(private val vb: FfItemBinding) : RecyclerView.ViewHolder(vb.root) {
 
         fun showTranslate(dto: DomainModel) {
-            vb.ffItemTv.text = dto.meanings[0].translation.text
+            vb.ffItemTvTranslate.text = dto.meanings[0].translation.text
         }
     }
 

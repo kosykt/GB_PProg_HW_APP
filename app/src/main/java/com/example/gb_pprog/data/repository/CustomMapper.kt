@@ -29,6 +29,9 @@ fun List<Meaning>.toListDomainMeaning() = this.map {
     )
 }
 
-fun Translation.toDomainTranslation() = DomainTranslation(
-    text = text,
-)
+fun Translation.toDomainTranslation(): DomainTranslation {
+    return DomainTranslation(
+        text = text,
+        note = note ?: ""
+    )
+}
