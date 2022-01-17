@@ -23,9 +23,10 @@
             android:id="@+id/ff_item_tv_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            style="@style/ff_item_tv_note_style"
             tools:text="asdasf"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            tools:visibility="visible"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

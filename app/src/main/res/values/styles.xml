@@ -50,7 +50,15 @@
     <style name="ff_item_tv_translate_style" parent="">
         <item name="android:layout_margin">@dimen/ff_item_tv_margin</item>
         <item name="android:textColor">@color/secondaryTextColor</item>
-        <item name="android:textSize">@dimen/ff_item_tv_text_size</item>
+        <item name="android:textSize">@dimen/ff_item_tv_translate_text_size</item>
+    </style>
+
+    <style name="ff_item_tv_note_style" parent="">
+        <item name="android:layout_marginStart">@dimen/ff_item_tv_margin</item>
+        <item name="android:layout_marginEnd">@dimen/ff_item_tv_margin</item>
+        <item name="android:layout_marginBottom">@dimen/ff_item_tv_margin</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">@dimen/ff_item_tv_note_text_size</item>
     </style>
 
 </resources>

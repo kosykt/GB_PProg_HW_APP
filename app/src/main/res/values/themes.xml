@@ -26,5 +26,6 @@
         <item name="attrFfTiet">@style/ff_tiet_style</item>
         <item name="attrFfItemCv">@style/ff_item_cv_style</item>
         <item name="attrFfItemTvTranslate">@style/ff_item_tv_translate_style</item>
+        <item name="attrFfItemTvNote">@style/ff_item_tv_note_style</item>
     </style>
 </resources>

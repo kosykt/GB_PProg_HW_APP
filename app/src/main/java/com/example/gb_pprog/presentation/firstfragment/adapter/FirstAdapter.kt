@@ -1,6 +1,7 @@
 package com.example.gb_pprog.presentation.firstfragment.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,6 +16,12 @@ class FirstAdapter() :
 
         fun showTranslate(dto: DomainModel) {
             vb.ffItemTvTranslate.text = dto.meanings[0].translation.text
+            if (dto.meanings[0].translation.note != ""){
+                vb.ffItemTvNote.apply {
+                    visibility = View.VISIBLE
+                    text = dto.meanings[0].translation.note
+                }
+            }
         }
     }
 

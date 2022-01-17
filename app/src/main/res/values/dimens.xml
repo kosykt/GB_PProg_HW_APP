@@ -13,5 +13,6 @@
     <dimen name="ff_item_card_margin_start_end">4dp</dimen>
 
     <dimen name="ff_item_tv_margin">8dp</dimen>
-    <dimen name="ff_item_tv_text_size">24sp</dimen>
+    <dimen name="ff_item_tv_translate_text_size">24sp</dimen>
+    <dimen name="ff_item_tv_note_text_size">16sp</dimen>
 </resources>

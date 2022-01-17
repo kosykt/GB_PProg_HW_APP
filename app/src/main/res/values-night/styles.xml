@@ -31,4 +31,8 @@
         <item name="android:textColor">@color/secondaryTextColor</item>
     </style>
 
+    <style name="ff_item_tv_note_style.dark_theme">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
 </resources>
