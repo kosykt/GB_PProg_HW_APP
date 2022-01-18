@@ -1,6 +1,7 @@
 package com.example.gb_pprog.presentation.firstfragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,6 +54,13 @@ class FirstFragment : Fragment() {
         viewModel.responseData.observe(viewLifecycleOwner) {
             refreshListAdapter(viewModel.responseData.value)
         }
+        viewModel.loadingData.observe(viewLifecycleOwner){
+            if (viewModel.loadingData.value == true){
+                binding.ffLoadingIv.visibility = View.VISIBLE
+            }else{
+                binding.ffLoadingIv.visibility = View.GONE
+            }
+        }
         initTextInputLayout()
     }
 
@@ -61,13 +69,8 @@ class FirstFragment : Fragment() {
     private fun initTextInputLayout() {
         binding.ffTil.apply {
             editText?.doOnTextChanged { _, _, _, _ ->
-                if (!binding.ffTiet.text.isNullOrEmpty()) {
-                    binding.ffTil.error = null
-                    viewModel.getTranslate(binding.ffTiet.text.toString())
-                    refreshListAdapter(viewModel.responseData.value)
-                } else {
-                    refreshListAdapter(null)
-                }
+                viewModel.getTranslate(binding.ffTiet.text.toString())
+                refreshListAdapter(viewModel.responseData.value)
             }
         }
     }
