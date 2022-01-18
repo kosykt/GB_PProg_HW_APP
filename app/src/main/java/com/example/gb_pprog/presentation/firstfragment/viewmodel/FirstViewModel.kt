@@ -31,20 +31,20 @@ class FirstViewModel(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { dto ->
-                Log.d("testViewModel", dto.isNullOrEmpty().toString())
-                if (word.isNotBlank()) {
-                    _responseData.value = dto
-                    setError(dto.isEmpty())
-                } else {
+                //todo имеется очень редкий баг, появляется при частом вводе и последующем быстром стирании текста
+                if (word.isBlank()) {
                     _responseData.value = null
                     setError(false)
+                } else {
+                    _responseData.value = dto
+                    setError(dto.isEmpty())
                 }
                 _isLoadingData.value = false
             }
     }
 
     private fun setError(error: Boolean) {
-        when(error){
+        when (error) {
             true -> _errorText.value = "Translation not found"
             false -> _errorText.value = null
         }
