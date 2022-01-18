@@ -16,7 +16,12 @@ class FirstAdapter() :
 
         fun showTranslate(dto: DomainModel) {
             vb.ffItemTvTranslate.text = dto.meanings[0].translation.text
-            if (dto.meanings[0].translation.note != ""){
+            if (dto.meanings[0].translation.note == "") {
+                vb.ffItemTvNote.apply {
+                    visibility = View.GONE
+                    text = ""
+                }
+            }else{
                 vb.ffItemTvNote.apply {
                     visibility = View.VISIBLE
                     text = dto.meanings[0].translation.note
