@@ -1,7 +1,6 @@
 package com.example.gb_pprog.presentation.firstfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,13 +54,20 @@ class FirstFragment : Fragment() {
             refreshListAdapter(viewModel.responseData.value)
         }
         viewModel.loadingData.observe(viewLifecycleOwner){
-            if (viewModel.loadingData.value == true){
+            refreshLoadingView(viewModel.loadingData.value)
+        }
+        initTextInputLayout()
+    }
+
+    private fun refreshLoadingView(value: Boolean?) {
+        when (value) {
+            true -> {
                 binding.ffLoadingIv.visibility = View.VISIBLE
-            }else{
+            }
+            else -> {
                 binding.ffLoadingIv.visibility = View.GONE
             }
         }
-        initTextInputLayout()
     }
 
     private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)

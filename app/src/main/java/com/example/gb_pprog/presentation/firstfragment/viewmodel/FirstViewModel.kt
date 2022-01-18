@@ -7,7 +7,6 @@ import com.example.gb_pprog.domain.SearchWordUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
 class FirstViewModel(
     private val searchWordUseCase: SearchWordUseCase
