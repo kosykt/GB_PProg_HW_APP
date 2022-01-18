@@ -50,6 +50,11 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ffRv.adapter = adapter
+        initObservers()
+        initTextInputLayout()
+    }
+
+    private fun initObservers() {
         viewModel.responseData.observe(viewLifecycleOwner) {
             refreshListAdapter(it)
         }
@@ -59,7 +64,17 @@ class FirstFragment : Fragment() {
         viewModel.errorText.observe(viewLifecycleOwner){
             setErrorText(it)
         }
-        initTextInputLayout()
+    }
+
+    private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
+
+    private fun initTextInputLayout() {
+        binding.ffTil.apply {
+            editText?.doOnTextChanged { _, _, _, _ ->
+                viewModel.getTranslate(binding.ffTiet.text.toString())
+                refreshListAdapter(viewModel.responseData.value)
+            }
+        }
     }
 
     private fun setErrorText(errorText: String?) {
@@ -73,17 +88,6 @@ class FirstFragment : Fragment() {
             }
             else -> {
                 binding.ffLoadingIv.visibility = View.GONE
-            }
-        }
-    }
-
-    private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
-
-    private fun initTextInputLayout() {
-        binding.ffTil.apply {
-            editText?.doOnTextChanged { _, _, _, _ ->
-                viewModel.getTranslate(binding.ffTiet.text.toString())
-                refreshListAdapter(viewModel.responseData.value)
             }
         }
     }
