@@ -10,17 +10,26 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gb_pprog.R
+import com.example.gb_pprog.data.network.ApiHolder
+import com.example.gb_pprog.data.network.DataSourceNetwork
+import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.databinding.FragmentFirstBinding
+import com.example.gb_pprog.domain.SearchWordUseCase
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModelFactory
 
 class FirstFragment : Fragment() {
 
+    private val retrofitService = ApiHolder.retrofitService
+    private val dataSourceRepository = DataSourceNetwork(retrofitService)
+    private val domainRepository = DomainRepositoryImpl(dataSourceRepository)
+    private val searchWordUseCase = SearchWordUseCase(domainRepository)
+
     private val viewModel: FirstViewModel by lazy {
         ViewModelProvider(
             this,
-            FirstViewModelFactory()
+            FirstViewModelFactory(searchWordUseCase)
         )[FirstViewModel::class.java]
     }
 
@@ -42,9 +51,15 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.responseData.observe(viewLifecycleOwner){
+            initObserver()
+        }
         binding.ffRv.adapter = adapter
-        Log.d("testViewModel", viewModel.test)
         initTextInputLayout()
+    }
+
+    private fun initObserver() {
+        adapter.submitList(viewModel.responseData.value)
     }
 
     private fun initTextInputLayout() {
@@ -56,8 +71,7 @@ class FirstFragment : Fragment() {
                 if (binding.ffTiet.text.isNullOrEmpty()) {
                     error = getString(R.string.ff_til_error_tiet_is_empty)
                 } else {
-//                    presenter.translate(binding.ffTiet.text.toString())
-                    binding.ffLoadingIv.visibility = View.VISIBLE
+                    viewModel.getTranslate(binding.ffTiet.text.toString())
                 }
             }
             setStartIconOnClickListener {
@@ -71,19 +85,4 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-//    override fun getTranslateData(data: List<DomainModel>) {
-//        binding.ffLoadingIv.visibility = View.GONE
-//
-//        when {
-//            data.isEmpty() -> {
-//                binding.ffTil.error = getString(R.string.ff_til_error_incorrect_input)
-//            }
-//            data[0].text != binding.ffTiet.text.toString() -> {
-//                //TODO придумать как лучше обработать response
-//                Toast.makeText(context, "Примерный перевод", Toast.LENGTH_LONG).show()
-//            }
-//        }
-//        adapter.submitList(data)
-//    }
 }
