@@ -12,6 +12,7 @@ import com.example.gb_pprog.data.network.DataSourceNetwork
 import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.SearchWordUseCase
+import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModelFactory
@@ -48,25 +49,24 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.responseData.observe(viewLifecycleOwner) {
-            initObserver()
-        }
         binding.ffRv.adapter = adapter
+        viewModel.responseData.observe(viewLifecycleOwner) {
+            refreshListAdapter(viewModel.responseData.value)
+        }
         initTextInputLayout()
     }
 
-    private fun initObserver() {
-        adapter.submitList(viewModel.responseData.value)
-    }
+    private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
 
     private fun initTextInputLayout() {
         binding.ffTil.apply {
             editText?.doOnTextChanged { _, _, _, _ ->
                 if (!binding.ffTiet.text.isNullOrEmpty()) {
+                    binding.ffTil.error = null
                     viewModel.getTranslate(binding.ffTiet.text.toString())
-                    initObserver()
+                    refreshListAdapter(viewModel.responseData.value)
                 } else {
-                    adapter.submitList(null)
+                    refreshListAdapter(null)
                 }
             }
         }
