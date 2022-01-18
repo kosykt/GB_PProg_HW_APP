@@ -1,5 +1,6 @@
 package com.example.gb_pprog.presentation.firstfragment.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,18 +21,32 @@ class FirstViewModel(
     val loadingData: LiveData<Boolean>
         get() = _isLoadingData
 
+    private val _errorText = MutableLiveData<String>()
+    val errorText: LiveData<String>
+        get() = _errorText
+
     fun getTranslate(word: String) {
         _isLoadingData.value = true
         searchWordUseCase.execute(word)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { dto ->
+                Log.d("testViewModel", dto.isNullOrEmpty().toString())
                 if (word.isNotBlank()) {
                     _responseData.value = dto
+                    setError(dto.isEmpty())
                 } else {
                     _responseData.value = null
+                    setError(false)
                 }
                 _isLoadingData.value = false
             }
+    }
+
+    private fun setError(error: Boolean) {
+        when(error){
+            true -> _errorText.value = "Translation not found"
+            false -> _errorText.value = null
+        }
     }
 }

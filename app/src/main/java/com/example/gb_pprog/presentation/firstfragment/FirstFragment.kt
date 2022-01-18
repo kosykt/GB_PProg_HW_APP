@@ -51,12 +51,19 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.ffRv.adapter = adapter
         viewModel.responseData.observe(viewLifecycleOwner) {
-            refreshListAdapter(viewModel.responseData.value)
+            refreshListAdapter(it)
         }
         viewModel.loadingData.observe(viewLifecycleOwner){
-            refreshLoadingView(viewModel.loadingData.value)
+            refreshLoadingView(it)
+        }
+        viewModel.errorText.observe(viewLifecycleOwner){
+            setErrorText(it)
         }
         initTextInputLayout()
+    }
+
+    private fun setErrorText(errorText: String?) {
+        binding.ffTil.error = errorText
     }
 
     private fun refreshLoadingView(value: Boolean?) {
