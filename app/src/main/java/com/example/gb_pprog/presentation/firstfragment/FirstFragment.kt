@@ -1,15 +1,12 @@
 package com.example.gb_pprog.presentation.firstfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.R
 import com.example.gb_pprog.data.network.ApiHolder
 import com.example.gb_pprog.data.network.DataSourceNetwork
 import com.example.gb_pprog.data.repository.DomainRepositoryImpl
@@ -51,7 +48,7 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.responseData.observe(viewLifecycleOwner){
+        viewModel.responseData.observe(viewLifecycleOwner) {
             initObserver()
         }
         binding.ffRv.adapter = adapter
@@ -65,18 +62,12 @@ class FirstFragment : Fragment() {
     private fun initTextInputLayout() {
         binding.ffTil.apply {
             editText?.doOnTextChanged { _, _, _, _ ->
-                binding.ffTil.error = null
-            }
-            setEndIconOnClickListener {
-                if (binding.ffTiet.text.isNullOrEmpty()) {
-                    error = getString(R.string.ff_til_error_tiet_is_empty)
-                } else {
+                if (!binding.ffTiet.text.isNullOrEmpty()) {
                     viewModel.getTranslate(binding.ffTiet.text.toString())
+                    initObserver()
+                } else {
+                    adapter.submitList(null)
                 }
-            }
-            setStartIconOnClickListener {
-                //TODO как воспроизвести звук?
-                Toast.makeText(context, "voice", Toast.LENGTH_LONG).show()
             }
         }
     }
