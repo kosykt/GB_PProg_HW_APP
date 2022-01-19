@@ -7,27 +7,22 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.data.network.ApiHolder
-import com.example.gb_pprog.data.network.DataSourceNetwork
-import com.example.gb_pprog.data.repository.DomainRepositoryImpl
+import com.example.gb_pprog.App
 import com.example.gb_pprog.databinding.FragmentFirstBinding
-import com.example.gb_pprog.domain.SearchWordUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModelFactory
+import javax.inject.Inject
 
 class FirstFragment : Fragment() {
 
-    private val retrofitService = ApiHolder.retrofitService
-    private val dataSourceRepository = DataSourceNetwork(retrofitService)
-    private val domainRepository = DomainRepositoryImpl(dataSourceRepository)
-    private val searchWordUseCase = SearchWordUseCase(domainRepository)
-
+    @Inject
+    lateinit var factory: FirstViewModelFactory
     private val viewModel: FirstViewModel by lazy {
         ViewModelProvider(
             this,
-            FirstViewModelFactory(searchWordUseCase)
+            factory
         )[FirstViewModel::class.java]
     }
 
@@ -38,6 +33,11 @@ class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding: FragmentFirstBinding
         get() = _binding ?: throw RuntimeException("FragmentFirstBinding? = null")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,10 +58,10 @@ class FirstFragment : Fragment() {
         viewModel.responseData.observe(viewLifecycleOwner) {
             refreshListAdapter(it)
         }
-        viewModel.loadingData.observe(viewLifecycleOwner){
+        viewModel.loadingData.observe(viewLifecycleOwner) {
             refreshLoadingView(it)
         }
-        viewModel.errorText.observe(viewLifecycleOwner){
+        viewModel.errorText.observe(viewLifecycleOwner) {
             setErrorText(it)
         }
     }
