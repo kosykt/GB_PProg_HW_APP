@@ -15,6 +15,7 @@ class RetrofitModule {
     }
 
     @Provides
+    @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -24,6 +25,7 @@ class RetrofitModule {
     }
 
     @Provides
+    @Singleton
     fun provideApi(retrofit: Retrofit): RetrofitService {
         return retrofit.create(RetrofitService::class.java)
     }
