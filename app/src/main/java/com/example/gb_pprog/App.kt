@@ -2,6 +2,7 @@ package com.example.gb_pprog
 
 import android.app.Application
 import com.example.gb_pprog.di.AppComponent
+import com.example.gb_pprog.di.AppModule
 import com.example.gb_pprog.di.DaggerAppComponent
 
 class App : Application() {
@@ -13,6 +14,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.create()
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
     }
 }
