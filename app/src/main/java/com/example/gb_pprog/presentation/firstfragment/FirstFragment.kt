@@ -12,17 +12,13 @@ import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
-import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModelFactory
-import javax.inject.Inject
 
 class FirstFragment : Fragment() {
 
-    @Inject
-    lateinit var factory: FirstViewModelFactory
     private val viewModel: FirstViewModel by lazy {
         ViewModelProvider(
             this,
-            factory
+            App.appComponent.injectFirstViewModelFactory()
         )[FirstViewModel::class.java]
     }
 
@@ -33,11 +29,6 @@ class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding: FragmentFirstBinding
         get() = _binding ?: throw RuntimeException("FragmentFirstBinding? = null")
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.inject(this)
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

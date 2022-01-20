@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.gb_pprog.data.connectivity.NetworkStatus
 import com.example.gb_pprog.domain.SearchWordUseCase
 import java.lang.RuntimeException
+import javax.inject.Inject
 
-class FirstViewModelFactory(
+class FirstViewModelFactory @Inject constructor(
     private val searchWordUseCase: SearchWordUseCase,
     private val networkStatus: NetworkStatus
 ): ViewModelProvider.Factory {
