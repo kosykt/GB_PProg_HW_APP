@@ -12,19 +12,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class DataModule {
-
-    @Provides
-    @Singleton
-    fun provideDataSourceRepository(retrofitService: RetrofitService): DataSourceRepository {
-        return DataSourceNetwork(retrofitService)
-    }
-
-    @Provides
-    @Singleton
-    fun provideDomainRepository(dataSourceRepository: DataSourceRepository): DomainRepository {
-        return DomainRepositoryImpl(dataSourceRepository)
-    }
+class NetworkStatusModule {
 
     @Provides
     @Singleton

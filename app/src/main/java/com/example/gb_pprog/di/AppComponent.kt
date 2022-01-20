@@ -8,9 +8,9 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppModule::class,
-        DomainModule::class,
-        DataModule::class,
+        NetworkStatusModule::class,
         RetrofitModule::class,
+        Binds::class
     ]
 )
 interface AppComponent {
