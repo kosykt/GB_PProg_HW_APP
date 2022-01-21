@@ -6,33 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.App
-import com.example.gb_pprog.data.connectivity.NetworkStatus
-import com.example.gb_pprog.data.network.ApiHolder
-import com.example.gb_pprog.data.network.DataSourceNetwork
-import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.databinding.FragmentFirstBinding
-import com.example.gb_pprog.domain.SearchWordUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
-import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FirstFragment : Fragment() {
 
-    private val networkStatus by lazy { NetworkStatus(requireContext().applicationContext) }
-    private val retrofitService = ApiHolder.retrofitService
-    private val dataSourceRepository = DataSourceNetwork(retrofitService)
-    private val domainRepository = DomainRepositoryImpl(dataSourceRepository)
-    private val searchWordUseCase = SearchWordUseCase(domainRepository)
-
-    private val viewModel: FirstViewModel by lazy {
-        ViewModelProvider(
-            this,
-            FirstViewModelFactory(searchWordUseCase, networkStatus)
-        )[FirstViewModel::class.java]
-    }
+    private val vm by viewModel<FirstViewModel>()
 
     private val adapter by lazy {
         FirstAdapter()
@@ -58,13 +40,13 @@ class FirstFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.responseData.observe(viewLifecycleOwner) {
+        vm.responseData.observe(viewLifecycleOwner) {
             refreshListAdapter(it)
         }
-        viewModel.loadingData.observe(viewLifecycleOwner) {
+        vm.loadingData.observe(viewLifecycleOwner) {
             refreshLoadingView(it)
         }
-        viewModel.errorText.observe(viewLifecycleOwner) {
+        vm.errorText.observe(viewLifecycleOwner) {
             setErrorText(it)
         }
     }
@@ -74,8 +56,8 @@ class FirstFragment : Fragment() {
     private fun initTextInputLayout() {
         binding.ffTil.apply {
             editText?.doOnTextChanged { _, _, _, _ ->
-                viewModel.getTranslate(binding.ffTiet.text.toString())
-                refreshListAdapter(viewModel.responseData.value)
+                vm.getTranslate(binding.ffTiet.text.toString())
+                refreshListAdapter(vm.responseData.value)
             }
         }
     }
