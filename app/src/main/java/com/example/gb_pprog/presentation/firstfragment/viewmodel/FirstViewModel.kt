@@ -43,7 +43,7 @@ class FirstViewModel(
                     }
                     _isLoadingData.value = false
                 }
-        }else{
+        } else {
             setError(true)
         }
     }

@@ -10,7 +10,7 @@ import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FfItemBinding
 import com.example.gb_pprog.domain.model.DomainModel
 
-class FirstAdapter() :
+class FirstAdapter :
     ListAdapter<DomainModel, FirstAdapter.FirstViewHolder>(FirstItemCallback) {
 
     inner class FirstViewHolder(private val vb: FfItemBinding) : RecyclerView.ViewHolder(vb.root) {
@@ -27,7 +27,7 @@ class FirstAdapter() :
                     visibility = View.GONE
                     text = ""
                 }
-            }else{
+            } else {
                 vb.ffItemTvNote.apply {
                     visibility = View.VISIBLE
                     text = dto.meanings[0].translation.note
