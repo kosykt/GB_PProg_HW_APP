@@ -8,17 +8,29 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gb_pprog.App
+import com.example.gb_pprog.data.connectivity.NetworkStatus
+import com.example.gb_pprog.data.network.ApiHolder
+import com.example.gb_pprog.data.network.DataSourceNetwork
+import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.databinding.FragmentFirstBinding
+import com.example.gb_pprog.domain.SearchWordUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
+import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModelFactory
 
 class FirstFragment : Fragment() {
+
+    private val networkStatus by lazy { NetworkStatus(requireContext().applicationContext) }
+    private val retrofitService = ApiHolder.retrofitService
+    private val dataSourceRepository = DataSourceNetwork(retrofitService)
+    private val domainRepository = DomainRepositoryImpl(dataSourceRepository)
+    private val searchWordUseCase = SearchWordUseCase(domainRepository)
 
     private val viewModel: FirstViewModel by lazy {
         ViewModelProvider(
             this,
-            App.appComponent.injectFirstViewModelFactory()
+            FirstViewModelFactory(searchWordUseCase, networkStatus)
         )[FirstViewModel::class.java]
     }
 
