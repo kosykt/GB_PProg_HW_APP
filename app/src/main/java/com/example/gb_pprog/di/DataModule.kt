@@ -1,5 +1,6 @@
 package com.example.gb_pprog.di
 
+import android.content.Context
 import com.example.gb_pprog.data.connectivity.NetworkStatus
 import com.example.gb_pprog.data.network.ApiHolder
 import com.example.gb_pprog.data.network.DataSourceNetwork
@@ -12,7 +13,7 @@ import org.koin.dsl.module
 val dataModule = module {
 
     single<NetworkStatus> {
-        NetworkStatus(context = get())
+        NetworkStatus(context = get<Context>())
     }
 
     single<RetrofitService> {
@@ -20,10 +21,10 @@ val dataModule = module {
     }
 
     single<DataSourceRepository> {
-        DataSourceNetwork(retrofitService = get())
+        DataSourceNetwork(retrofitService = get<RetrofitService>())
     }
 
     single<DomainRepository> {
-        DomainRepositoryImpl(dataSource = get())
+        DomainRepositoryImpl(dataSource = get<DataSourceRepository>())
     }
 }
