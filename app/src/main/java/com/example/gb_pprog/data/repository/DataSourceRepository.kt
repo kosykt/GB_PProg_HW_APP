@@ -5,5 +5,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface DataSourceRepository {
 
-    fun getData(word: String): Single<List<RetrofitTranslateDto>>
+    suspend fun getData(word: String): List<RetrofitTranslateDto>
 }
