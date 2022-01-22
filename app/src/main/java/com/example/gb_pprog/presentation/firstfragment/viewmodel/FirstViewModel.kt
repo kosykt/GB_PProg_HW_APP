@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class FirstViewModel(
     private val searchWordUseCase: SearchWordUseCase,
-    private val networkStatus: NetworkStatus
+    private val networkStatus: NetworkStatus,
 ) : ViewModel() {
 
     private val _responseData = MutableLiveData<List<DomainModel>>()
@@ -29,18 +29,16 @@ class FirstViewModel(
 
     fun getTranslate(word: String) {
         if (word.isBlank()) {
-            _responseData.value = null
-            _isLoadingData.value = false
-            _errorText.value = null
+            refreshData(loading = false, error = null, response = null)
         } else {
-            _isLoadingData.value = true
+            refreshData(loading = true, error = null, response = null)
             checkNetwork(word)
         }
     }
 
     private fun checkNetwork(word: String) {
         if (!networkStatus.isOnline()) {
-            _errorText.value = "Connection error"
+            refreshData(loading = false, error = "Connection error", response = null)
         } else {
             getData(word)
         }
@@ -50,15 +48,17 @@ class FirstViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             val data = searchWordUseCase.execute(word)
             if (data.isNullOrEmpty()) {
-                _errorText.postValue("Translation not found")
-                _isLoadingData.postValue(false)
-                _responseData.postValue(null)
+                refreshData(loading = false, error = "Translation not found", response = null)
             } else {
-                _errorText.postValue(null)
-                _responseData.postValue(data)
-                _isLoadingData.postValue(false)
+                refreshData(loading = false, error = null, response = data)
             }
         }
+    }
+
+    private fun refreshData(loading: Boolean, error: String?, response: List<DomainModel>?) {
+        _isLoadingData.postValue(loading)
+        _errorText.postValue(error)
+        _responseData.postValue(response)
     }
 }
 

@@ -8,5 +8,5 @@ data class DomainMeaning(
     val previewUrl: String,
     val soundUrl: String,
     val transcription: String,
-    val translation: DomainTranslation
+    val translation: DomainTranslation,
 )

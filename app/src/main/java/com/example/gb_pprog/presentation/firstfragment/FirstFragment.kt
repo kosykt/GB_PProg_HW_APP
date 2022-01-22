@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FirstFragment : Fragment() {
@@ -26,7 +28,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
@@ -55,9 +57,10 @@ class FirstFragment : Fragment() {
 
     private fun initTextInputLayout() {
         binding.ffTil.apply {
-            editText?.doOnTextChanged { _, _, _, _ ->
-                vm.getTranslate(binding.ffTiet.text.toString())
-                refreshListAdapter(vm.responseData.value)
+            editText?.doAfterTextChanged {
+                lifecycleScope.launch {
+                    vm.getTranslate(binding.ffTiet.text.toString())
+                }
             }
         }
     }

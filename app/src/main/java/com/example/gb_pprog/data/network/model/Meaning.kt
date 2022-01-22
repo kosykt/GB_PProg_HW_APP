@@ -7,5 +7,5 @@ data class Meaning(
     val previewUrl: String,
     val soundUrl: String,
     val transcription: String,
-    val translation: Translation
+    val translation: Translation,
 )

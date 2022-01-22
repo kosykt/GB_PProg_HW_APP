@@ -4,7 +4,7 @@ import com.example.gb_pprog.domain.DomainRepository
 import com.example.gb_pprog.domain.model.DomainModel
 
 class DomainRepositoryImpl(
-    private val dataSource: DataSourceRepository
+    private val dataSource: DataSourceRepository,
 ) : DomainRepository {
 
     override suspend fun translate(word: String): List<DomainModel> {

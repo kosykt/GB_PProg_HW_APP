@@ -55,14 +55,14 @@ class FirstAdapter :
 object FirstItemCallback : DiffUtil.ItemCallback<DomainModel>() {
     override fun areItemsTheSame(
         oldItem: DomainModel,
-        newItem: DomainModel
+        newItem: DomainModel,
     ): Boolean {
         return oldItem == newItem
     }
 
     override fun areContentsTheSame(
         oldItem: DomainModel,
-        newItem: DomainModel
+        newItem: DomainModel,
     ): Boolean {
         return oldItem == newItem
     }
