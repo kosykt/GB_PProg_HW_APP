@@ -28,30 +28,37 @@ class FirstViewModel(
         get() = _errorText
 
     fun getTranslate(word: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            if (networkStatus.isOnline()) {
-                _isLoadingData.postValue(true)
-                when {
-                    word.isBlank() -> {
-                        _responseData.postValue(null)
-                        _isLoadingData.postValue(false)
-                    }
-                    word.isNotBlank() -> {
-                        _responseData.postValue(searchWordUseCase.execute(word))
-                        _isLoadingData.postValue(false)
-                        setError(false)
-                    }
-                }
-            } else {
-                setError(true)
-            }
+        if (word.isBlank()) {
+            _responseData.value = null
+            _isLoadingData.value = false
+            _errorText.value = null
+        } else {
+            _isLoadingData.value = true
+            checkNetwork(word)
         }
     }
 
-    private suspend fun setError(error: Boolean) {
-        when (error) {
-            true -> _errorText.postValue("Translation not found")
-            false -> _errorText.postValue(null)
+    private fun checkNetwork(word: String) {
+        if (!networkStatus.isOnline()) {
+            _errorText.value = "Connection error"
+        } else {
+            getData(word)
+        }
+    }
+
+    private fun getData(word: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val data = searchWordUseCase.execute(word)
+            if (data.isNullOrEmpty()) {
+                _errorText.postValue("Translation not found")
+                _isLoadingData.postValue(false)
+                _responseData.postValue(null)
+            } else {
+                _errorText.postValue(null)
+                _responseData.postValue(data)
+                _isLoadingData.postValue(false)
+            }
         }
     }
 }
+
