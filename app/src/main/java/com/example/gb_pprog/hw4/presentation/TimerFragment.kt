@@ -62,7 +62,6 @@ class TimerFragment : Fragment() {
     }
 
     companion object {
-
         fun newInstance() = TimerFragment()
     }
 }

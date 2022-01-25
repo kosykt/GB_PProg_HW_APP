@@ -1,5 +1,7 @@
 package com.example.gb_pprog.hw4.domain
 
+import kotlinx.coroutines.flow.Flow
+
 interface Repository {
 
     fun start()
@@ -8,5 +10,5 @@ interface Repository {
 
     fun stop()
 
-    fun getStringTime(): String
+    fun getStringTime(): Flow<String>
 }
