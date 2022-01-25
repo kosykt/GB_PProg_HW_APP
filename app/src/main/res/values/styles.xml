@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ff_view_style" parent="">
+        <item name="android:background">@color/secondaryBackgroundColor</item>
+        <item name="android:padding">@dimen/ff_constraint_layout_padding</item>
+    </style>
+
+    <style name="ff_cv_input_style" parent="">
+        <item name="android:backgroundTint">@color/secondaryLightColor</item>
+        <item name="android:elevation">@dimen/ff_cv_elevation</item>
+        <item name="cardCornerRadius">@dimen/ff_cv_card_corner_radius</item>
+    </style>
+
+    <style name="ff_til_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">@dimen/ff_til_layout_margin</item>
+        <item name="android:hint">@string/ff_til_hint_text</item>
+        <item name="android:padding">@dimen/ff_til_padding</item>
+        <item name="counterEnabled">true</item>
+        <item name="endIconCheckable">true</item>
+        <item name="endIconMode">custom</item>
+        <!--Drawables-->
+        <item name="endIconDrawable">@drawable/ic_baseline_search_24</item>
+        <item name="startIconDrawable">@drawable/ic_baseline_record_voice_over_24</item>
+        <item name="counterMaxLength">@integer/ff_til_input_max_counter</item>
+        <item name="placeholderText">@string/ff_til_place_holder_text</item>
+        <!--Colors-->
+        <item name="android:textColorHint">@color/secondaryTextColor</item>
+        <item name="boxStrokeColor">@color/secondaryTextColor</item>
+        <item name="counterTextColor">@color/secondaryTextColor</item>
+        <item name="hintTextColor">@color/secondaryTextColor</item>
+        <item name="endIconTint">@color/secondaryTextColor</item>
+        <item name="startIconTint">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="ff_tiet_style" parent="">
+        <item name="android:backgroundTintMode">screen</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLength">@integer/ff_tiet_input_max_counter</item>
+    </style>
+
+    <style name="ff_item_cv_style" parent="">
+        <item name="android:backgroundTint">@color/secondaryLightColor</item>
+        <item name="android:layout_marginStart">@dimen/ff_item_card_margin_start_end</item>
+        <item name="android:layout_marginEnd">@dimen/ff_item_card_margin_start_end</item>
+        <item name="android:elevation">@dimen/ff_item_card_elevation</item>
+        <item name="cardCornerRadius">@dimen/ff_item_card_corner_radius</item>
+    </style>
+
+    <style name="ff_item_tv_translate_style" parent="">
+        <item name="android:layout_margin">@dimen/ff_item_tv_margin</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">@dimen/ff_item_tv_translate_text_size</item>
+    </style>
+
+    <style name="ff_item_tv_note_style" parent="">
+        <item name="android:layout_marginStart">@dimen/ff_item_tv_margin</item>
+        <item name="android:layout_marginEnd">@dimen/ff_item_tv_margin</item>
+        <item name="android:layout_marginBottom">@dimen/ff_item_tv_margin</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textSize">@dimen/ff_item_tv_note_text_size</item>
+    </style>
+
+</resources>

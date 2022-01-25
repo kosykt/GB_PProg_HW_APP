@@ -11,14 +11,14 @@
     <color name="test_yellow">#F6FF00</color>
     <color name="test_green">#26FF00</color>
 
-    <color name="secondaryColor">#90a4ae</color>
-    <color name="secondaryLightColor">#F5FBFF</color>
-    <color name="secondaryDarkColor">#62757f</color>
+    <color name="secondaryColor">#37464f</color>
+    <color name="secondaryLightColor">#202529</color>
+    <color name="secondaryDarkColor">#101f27</color>
 
-    <color name="secondaryTextColor">#BF000000</color>
+    <color name="secondaryTextColor">#BFFFFFFF</color>
     <color name="secondaryTextColorHighlight">#8061BE9D</color>
     <color name="secondaryTextSelectHandle">#61BE9D</color>
 
-    <color name="secondaryBackgroundColor">#EBF7FF</color>
+    <color name="secondaryBackgroundColor">#121517</color>
 
 </resources>

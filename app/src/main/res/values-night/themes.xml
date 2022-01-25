@@ -1,16 +1,28 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.GB_PProg" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.GB_PProg" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/secondaryTextSelectHandle</item>
+        <item name="colorPrimaryVariant">@color/secondaryBackgroundColor</item>
+        <item name="colorOnPrimary">@color/test_red</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/test_green</item>
+        <item name="colorSecondaryVariant">@color/test_red</item>
+        <item name="colorOnSecondary">@color/test_red</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/secondaryDarkColor</item>
+        <item name="android:windowBackground">@color/secondaryBackgroundColor</item>
+        <item name="android:textColorHighlight">@color/secondaryTextColorHighlight</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+        <item name="attrFfView">@style/ff_view_style.dark_theme</item>
+        <item name="attrFfCvInput">@style/ff_cv_input_style.dark_theme</item>
+        <item name="attrFfTil">@style/ff_til_style.dark_theme</item>
+        <item name="attrFfTiet">@style/ff_tiet_style.dark_theme</item>
+        <item name="attrFfItemCv">@style/ff_item_cv_style.dark_theme</item>
+        <item name="attrFfItemTvTranslate">@style/ff_item_tv_translate_style.dark_theme</item>
+        <item name="attrFfItemTvNote">@style/ff_item_tv_note_style.dark_theme</item>
     </style>
 </resources>

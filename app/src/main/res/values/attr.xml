@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="attrFfView" format="reference"/>
+    <attr name="attrFfCvInput" format="reference"/>
+    <attr name="attrFfTil" format="reference"/>
+    <attr name="attrFfTiet" format="reference"/>
+
+    <attr name="attrFfItemCv" format="reference"/>
+    <attr name="attrFfItemTvTranslate" format="reference"/>
+    <attr name="attrFfItemTvNote" format="reference"/>
+</resources>
