@@ -4,11 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface Repository {
 
-    fun start()
+    fun setTimerParams(timeMillis: Long, isRunning: Boolean)
 
-    fun pause()
-
-    fun stop()
-
-    fun getStringTime(): Flow<String>
+    fun getStringTime(): Flow<Long>
 }

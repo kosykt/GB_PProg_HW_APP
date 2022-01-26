@@ -5,11 +5,9 @@ import kotlinx.coroutines.flow.Flow
 class TimerInteractor(
     private val repository: Repository,
 ) {
-    fun start() = repository.start()
+    fun setParams(timeMillis: Long, isRunning: Boolean) =
+        repository.setTimerParams(timeMillis = timeMillis, isRunning = isRunning)
 
-    fun pause() = repository.pause()
+    fun getStringTimeRepresentation(): Flow<Long> = repository.getStringTime()
 
-    fun stop() = repository.stop()
-
-    fun getStringTimeRepresentation(): Flow<String> = repository.getStringTime()
 }

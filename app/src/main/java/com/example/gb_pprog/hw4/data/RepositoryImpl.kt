@@ -8,17 +8,10 @@ class RepositoryImpl(
     private val myTimer: MyTimer
 ) : Repository {
 
-    override fun start() {
-        myTimer.running()
+    override fun setTimerParams(timeMillis: Long, isRunning: Boolean) {
+        myTimer.setStartingValue(timeMillis = timeMillis, isRunning = isRunning)
     }
 
-    override fun pause() {
-        myTimer.paused()
-    }
+    override fun getStringTime(): Flow<Long> = myTimer.getTimeMillis()
 
-    override fun stop() {
-        myTimer.stopped()
-    }
-
-    override fun getStringTime(): Flow<String> = myTimer.currentTime()
 }

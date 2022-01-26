@@ -1,51 +1,34 @@
 package com.example.gb_pprog.hw4.data.timer
 
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class MyTimer {
 
-    private var checker = STOP
-    private var t = 0
+    companion object {
+        private const val BASE_START_VALUE: Long = 0
+        private var running = false
+        private var startingValue: Long = BASE_START_VALUE
+    }
 
-    private val data: Flow<String> = flow {
-        while (checker == START) {
-            t++
-            emit(t.toString())
-            delay(1000)
-            if (checker == STOP) {
-                emit(t.toString())
-            } else if (checker == PAUSE) {
-                emit(t.toString())
+    fun setStartingValue(timeMillis: Long, isRunning: Boolean) {
+        startingValue = timeMillis
+        running = isRunning
+
+    }
+
+    fun getTimeMillis(): Flow<Long> {
+        return startTimer()
+    }
+
+    private fun startTimer(): Flow<Long> {
+        val timerStartedTime = System.currentTimeMillis()
+        return flow {
+            while (running) {
+                delay(30)
+                emit((System.currentTimeMillis() - timerStartedTime) + startingValue)
             }
         }
-    }
-
-
-    fun running() {
-        checker = START
-    }
-
-    fun paused() {
-        checker = PAUSE
-    }
-
-    fun stopped() {
-        t = 0
-        checker = STOP
-    }
-
-    fun currentTime(): Flow<String> {
-        return data
-            .flowOn(Dispatchers.Default)
-            .catch { e -> println(e.message) }
-    }
-
-    companion object {
-
-        private const val START = "start"
-        private const val PAUSE = "pause"
-        private const val STOP = "stop"
     }
 }
