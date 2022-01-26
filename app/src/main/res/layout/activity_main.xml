@@ -11,6 +11,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/main_bnv"
         app:layout_constraintEnd_toEndOf="parent"
+        android:name="com.example.gb_pprog.presentation.firstfragment.FirstFragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".presentation.MainActivity" />
