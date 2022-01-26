@@ -24,5 +24,6 @@
         <item name="attrFfItemCv">@style/ff_item_cv_style.dark_theme</item>
         <item name="attrFfItemTvTranslate">@style/ff_item_tv_translate_style.dark_theme</item>
         <item name="attrFfItemTvNote">@style/ff_item_tv_note_style.dark_theme</item>
+        <item name="attrActivityBottomNavView">@style/activity_bottom_nav_view_style.dark_theme</item>
     </style>
 </resources>

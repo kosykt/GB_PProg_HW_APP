@@ -1,5 +1,6 @@
 package com.example.gb_pprog.hw4.data.timer
 
+import android.util.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -28,6 +29,7 @@ class MyTimer {
             while (running) {
                 delay(30)
                 emit((System.currentTimeMillis() - timerStartedTime) + startingValue)
+                Log.d("testTimer", "${(System.currentTimeMillis() - timerStartedTime) + startingValue}")
             }
         }
     }

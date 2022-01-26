@@ -62,6 +62,7 @@ class TimerFragment : Fragment() {
     }
 
     companion object {
+        const val NAME_FRAGMENT = "TimerFragment"
         fun newInstance() = TimerFragment()
     }
 }

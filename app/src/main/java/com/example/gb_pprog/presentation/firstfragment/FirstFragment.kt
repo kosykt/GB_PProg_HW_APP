@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.gb_pprog.hw4.presentation.TimerFragment
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
 import kotlinx.coroutines.launch
@@ -41,14 +39,6 @@ class FirstFragment : Fragment() {
         binding.ffRv.adapter = adapter
         initObservers()
         initTextInputLayout()
-        initTimerFragment()
-    }
-
-    private fun initTimerFragment() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, TimerFragment.newInstance())
-            .addToBackStack(null)
-            .commit()
     }
 
     private fun initObservers() {
@@ -93,5 +83,10 @@ class FirstFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val NAME_FRAGMENT = "FirstFragment"
+        fun newInstance() = FirstFragment()
     }
 }
