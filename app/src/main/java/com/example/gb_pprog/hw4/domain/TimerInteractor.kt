@@ -8,6 +8,6 @@ class TimerInteractor(
     fun setParams(timeMillis: Long, isRunning: Boolean) =
         repository.setTimerParams(timeMillis = timeMillis, isRunning = isRunning)
 
-    fun getStringTimeRepresentation(): Flow<Long> = repository.getStringTime()
+    fun getTimeRepresentation(): Flow<Long> = repository.getTime()
 
 }

@@ -6,5 +6,5 @@ interface Repository {
 
     fun setTimerParams(timeMillis: Long, isRunning: Boolean)
 
-    fun getStringTime(): Flow<Long>
+    fun getTime(): Flow<Long>
 }

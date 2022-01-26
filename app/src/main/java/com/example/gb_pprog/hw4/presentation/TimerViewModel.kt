@@ -32,11 +32,11 @@ class TimerViewModel(
 
     private fun startJob() {
         viewModelScope.launch {
-            interactor.getStringTimeRepresentation()
+            interactor.getTimeRepresentation()
                 .flowOn(Dispatchers.Main)
-                .collect {
-                    timeMillis = it
-                    _ticker.value = format(it)
+                .collect { millis ->
+                    timeMillis = millis
+                    _ticker.value = format(millis)
                 }
         }
     }

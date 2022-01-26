@@ -12,6 +12,6 @@ class RepositoryImpl(
         myTimer.setStartingValue(timeMillis = timeMillis, isRunning = isRunning)
     }
 
-    override fun getStringTime(): Flow<Long> = myTimer.getTimeMillis()
+    override fun getTime(): Flow<Long> = myTimer.getTimeMillis()
 
 }
