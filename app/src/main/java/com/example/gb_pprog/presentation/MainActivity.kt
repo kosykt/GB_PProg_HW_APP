@@ -10,8 +10,6 @@ import com.example.gb_pprog.presentation.firstfragment.FirstFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var translatorIsRunning = true
-    private var timerIsRunning = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +20,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFirstFragment() {
-        translatorIsRunning = true
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, FirstFragment.newInstance())
             .commit()
     }
 
     private fun initTimerFragment() {
-        timerIsRunning = true
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, TimerFragment.newInstance())
             .commit()
