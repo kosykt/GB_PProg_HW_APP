@@ -7,7 +7,9 @@
 
     <style name="ff_view_style" parent="">
         <item name="android:background">@color/secondaryBackgroundColor</item>
-        <item name="android:padding">@dimen/ff_constraint_layout_padding</item>
+        <item name="android:paddingStart">@dimen/ff_constraint_layout_padding</item>
+        <item name="android:paddingEnd">@dimen/ff_constraint_layout_padding</item>
+        <item name="android:paddingTop">@dimen/ff_constraint_layout_padding</item>
     </style>
 
     <style name="ff_cv_input_style" parent="">
