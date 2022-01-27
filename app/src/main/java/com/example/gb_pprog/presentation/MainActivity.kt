@@ -2,10 +2,9 @@ package com.example.gb_pprog.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.ActivityMainBinding
-import com.example.gb_pprog.hw4.presentation.TimerFragment
-import com.example.gb_pprog.presentation.firstfragment.FirstFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,15 +18,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFirstFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, FirstFragment.newInstance())
-            .commit()
+        Navigation.findNavController(this, R.id.main_container)
+            .navigate(R.id.action_timerFragment_to_firstFragment)
     }
 
     private fun initTimerFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, TimerFragment.newInstance())
-            .commit()
+        Navigation.findNavController(this, R.id.main_container)
+            .navigate(R.id.action_firstFragment_to_timerFragment)
     }
 
     private fun initBottomNavView() {
