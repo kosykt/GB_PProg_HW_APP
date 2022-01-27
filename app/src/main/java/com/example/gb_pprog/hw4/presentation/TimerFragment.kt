@@ -60,9 +60,4 @@ class TimerFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    companion object {
-        const val NAME_FRAGMENT = "TimerFragment"
-        fun newInstance() = TimerFragment()
-    }
 }
