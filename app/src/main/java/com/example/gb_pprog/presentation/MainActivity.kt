@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFirstFragment() {
         Navigation.findNavController(this, R.id.main_container)
-            .navigate(R.id.action_timerFragment_to_firstFragment)
+            .popBackStack()
     }
 
     private fun initTimerFragment() {
