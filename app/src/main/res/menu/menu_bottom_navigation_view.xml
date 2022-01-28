@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/bottom_view_favorite_fragment"
-        android:icon="@drawable/ic_baseline_favorite_24"
+        android:icon="@drawable/ic_baseline_favorite_active"
         android:title="@string/bottom_view_icon_favorites_title"/>
 
     <item
