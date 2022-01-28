@@ -10,23 +10,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/ff_item_tv_translate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="?attr/attrFfItemTvTranslate"
-            tools:text="Test text" />
+        <ImageView
+            android:id="@+id/ff_item_iv"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="8dp"
+            tools:src="@color/black" />
 
-        <TextView
-            android:id="@+id/ff_item_tv_note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/ff_item_tv_note_style"
-            tools:text="asdasf"
-            android:visibility="gone"
-            tools:visibility="visible"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ff_item_tv_translate"
+                style="?attr/attrFfItemTvTranslate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Test text" />
+
+            <TextView
+                android:id="@+id/ff_item_tv_note"
+                style="@style/ff_item_tv_note_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:text="asdasf"
+                tools:visibility="visible" />
+        </LinearLayout>
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

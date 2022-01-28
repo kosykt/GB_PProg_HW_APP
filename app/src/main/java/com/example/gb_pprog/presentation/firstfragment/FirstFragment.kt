@@ -11,6 +11,7 @@ import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
+import com.example.gb_pprog.presentation.imageloader.GlideImageLoader
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,7 +20,7 @@ class FirstFragment : Fragment() {
     private val vm by viewModel<FirstViewModel>()
 
     private val adapter by lazy {
-        FirstAdapter()
+        FirstAdapter(imageLoader = GlideImageLoader())
     }
 
     private var _binding: FragmentFirstBinding? = null
