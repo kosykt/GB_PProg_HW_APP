@@ -15,16 +15,16 @@ class FirstViewModel(
     private val networkStatus: NetworkStatus,
 ) : ViewModel() {
 
-    private val _responseData = MutableLiveData<List<DomainModel>>()
-    val responseData: LiveData<List<DomainModel>>
+    private val _responseData = MutableLiveData<List<DomainModel>?>()
+    val responseData: LiveData<List<DomainModel>?>
         get() = _responseData
 
     private val _isLoadingData = MutableLiveData<Boolean>()
     val loadingData: LiveData<Boolean>
         get() = _isLoadingData
 
-    private val _errorText = MutableLiveData<String>()
-    val errorText: LiveData<String>
+    private val _errorText = MutableLiveData<String?>()
+    val errorText: LiveData<String?>
         get() = _errorText
 
     fun getTranslate(word: String) {
