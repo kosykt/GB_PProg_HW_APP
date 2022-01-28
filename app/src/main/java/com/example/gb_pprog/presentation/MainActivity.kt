@@ -6,13 +6,13 @@ import androidx.navigation.Navigation
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.ActivityMainBinding
 
-private const val FIRST_F = "first"
+private const val TRANSLATOR_F = "translator"
 private const val TIMER_F = "timer"
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var fragmentOnView = FIRST_F
+    private var fragmentOnView = TRANSLATOR_F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFirstFragment() {
-        fragmentOnView = FIRST_F
+        fragmentOnView = TRANSLATOR_F
         Navigation.findNavController(this, R.id.main_container)
             .popBackStack()
     }
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (fragmentOnView == FIRST_F){
+        if (fragmentOnView == TRANSLATOR_F){
             super.onBackPressed()
         }else if (fragmentOnView == TIMER_F){
             binding.mainBnv.selectedItemId = R.id.bottom_view_ff

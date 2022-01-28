@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.firstfragment
+package com.example.gb_pprog.presentation.translatorfragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,18 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
-import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
+import com.example.gb_pprog.presentation.translatorfragment.adapter.TranslatorAdapter
+import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModel
 import com.example.gb_pprog.presentation.imageloader.GlideImageLoader
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FirstFragment : Fragment() {
+class TranslatorFragment : Fragment() {
 
-    private val vm by viewModel<FirstViewModel>()
+    private val vm by viewModel<TranslatorViewModel>()
 
     private val adapter by lazy {
-        FirstAdapter(imageLoader = GlideImageLoader())
+        TranslatorAdapter(imageLoader = GlideImageLoader())
     }
 
     private var _binding: FragmentFirstBinding? = null

@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.firstfragment.adapter
+package com.example.gb_pprog.presentation.translatorfragment.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +12,11 @@ import com.example.gb_pprog.databinding.FfItemBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.imageloader.ImageLoader
 
-class FirstAdapter(
+class TranslatorAdapter(
     private val imageLoader: ImageLoader<ImageView>,
-) : ListAdapter<DomainModel, FirstAdapter.FirstViewHolder>(FirstItemCallback) {
+) : ListAdapter<DomainModel, TranslatorAdapter.TranslatorViewHolder>(TranslatorItemCallback) {
 
-    inner class FirstViewHolder(private val vb: FfItemBinding) : RecyclerView.ViewHolder(vb.root) {
+    inner class TranslatorViewHolder(private val vb: FfItemBinding) : RecyclerView.ViewHolder(vb.root) {
 
         fun showTranslate(dto: DomainModel) {
             imageLoader.loadInto(
@@ -43,8 +43,8 @@ class FirstAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FirstViewHolder {
-        return FirstViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TranslatorViewHolder {
+        return TranslatorViewHolder(
             FfItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -53,13 +53,13 @@ class FirstAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: FirstViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TranslatorViewHolder, position: Int) {
         holder.showTranslate(currentList[position])
     }
 }
 
 
-object FirstItemCallback : DiffUtil.ItemCallback<DomainModel>() {
+object TranslatorItemCallback : DiffUtil.ItemCallback<DomainModel>() {
     override fun areItemsTheSame(
         oldItem: DomainModel,
         newItem: DomainModel,

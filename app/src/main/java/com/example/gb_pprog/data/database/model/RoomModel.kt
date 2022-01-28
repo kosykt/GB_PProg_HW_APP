@@ -6,5 +6,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class RoomModel(
     @PrimaryKey
-    val word: String
+    val word: String,
+    val translation: String
 )

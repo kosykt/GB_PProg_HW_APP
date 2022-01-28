@@ -5,7 +5,7 @@
     style="?attrFfView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.firstfragment.FirstFragment">
+    tools:context=".presentation.translatorfragment.TranslatorFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ff_cv_input"

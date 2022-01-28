@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.firstfragment.viewmodel
+package com.example.gb_pprog.presentation.translatorfragment.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import com.example.gb_pprog.domain.model.DomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FirstViewModel(
+class TranslatorViewModel(
     private val getTranslateUseCase: GetTranslateUseCase,
     private val networkStatus: NetworkStatus,
 ) : ViewModel() {
