@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gb_pprog.data.connectivity.NetworkStatus
 import com.example.gb_pprog.domain.GetTranslateUseCase
+import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TranslatorViewModel(
     private val getTranslateUseCase: GetTranslateUseCase,
+    private val saveFavoriteUseCase: SaveFavoriteUseCase,
     private val networkStatus: NetworkStatus,
 ) : ViewModel() {
 
@@ -26,6 +28,12 @@ class TranslatorViewModel(
     private val _errorText = MutableLiveData<String?>()
     val errorText: LiveData<String?>
         get() = _errorText
+
+    fun saveFavorite(domainModel: DomainModel){
+        viewModelScope.launch(Dispatchers.IO) {
+            saveFavoriteUseCase.execute(domainModel)
+        }
+    }
 
     fun getTranslate(word: String) {
         if (word.isBlank()) {

@@ -20,7 +20,10 @@ class TranslatorFragment : Fragment() {
     private val vm by viewModel<TranslatorViewModel>()
 
     private val adapter by lazy {
-        TranslatorAdapter(imageLoader = GlideImageLoader())
+        TranslatorAdapter(
+            imageLoader = GlideImageLoader(),
+            onItemClickListener = vm::saveFavorite
+        )
     }
 
     private var _binding: FragmentTranslatorBinding? = null
