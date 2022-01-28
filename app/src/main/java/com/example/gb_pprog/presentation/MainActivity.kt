@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     private fun initTimerFragment() {
         fragmentOnView = TIMER_F
         Navigation.findNavController(this, R.id.main_container)
-            .navigate(R.id.action_firstFragment_to_timerFragment)
+            .navigate(R.id.action_translatorFragment_to_timerFragment)
     }
 
     private fun initBottomNavView() {

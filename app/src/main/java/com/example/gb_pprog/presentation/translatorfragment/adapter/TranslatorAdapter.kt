@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gb_pprog.R
-import com.example.gb_pprog.databinding.FfItemBinding
+import com.example.gb_pprog.databinding.TranslatorItemBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.imageloader.ImageLoader
 
@@ -16,26 +16,27 @@ class TranslatorAdapter(
     private val imageLoader: ImageLoader<ImageView>,
 ) : ListAdapter<DomainModel, TranslatorAdapter.TranslatorViewHolder>(TranslatorItemCallback) {
 
-    inner class TranslatorViewHolder(private val vb: FfItemBinding) : RecyclerView.ViewHolder(vb.root) {
+    inner class TranslatorViewHolder(private val vb: TranslatorItemBinding) :
+        RecyclerView.ViewHolder(vb.root) {
 
         fun showTranslate(dto: DomainModel) {
             imageLoader.loadInto(
                 url = dto.meanings[0].imageUrl,
-                vb.ffItemIv
+                vb.translatorItemIv
             )
-            vb.ffItemTvTranslate.text = String.format(
-                itemView.context.getString(R.string.ff_item_tv_translate_text),
+            vb.translatorItemTvTranslate.text = String.format(
+                itemView.context.getString(R.string.translator_item_tv_translate_text),
                 dto.text,
                 dto.meanings[0].translation.text
             )
             dto.meanings[0]
             if (dto.meanings[0].translation.note == "") {
-                vb.ffItemTvNote.apply {
+                vb.translatorItemTvNote.apply {
                     visibility = View.GONE
                     text = ""
                 }
             } else {
-                vb.ffItemTvNote.apply {
+                vb.translatorItemTvNote.apply {
                     visibility = View.VISIBLE
                     text = dto.meanings[0].translation.note
                 }
@@ -45,7 +46,7 @@ class TranslatorAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TranslatorViewHolder {
         return TranslatorViewHolder(
-            FfItemBinding.inflate(
+            TranslatorItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

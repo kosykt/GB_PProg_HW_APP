@@ -2,31 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="?attrFfView"
+    style="?attrTranslatorView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.translatorfragment.TranslatorFragment">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/ff_cv_input"
-        style="?attr/attrFfCvInput"
+        android:id="@+id/translator_cv_input"
+        style="?attr/attrTranslatorCvInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/ff_cv_response"
+        app:layout_constraintBottom_toTopOf="@id/translator_cv_response"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ff_til"
-            style="?attrFfTil"
+            android:id="@+id/translator_til"
+            style="?attrTranslatorTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ff_tiet"
-                style="?attrFfTiet"
+                android:id="@+id/translator_tiet"
+                style="?attrTranslatorTiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -34,14 +34,14 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/ff_cv_response"
+        android:id="@+id/translator_cv_response"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/ff_rv"
+        app:layout_constraintBottom_toTopOf="@id/translator_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ff_cv_input">
+        app:layout_constraintTop_toBottomOf="@id/translator_cv_input">
 
         <TextView
             android:layout_width="match_parent"
@@ -51,27 +51,27 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ff_rv"
+        android:id="@+id/translator_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ff_cv_response"
+        app:layout_constraintTop_toBottomOf="@id/translator_cv_response"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:listitem="@layout/ff_item" />
+        tools:listitem="@layout/translator_item" />
 
     <ImageView
-        android:id="@+id/ff_loading_iv"
+        android:id="@+id/translator_loading_iv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:src="@drawable/loading_animation"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/ff_rv"
-        app:layout_constraintEnd_toEndOf="@id/ff_rv"
-        app:layout_constraintStart_toStartOf="@id/ff_rv"
-        app:layout_constraintTop_toTopOf="@id/ff_rv"
+        app:layout_constraintBottom_toBottomOf="@id/translator_rv"
+        app:layout_constraintEnd_toEndOf="@id/translator_rv"
+        app:layout_constraintStart_toStartOf="@id/translator_rv"
+        app:layout_constraintTop_toTopOf="@id/translator_rv"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
