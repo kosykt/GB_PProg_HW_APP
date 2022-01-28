@@ -8,6 +8,7 @@ import com.example.gb_pprog.databinding.ActivityMainBinding
 
 private const val TRANSLATOR_F = "translator"
 private const val TIMER_F = "timer"
+private const val FAVORITE_F = "favorite"
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         initBottomNavView()
     }
 
-    private fun initFirstFragment() {
+    private fun initTranslatorFragment() {
         fragmentOnView = TRANSLATOR_F
         Navigation.findNavController(this, R.id.main_container)
             .popBackStack()
@@ -33,37 +34,64 @@ class MainActivity : AppCompatActivity() {
             .navigate(R.id.action_translatorFragment_to_timerFragment)
     }
 
+    private fun initFavoriteFragment() {
+        fragmentOnView = FAVORITE_F
+        Navigation.findNavController(this, R.id.main_container)
+            .navigate(R.id.action_translatorFragment_to_favoriteFragment)
+    }
+
     private fun initBottomNavView() {
         binding.mainBnv.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.bottom_view_ff -> {
-                    initFirstFragment()
+                R.id.bottom_view_translator_fragment -> {
+                    initTranslatorFragment()
                     true
                 }
                 R.id.bottom_view_timer_fragment -> {
-                    initTimerFragment()
+                    if (fragmentOnView == FAVORITE_F) {
+                        initTranslatorFragment()
+                        initTimerFragment()
+                    } else {
+                        initTimerFragment()
+                    }
+                    true
+                }
+                R.id.bottom_view_favorite_fragment -> {
+                    if (fragmentOnView == TIMER_F){
+                        initTranslatorFragment()
+                        initFavoriteFragment()
+                    }else {
+                        initFavoriteFragment()
+                    }
                     true
                 }
                 else -> {
-                    initFirstFragment()
+                    initTranslatorFragment()
                     true
                 }
             }
         }
         binding.mainBnv.setOnItemReselectedListener {
             when (it.itemId) {
-                R.id.bottom_view_ff -> {}
+                R.id.bottom_view_translator_fragment -> {}
                 R.id.bottom_view_timer_fragment -> {}
+                R.id.bottom_view_favorite_fragment -> {}
                 else -> {}
             }
         }
     }
 
     override fun onBackPressed() {
-        if (fragmentOnView == TRANSLATOR_F){
-            super.onBackPressed()
-        }else if (fragmentOnView == TIMER_F){
-            binding.mainBnv.selectedItemId = R.id.bottom_view_ff
+        when (fragmentOnView) {
+            TRANSLATOR_F -> {
+                super.onBackPressed()
+            }
+            TIMER_F -> {
+                binding.mainBnv.selectedItemId = R.id.bottom_view_translator_fragment
+            }
+            FAVORITE_F -> {
+                binding.mainBnv.selectedItemId = R.id.bottom_view_translator_fragment
+            }
         }
     }
 }
