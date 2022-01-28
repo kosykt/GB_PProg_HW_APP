@@ -1,7 +1,6 @@
 package com.example.gb_pprog.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.example.gb_pprog.R

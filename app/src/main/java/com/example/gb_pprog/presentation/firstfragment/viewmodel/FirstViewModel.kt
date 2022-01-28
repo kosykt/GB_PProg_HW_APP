@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gb_pprog.data.connectivity.NetworkStatus
-import com.example.gb_pprog.domain.SearchWordUseCase
+import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FirstViewModel(
-    private val searchWordUseCase: SearchWordUseCase,
+    private val getTranslateUseCase: GetTranslateUseCase,
     private val networkStatus: NetworkStatus,
 ) : ViewModel() {
 
@@ -46,7 +46,7 @@ class FirstViewModel(
 
     private fun getData(word: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = searchWordUseCase.execute(word)
+            val data = getTranslateUseCase.execute(word)
             if (data.isNullOrEmpty()) {
                 refreshData(loading = false, error = "Translation not found", response = null)
             } else {
