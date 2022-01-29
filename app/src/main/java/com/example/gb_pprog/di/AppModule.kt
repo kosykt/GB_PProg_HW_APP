@@ -1,6 +1,7 @@
 package com.example.gb_pprog.di
 
 import com.example.gb_pprog.data.connectivity.NetworkStatus
+import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModel
@@ -19,6 +20,8 @@ val appModule = module {
     }
 
     viewModel<FavoriteViewModel> {
-        FavoriteViewModel()
+        FavoriteViewModel(
+            getAllFavoritesUseCase = get<GetAllFavoritesUseCase>()
+        )
     }
 }

@@ -3,7 +3,6 @@ package com.example.gb_pprog.presentation.translatorfragment.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,7 +14,7 @@ import com.example.gb_pprog.presentation.imageloader.ImageLoader
 
 class TranslatorAdapter(
     private val imageLoader: ImageLoader<ImageView>,
-    private val onItemClickListener: (DomainModel) -> Unit
+    private val onItemClickListener: (DomainModel) -> Unit,
 ) : ListAdapter<DomainModel, TranslatorAdapter.TranslatorViewHolder>(TranslatorItemCallback) {
 
     inner class TranslatorViewHolder(private val vb: TranslatorItemBinding) :

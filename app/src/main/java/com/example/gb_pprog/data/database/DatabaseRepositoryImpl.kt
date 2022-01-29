@@ -10,4 +10,8 @@ class DatabaseRepositoryImpl(
     override fun insert(model: RoomModel) {
         db.roomDao().insert(model)
     }
+
+    override fun getAll(): List<RoomModel> {
+        return db.roomDao().getAll()
+    }
 }

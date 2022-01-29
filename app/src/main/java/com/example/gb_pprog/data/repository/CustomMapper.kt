@@ -1,11 +1,13 @@
 package com.example.gb_pprog.data.repository
 
+import com.example.gb_pprog.data.database.model.RoomModel
 import com.example.gb_pprog.data.network.model.Meaning
 import com.example.gb_pprog.data.network.model.RetrofitTranslateDto
 import com.example.gb_pprog.data.network.model.Translation
 import com.example.gb_pprog.domain.model.DomainMeaning
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.DomainTranslation
+import com.example.gb_pprog.domain.model.FavoriteModel
 
 fun List<RetrofitTranslateDto>.toListDomainModel() = this.map {
     it.toDomainModel()
@@ -35,3 +37,13 @@ fun Translation.toDomainTranslation(): DomainTranslation {
         note = note ?: ""
     )
 }
+
+fun DomainModel.toRoomModel() = RoomModel(
+    word = this.text,
+    translation = this.meanings[0].translation.text
+)
+
+fun RoomModel.toFavoriteModel() = FavoriteModel(
+    word = this.word,
+    translation = this.translation
+)

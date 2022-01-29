@@ -3,6 +3,7 @@ package com.example.gb_pprog.data.repository
 import com.example.gb_pprog.data.database.model.RoomModel
 import com.example.gb_pprog.domain.DomainRepository
 import com.example.gb_pprog.domain.model.DomainModel
+import com.example.gb_pprog.domain.model.FavoriteModel
 
 class DomainRepositoryImpl(
     private val network: NetworkRepository,
@@ -14,6 +15,10 @@ class DomainRepositoryImpl(
     }
 
     override suspend fun saveFavorite(domainModel: DomainModel) {
-        database.insert(RoomModel(domainModel.text))
+        database.insert(domainModel.toRoomModel())
+    }
+
+    override suspend fun getAllFavorite(): List<FavoriteModel> {
+        return database.getAll().map { it.toFavoriteModel() }
     }
 }
