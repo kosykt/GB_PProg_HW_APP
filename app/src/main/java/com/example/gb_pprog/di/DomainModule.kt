@@ -1,9 +1,6 @@
 package com.example.gb_pprog.di
 
-import com.example.gb_pprog.domain.DomainRepository
-import com.example.gb_pprog.domain.GetAllFavoritesUseCase
-import com.example.gb_pprog.domain.GetTranslateUseCase
-import com.example.gb_pprog.domain.SaveFavoriteUseCase
+import com.example.gb_pprog.domain.*
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -16,7 +13,11 @@ val domainModule = module {
         SaveFavoriteUseCase(domainRepository = get<DomainRepository>())
     }
 
-    factory {
+    factory<GetAllFavoritesUseCase> {
         GetAllFavoritesUseCase(domainRepository = get<DomainRepository>())
+    }
+
+    factory<DeleteFavoriteUseCase> {
+        DeleteFavoriteUseCase(domainRepository = get<DomainRepository>())
     }
 }

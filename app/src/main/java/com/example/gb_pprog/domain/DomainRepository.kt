@@ -10,4 +10,6 @@ interface DomainRepository {
     suspend fun saveFavorite(domainModel: DomainModel)
 
     suspend fun getAllFavorite(): List<FavoriteModel>
+
+    suspend fun deleteFavorite(model: FavoriteModel)
 }

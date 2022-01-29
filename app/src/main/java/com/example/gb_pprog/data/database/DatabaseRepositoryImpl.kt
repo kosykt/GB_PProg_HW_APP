@@ -11,7 +11,11 @@ class DatabaseRepositoryImpl(
         db.roomDao().insert(model)
     }
 
-    override fun getAll(): List<RoomModel> {
+    override suspend fun getAll(): List<RoomModel> {
         return db.roomDao().getAll()
+    }
+
+    override suspend fun delete(model: RoomModel) {
+        db.roomDao().delete(model)
     }
 }

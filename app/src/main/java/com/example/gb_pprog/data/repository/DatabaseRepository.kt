@@ -6,5 +6,7 @@ interface DatabaseRepository {
 
     fun insert(model: RoomModel)
 
-    fun getAll(): List<RoomModel>
+    suspend fun getAll(): List<RoomModel>
+
+    suspend fun delete(model: RoomModel)
 }

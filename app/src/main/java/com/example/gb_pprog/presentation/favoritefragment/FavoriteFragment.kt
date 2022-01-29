@@ -14,7 +14,9 @@ class FavoriteFragment : Fragment() {
 
     private val vm by viewModel<FavoriteViewModel>()
     private val adapter by lazy {
-        FavoriteAdapter()
+        FavoriteAdapter(
+            onItemClickListener = vm::deleteFavorite
+        )
     }
 
     private var _binding: FragmentFavoriteBinding? = null

@@ -1,6 +1,7 @@
 package com.example.gb_pprog.di
 
 import com.example.gb_pprog.data.connectivity.NetworkStatus
+import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.SaveFavoriteUseCase
@@ -15,13 +16,14 @@ val appModule = module {
         TranslatorViewModel(
             getTranslateUseCase = get<GetTranslateUseCase>(),
             networkStatus = get<NetworkStatus>(),
-            saveFavoriteUseCase = get<SaveFavoriteUseCase>()
+            saveFavoriteUseCase = get<SaveFavoriteUseCase>(),
         )
     }
 
     viewModel<FavoriteViewModel> {
         FavoriteViewModel(
-            getAllFavoritesUseCase = get<GetAllFavoritesUseCase>()
+            getAllFavoritesUseCase = get<GetAllFavoritesUseCase>(),
+            deleteFavoriteUseCase = get<DeleteFavoriteUseCase>(),
         )
     }
 }

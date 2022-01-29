@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gb_pprog.databinding.FavoriteItemBinding
 import com.example.gb_pprog.domain.model.FavoriteModel
 
-class FavoriteAdapter() :
-    ListAdapter<FavoriteModel, FavoriteAdapter.FavoriteViewHolder>(FavoriteItemCallback) {
+class FavoriteAdapter(
+    private val onItemClickListener: (FavoriteModel) -> Unit,
+) : ListAdapter<FavoriteModel, FavoriteAdapter.FavoriteViewHolder>(FavoriteItemCallback) {
 
     inner class FavoriteViewHolder(private val vb: FavoriteItemBinding) :
         RecyclerView.ViewHolder(vb.root) {
 
         fun showWords(model: FavoriteModel) {
+            vb.favoriteItemDelete.setOnClickListener {
+                onItemClickListener(model)
+            }
             vb.favoriteItemWord.text = model.word
             vb.favoriteItemTranslation.text = model.translation
         }

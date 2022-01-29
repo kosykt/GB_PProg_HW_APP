@@ -1,9 +1,6 @@
 package com.example.gb_pprog.data.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.gb_pprog.data.database.model.RoomModel
 
 @Dao
@@ -13,5 +10,8 @@ interface RoomDao {
     fun insert(model: RoomModel)
 
     @Query("SELECT * FROM RoomModel")
-    fun getAll(): List<RoomModel>
+    suspend fun getAll(): List<RoomModel>
+
+    @Delete
+    suspend fun delete(model: RoomModel)
 }

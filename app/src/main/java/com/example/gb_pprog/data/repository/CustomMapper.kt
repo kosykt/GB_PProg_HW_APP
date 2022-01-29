@@ -47,3 +47,8 @@ fun RoomModel.toFavoriteModel() = FavoriteModel(
     word = this.word,
     translation = this.translation
 )
+
+fun FavoriteModel.toRoomModel() = RoomModel(
+    word = this.word,
+    translation = this.translation
+)

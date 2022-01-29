@@ -1,6 +1,5 @@
 package com.example.gb_pprog.data.repository
 
-import com.example.gb_pprog.data.database.model.RoomModel
 import com.example.gb_pprog.domain.DomainRepository
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
@@ -20,5 +19,9 @@ class DomainRepositoryImpl(
 
     override suspend fun getAllFavorite(): List<FavoriteModel> {
         return database.getAll().map { it.toFavoriteModel() }
+    }
+
+    override suspend fun deleteFavorite(model: FavoriteModel) {
+        database.delete(model.toRoomModel())
     }
 }
