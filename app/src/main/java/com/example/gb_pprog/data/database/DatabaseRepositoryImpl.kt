@@ -2,6 +2,7 @@ package com.example.gb_pprog.data.database
 
 import com.example.gb_pprog.data.database.model.RoomModel
 import com.example.gb_pprog.data.repository.DatabaseRepository
+import kotlinx.coroutines.flow.Flow
 
 class DatabaseRepositoryImpl(
     private val db: AppDatabase
@@ -11,7 +12,7 @@ class DatabaseRepositoryImpl(
         db.roomDao().insert(model)
     }
 
-    override suspend fun getAll(): List<RoomModel> {
+    override fun getAll(): Flow<List<RoomModel>> {
         return db.roomDao().getAll()
     }
 

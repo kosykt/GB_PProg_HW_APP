@@ -1,11 +1,12 @@
 package com.example.gb_pprog.domain
 
 import com.example.gb_pprog.domain.model.FavoriteModel
+import kotlinx.coroutines.flow.Flow
 
 class GetAllFavoritesUseCase(
     private val domainRepository: DomainRepository,
 ) {
-    suspend fun execute(): List<FavoriteModel> {
+    fun execute(): Flow<List<FavoriteModel>> {
         return domainRepository.getAllFavorite()
     }
 }

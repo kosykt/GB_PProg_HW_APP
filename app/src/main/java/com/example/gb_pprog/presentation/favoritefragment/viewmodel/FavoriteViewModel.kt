@@ -8,6 +8,8 @@ import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.model.FavoriteModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(
@@ -20,8 +22,11 @@ class FavoriteViewModel(
         get() = _favoriteWords
 
     fun getAll() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _favoriteWords.postValue(getAllFavoritesUseCase.execute())
+        viewModelScope.launch {
+            getAllFavoritesUseCase.execute().flowOn(Dispatchers.IO)
+                .collect {
+                    _favoriteWords.postValue(it)
+                }
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.gb_pprog.domain
 
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
+import kotlinx.coroutines.flow.Flow
 
 interface DomainRepository {
 
@@ -9,7 +10,7 @@ interface DomainRepository {
 
     suspend fun saveFavorite(domainModel: DomainModel)
 
-    suspend fun getAllFavorite(): List<FavoriteModel>
+    fun getAllFavorite(): Flow<List<FavoriteModel>>
 
     suspend fun deleteFavorite(model: FavoriteModel)
 }

@@ -43,6 +43,8 @@ fun DomainModel.toRoomModel() = RoomModel(
     translation = this.meanings[0].translation.text
 )
 
+fun List<RoomModel>.toFavoriteModel() = this.map { it.toFavoriteModel() }
+
 fun RoomModel.toFavoriteModel() = FavoriteModel(
     word = this.word,
     translation = this.translation
