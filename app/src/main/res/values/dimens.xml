@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="translator_constraint_layout_padding">4dp</dimen>
+    <dimen name="translator_constraint_layout_margin">4dp</dimen>
 
     <dimen name="translator_cv_elevation">16dp</dimen>
     <dimen name="translator_cv_card_corner_radius">16dp</dimen>
