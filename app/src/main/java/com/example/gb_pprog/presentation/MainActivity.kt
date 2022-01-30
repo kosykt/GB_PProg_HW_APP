@@ -2,9 +2,13 @@ package com.example.gb_pprog.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.ActivityMainBinding
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val TRANSLATOR_F = "translator"
 private const val TIMER_F = "timer"
@@ -13,28 +17,42 @@ private const val FAVORITE_F = "favorite"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val vm: ActivityViewModel by viewModel<ActivityViewModel>()
     private var fragmentOnView = TRANSLATOR_F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        vm.getCountOfFavoriteWords()
         initBottomNavView()
+        initBadge()
     }
 
-    private fun initTranslatorFragment() {
+    private fun initBadge() {
+        binding.mainBnv.getOrCreateBadge(R.id.bottom_view_favorite_fragment)
+        val badge = binding.mainBnv.getBadge(R.id.bottom_view_favorite_fragment)
+        badge?.maxCharacterCount = 3
+        lifecycleScope.launch {
+            vm.countOfFavoriteWords.collect {
+                badge?.number = it
+            }
+        }
+    }
+
+    private fun navigateToTranslatorFragment() {
         fragmentOnView = TRANSLATOR_F
         Navigation.findNavController(this, R.id.main_container)
             .popBackStack()
     }
 
-    private fun initTimerFragment() {
+    private fun navigateToTimerFragment() {
         fragmentOnView = TIMER_F
         Navigation.findNavController(this, R.id.main_container)
             .navigate(R.id.action_translatorFragment_to_timerFragment)
     }
 
-    private fun initFavoriteFragment() {
+    private fun navigateToFavoriteFragment() {
         fragmentOnView = FAVORITE_F
         Navigation.findNavController(this, R.id.main_container)
             .navigate(R.id.action_translatorFragment_to_favoriteFragment)
@@ -44,29 +62,29 @@ class MainActivity : AppCompatActivity() {
         binding.mainBnv.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.bottom_view_translator_fragment -> {
-                    initTranslatorFragment()
+                    navigateToTranslatorFragment()
                     true
                 }
                 R.id.bottom_view_timer_fragment -> {
                     if (fragmentOnView == FAVORITE_F) {
-                        initTranslatorFragment()
-                        initTimerFragment()
+                        navigateToTranslatorFragment()
+                        navigateToTimerFragment()
                     } else {
-                        initTimerFragment()
+                        navigateToTimerFragment()
                     }
                     true
                 }
                 R.id.bottom_view_favorite_fragment -> {
-                    if (fragmentOnView == TIMER_F){
-                        initTranslatorFragment()
-                        initFavoriteFragment()
-                    }else {
-                        initFavoriteFragment()
+                    if (fragmentOnView == TIMER_F) {
+                        navigateToTranslatorFragment()
+                        navigateToFavoriteFragment()
+                    } else {
+                        navigateToFavoriteFragment()
                     }
                     true
                 }
                 else -> {
-                    initTranslatorFragment()
+                    navigateToTranslatorFragment()
                     true
                 }
             }
