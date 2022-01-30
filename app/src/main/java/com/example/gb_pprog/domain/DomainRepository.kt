@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface DomainRepository {
 
-    suspend fun translate(word: String): List<DomainModel>
+    fun translate(word: String): Flow<List<DomainModel>>
 
     suspend fun saveFavorite(domainModel: DomainModel)
 

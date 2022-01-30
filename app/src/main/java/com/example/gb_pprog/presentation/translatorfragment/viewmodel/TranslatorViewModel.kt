@@ -9,6 +9,8 @@ import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class TranslatorViewModel(
@@ -53,13 +55,11 @@ class TranslatorViewModel(
     }
 
     private fun getData(word: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val data = getTranslateUseCase.execute(word)
-            if (data.isNullOrEmpty()) {
-                refreshData(loading = false, error = "Translation not found", response = null)
-            } else {
-                refreshData(loading = false, error = null, response = data)
-            }
+        viewModelScope.launch {
+            getTranslateUseCase.execute(word).flowOn(Dispatchers.IO)
+                .collect {
+                    refreshData(loading = false, error = null, response = it)
+                }
         }
     }
 
