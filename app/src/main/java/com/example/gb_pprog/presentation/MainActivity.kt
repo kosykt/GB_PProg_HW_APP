@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initBadge() {
         binding.mainBnv.getOrCreateBadge(R.id.bottom_view_favorite_fragment)
-        val badge = binding.mainBnv.getBadge(R.id.bottom_view_favorite_fragment)
-        badge?.maxCharacterCount = 3
         lifecycleScope.launch {
             vm.countOfFavoriteWords.collect {
+                val badge = binding.mainBnv.getBadge(R.id.bottom_view_favorite_fragment)
+                badge?.maxCharacterCount = 3
                 badge?.number = it
             }
         }
