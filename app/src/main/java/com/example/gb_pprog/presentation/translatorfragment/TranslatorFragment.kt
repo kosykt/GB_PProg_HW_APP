@@ -49,9 +49,6 @@ class TranslatorFragment : Fragment() {
         vm.responseData.observe(viewLifecycleOwner) {
             refreshListAdapter(it)
         }
-        vm.loadingData.observe(viewLifecycleOwner) {
-            refreshLoadingView(it)
-        }
         vm.errorText.observe(viewLifecycleOwner) {
             setErrorText(it)
         }
@@ -71,17 +68,6 @@ class TranslatorFragment : Fragment() {
 
     private fun setErrorText(errorText: String?) {
         binding.translatorTil.error = errorText
-    }
-
-    private fun refreshLoadingView(value: Boolean?) {
-        when (value) {
-            true -> {
-                binding.translatorLoadingIv.visibility = View.VISIBLE
-            }
-            else -> {
-                binding.translatorLoadingIv.visibility = View.GONE
-            }
-        }
     }
 
     override fun onDestroyView() {

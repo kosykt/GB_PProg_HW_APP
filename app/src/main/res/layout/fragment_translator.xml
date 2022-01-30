@@ -12,7 +12,7 @@
         style="?attr/attrTranslatorCvInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/translator_cv_response"
+        app:layout_constraintBottom_toTopOf="@id/translator_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,23 +33,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/translator_cv_response"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/translator_rv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/translator_cv_input">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="start"
-            tools:text="QWERTY" />
-    </androidx.cardview.widget.CardView>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/translator_rv"
         android:layout_width="match_parent"
@@ -58,20 +41,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/translator_cv_response"
+        app:layout_constraintTop_toBottomOf="@id/translator_cv_input"
         app:layout_constraintVertical_chainStyle="packed"
         tools:listitem="@layout/translator_item" />
-
-    <ImageView
-        android:id="@+id/translator_loading_iv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@drawable/loading_animation"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/translator_rv"
-        app:layout_constraintEnd_toEndOf="@id/translator_rv"
-        app:layout_constraintStart_toStartOf="@id/translator_rv"
-        app:layout_constraintTop_toTopOf="@id/translator_rv"
-        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
