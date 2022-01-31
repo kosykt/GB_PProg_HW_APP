@@ -20,8 +20,6 @@
         <item name="endIconCheckable">true</item>
         <item name="endIconMode">custom</item>
         <!--Drawables-->
-        <item name="endIconDrawable">@drawable/ic_baseline_search_24</item>
-        <item name="startIconDrawable">@drawable/ic_baseline_record_voice_over_24</item>
         <item name="counterMaxLength">@integer/ff_til_input_max_counter</item>
         <item name="placeholderText">@string/ff_til_place_holder_text</item>
         <!--Colors-->

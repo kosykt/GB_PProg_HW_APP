@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.FfItemBinding
 import com.example.gb_pprog.domain.model.DomainModel
 
@@ -15,7 +16,12 @@ class FirstAdapter() :
     inner class FirstViewHolder(private val vb: FfItemBinding) : RecyclerView.ViewHolder(vb.root) {
 
         fun showTranslate(dto: DomainModel) {
-            vb.ffItemTvTranslate.text = dto.meanings[0].translation.text
+            vb.ffItemTvTranslate.text = String.format(
+                itemView.context.getString(R.string.ff_item_tv_translate_text),
+                dto.text,
+                dto.meanings[0].translation.text
+            )
+            dto.meanings[0]
             if (dto.meanings[0].translation.note == "") {
                 vb.ffItemTvNote.apply {
                     visibility = View.GONE
