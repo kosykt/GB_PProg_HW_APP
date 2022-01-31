@@ -23,7 +23,6 @@ class TranslatorFragment : Fragment() {
         TranslatorAdapter(
             imageLoader = GlideImageLoader(),
             onItemClickListener = vm::saveFavorite,
-            checkIsFavorite = vm::checkIsFavorite
         )
     }
 

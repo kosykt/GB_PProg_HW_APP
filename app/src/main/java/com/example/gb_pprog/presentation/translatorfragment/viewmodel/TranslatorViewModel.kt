@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gb_pprog.data.connectivity.NetworkStatus
+import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.domain.model.DomainModel
+import com.example.gb_pprog.domain.model.FavoriteModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
@@ -19,9 +21,10 @@ class TranslatorViewModel(
     private val saveFavoriteUseCase: SaveFavoriteUseCase,
     private val networkStatus: NetworkStatus,
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
+    private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
 ) : ViewModel() {
 
-    private var favoriteWords = emptyList<String>()
+    private var favoriteWords: List<String> = emptyList<String>()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -46,14 +49,21 @@ class TranslatorViewModel(
     val errorText: LiveData<String?>
         get() = _errorText
 
-    fun saveFavorite(domainModel: DomainModel) {
-        viewModelScope.launch(Dispatchers.IO) {
-            saveFavoriteUseCase.execute(domainModel)
+    fun saveFavorite(domainModel: DomainModel): Boolean {
+        return if (favoriteWords.contains(domainModel.text)) {
+            viewModelScope.launch(Dispatchers.IO) {
+                deleteFavoriteUseCase.execute(FavoriteModel(
+                    word = domainModel.text,
+                    translation = domainModel.meanings[0].translation.text
+                ))
+            }
+            true
+        } else {
+            viewModelScope.launch(Dispatchers.IO) {
+                saveFavoriteUseCase.execute(domainModel)
+            }
+            false
         }
-    }
-
-    fun checkIsFavorite(domainModel: DomainModel): Boolean {
-        return favoriteWords.contains(domainModel.text)
     }
 
     fun getTranslate(word: String) {
