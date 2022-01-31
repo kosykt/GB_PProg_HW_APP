@@ -7,16 +7,19 @@ import com.example.gb_pprog.data.network.RetrofitService
 import com.example.gb_pprog.data.repository.DataSourceRepository
 import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.domain.DomainRepository
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Module
-class NetworkStatusModule {
+val dataModule = module {
 
-    @Provides
-    @Singleton
-    fun provideNetworkStatus(context: Context): NetworkStatus {
-        return NetworkStatus(context)
+    single<NetworkStatus> {
+        NetworkStatus(context = get<Context>())
+    }
+
+    single<DataSourceRepository> {
+        DataSourceNetwork(retrofitService = get<RetrofitService>())
+    }
+
+    single<DomainRepository> {
+        DomainRepositoryImpl(dataSource = get<DataSourceRepository>())
     }
 }

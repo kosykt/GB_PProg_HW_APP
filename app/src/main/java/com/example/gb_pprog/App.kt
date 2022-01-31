@@ -1,21 +1,28 @@
 package com.example.gb_pprog
 
 import android.app.Application
-import com.example.gb_pprog.di.AppComponent
-import com.example.gb_pprog.di.AppModule
-import com.example.gb_pprog.di.DaggerAppComponent
+import com.example.gb_pprog.di.appModule
+import com.example.gb_pprog.di.dataModule
+import com.example.gb_pprog.di.domainModule
+import com.example.gb_pprog.di.retrofitModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class App : Application() {
 
-    companion object {
-        lateinit var appComponent: AppComponent
-            private set
-    }
-
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(this))
-            .build()
+
+        startKoin {
+            androidContext(this@App)
+            modules(
+                listOf(
+                    appModule,
+                    domainModule,
+                    dataModule,
+                    retrofitModule
+                )
+            )
+        }
     }
 }

@@ -4,23 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.App
+import androidx.lifecycle.lifecycleScope
 import com.example.gb_pprog.databinding.FragmentFirstBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.firstfragment.adapter.FirstAdapter
 import com.example.gb_pprog.presentation.firstfragment.viewmodel.FirstViewModel
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FirstFragment : Fragment() {
 
-    private val viewModel: FirstViewModel by lazy {
-        ViewModelProvider(
-            this,
-            App.appComponent.injectFirstViewModelFactory()
-        )[FirstViewModel::class.java]
-    }
+    private val vm by viewModel<FirstViewModel>()
 
     private val adapter by lazy {
         FirstAdapter()
@@ -32,7 +28,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
@@ -46,13 +42,13 @@ class FirstFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.responseData.observe(viewLifecycleOwner) {
+        vm.responseData.observe(viewLifecycleOwner) {
             refreshListAdapter(it)
         }
-        viewModel.loadingData.observe(viewLifecycleOwner) {
+        vm.loadingData.observe(viewLifecycleOwner) {
             refreshLoadingView(it)
         }
-        viewModel.errorText.observe(viewLifecycleOwner) {
+        vm.errorText.observe(viewLifecycleOwner) {
             setErrorText(it)
         }
     }
@@ -61,9 +57,10 @@ class FirstFragment : Fragment() {
 
     private fun initTextInputLayout() {
         binding.ffTil.apply {
-            editText?.doOnTextChanged { _, _, _, _ ->
-                viewModel.getTranslate(binding.ffTiet.text.toString())
-                refreshListAdapter(viewModel.responseData.value)
+            editText?.doAfterTextChanged {
+                lifecycleScope.launch {
+                    vm.getTranslate(binding.ffTiet.text.toString())
+                }
             }
         }
     }

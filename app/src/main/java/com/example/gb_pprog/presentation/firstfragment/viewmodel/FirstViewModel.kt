@@ -3,15 +3,16 @@ package com.example.gb_pprog.presentation.firstfragment.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.gb_pprog.data.connectivity.NetworkStatus
 import com.example.gb_pprog.domain.SearchWordUseCase
 import com.example.gb_pprog.domain.model.DomainModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FirstViewModel(
     private val searchWordUseCase: SearchWordUseCase,
-    private val networkStatus: NetworkStatus
+    private val networkStatus: NetworkStatus,
 ) : ViewModel() {
 
     private val _responseData = MutableLiveData<List<DomainModel>>()
@@ -27,31 +28,37 @@ class FirstViewModel(
         get() = _errorText
 
     fun getTranslate(word: String) {
-        if (networkStatus.isOnline()) {
-            _isLoadingData.value = true
-            searchWordUseCase.execute(word)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { dto ->
-                    //todo имеется очень редкий баг, появляется при частом вводе и последующем быстром стирании текста
-                    if (word.isBlank()) {
-                        _responseData.value = null
-                        setError(false)
-                    } else {
-                        _responseData.value = dto
-                        setError(dto.isEmpty())
-                    }
-                    _isLoadingData.value = false
-                }
-        }else{
-            setError(true)
+        if (word.isBlank()) {
+            refreshData(loading = false, error = null, response = null)
+        } else {
+            refreshData(loading = true, error = null, response = null)
+            checkNetwork(word)
         }
     }
 
-    private fun setError(error: Boolean) {
-        when (error) {
-            true -> _errorText.value = "Translation not found"
-            false -> _errorText.value = null
+    private fun checkNetwork(word: String) {
+        if (!networkStatus.isOnline()) {
+            refreshData(loading = false, error = "Connection error", response = null)
+        } else {
+            getData(word)
         }
     }
+
+    private fun getData(word: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val data = searchWordUseCase.execute(word)
+            if (data.isNullOrEmpty()) {
+                refreshData(loading = false, error = "Translation not found", response = null)
+            } else {
+                refreshData(loading = false, error = null, response = data)
+            }
+        }
+    }
+
+    private fun refreshData(loading: Boolean, error: String?, response: List<DomainModel>?) {
+        _isLoadingData.postValue(loading)
+        _errorText.postValue(error)
+        _responseData.postValue(response)
+    }
 }
+
