@@ -24,6 +24,7 @@ class TranslatorAdapter(
         private fun initClickListener(dto: DomainModel) {
             vb.translatorItemFavoriteBtn.setOnClickListener {
                 onItemClickListener(dto)
+                vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_active)
             }
         }
 
