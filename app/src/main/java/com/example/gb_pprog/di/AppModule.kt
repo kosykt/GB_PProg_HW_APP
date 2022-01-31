@@ -18,6 +18,7 @@ val appModule = module {
             getTranslateUseCase = get<GetTranslateUseCase>(),
             networkStatus = get<NetworkStatus>(),
             saveFavoriteUseCase = get<SaveFavoriteUseCase>(),
+            getAllFavoritesUseCase = get<GetAllFavoritesUseCase>()
         )
     }
 

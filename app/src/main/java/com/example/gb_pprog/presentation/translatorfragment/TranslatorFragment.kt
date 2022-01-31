@@ -22,7 +22,8 @@ class TranslatorFragment : Fragment() {
     private val adapter by lazy {
         TranslatorAdapter(
             imageLoader = GlideImageLoader(),
-            onItemClickListener = vm::saveFavorite
+            onItemClickListener = vm::saveFavorite,
+            checkIsFavorite = vm::checkIsFavorite
         )
     }
 

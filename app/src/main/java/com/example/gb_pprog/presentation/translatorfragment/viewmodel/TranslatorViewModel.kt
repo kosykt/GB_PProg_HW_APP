@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gb_pprog.data.connectivity.NetworkStatus
+import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.domain.model.DomainModel
@@ -17,7 +18,21 @@ class TranslatorViewModel(
     private val getTranslateUseCase: GetTranslateUseCase,
     private val saveFavoriteUseCase: SaveFavoriteUseCase,
     private val networkStatus: NetworkStatus,
+    private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
 ) : ViewModel() {
+
+    private var favoriteWords = emptyList<String>()
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            getAllFavoritesUseCase.execute()
+                .collect { ListModels ->
+                    favoriteWords = ListModels.map {
+                        it.word
+                    }
+                }
+        }
+    }
 
     private val _responseData = MutableLiveData<List<DomainModel>?>()
     val responseData: LiveData<List<DomainModel>?>
@@ -35,6 +50,10 @@ class TranslatorViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             saveFavoriteUseCase.execute(domainModel)
         }
+    }
+
+    fun checkIsFavorite(domainModel: DomainModel): Boolean {
+        return favoriteWords.contains(domainModel.text)
     }
 
     fun getTranslate(word: String) {
@@ -69,4 +88,3 @@ class TranslatorViewModel(
         _responseData.postValue(response)
     }
 }
-
