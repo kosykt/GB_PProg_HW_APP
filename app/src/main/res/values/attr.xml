@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <attr name="attrActivityBottomNavView" format="reference"/>
+
     <attr name="attrFfView" format="reference"/>
     <attr name="attrFfCvInput" format="reference"/>
     <attr name="attrFfTil" format="reference"/>

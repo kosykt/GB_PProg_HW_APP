@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ff_view_style.dark_theme" parent="">
+    <style name="activity_bottom_nav_view_style.dark_theme" parent="">
+        <item name="android:background">@color/secondaryLightColor</item>
+    </style>
+
+    <style name="ff_view_style.dark_theme">
         <item name="android:background">@color/secondaryBackgroundColor</item>
     </style>
 

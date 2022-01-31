@@ -7,4 +7,6 @@
     <string name="ff_til_error_tiet_is_empty">Empty text field</string>
     <string name="ff_til_error_incorrect_input">Incorrect input</string>
     <string name="ff_item_tv_translate_text">%s - %s</string>
+    <string name="bottom_view_icon_timer_title">timer</string>
+    <string name="bottom_view_icon_translator_title">translator</string>
 </resources>
