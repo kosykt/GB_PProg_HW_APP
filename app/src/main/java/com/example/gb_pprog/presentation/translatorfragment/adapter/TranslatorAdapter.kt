@@ -15,6 +15,7 @@ import com.example.gb_pprog.presentation.imageloader.ImageLoader
 class TranslatorAdapter(
     private val imageLoader: ImageLoader<ImageView>,
     private val onItemClickListener: (DomainModel) -> Boolean,
+    private val checkIsFavorite: (DomainModel) -> Boolean,
 ) : ListAdapter<DomainModel, TranslatorAdapter.TranslatorViewHolder>(TranslatorItemCallback) {
 
     inner class TranslatorViewHolder(private val vb: TranslatorItemBinding) :
@@ -37,7 +38,16 @@ class TranslatorAdapter(
             )
         }
 
+        private fun initFavoriteChecker(dto: DomainModel) {
+            if (checkIsFavorite(dto)) {
+                vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_active)
+            }else {
+                vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_diactive)
+            }
+        }
+
         fun showTranslate(dto: DomainModel) {
+            initFavoriteChecker(dto)
             initImageLoader(dto)
             initClickListener(dto)
             vb.translatorItemTvTranslate.text = String.format(

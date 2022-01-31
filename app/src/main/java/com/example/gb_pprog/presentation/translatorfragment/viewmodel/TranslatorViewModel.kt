@@ -49,7 +49,7 @@ class TranslatorViewModel(
     val errorText: LiveData<String?>
         get() = _errorText
 
-    fun saveFavorite(domainModel: DomainModel): Boolean {
+    fun favoriteWordOperator(domainModel: DomainModel): Boolean {
         return if (favoriteWords.contains(domainModel.text)) {
             viewModelScope.launch(Dispatchers.IO) {
                 deleteFavoriteUseCase.execute(FavoriteModel(
@@ -57,13 +57,17 @@ class TranslatorViewModel(
                     translation = domainModel.meanings[0].translation.text
                 ))
             }
-            true
+            false
         } else {
             viewModelScope.launch(Dispatchers.IO) {
                 saveFavoriteUseCase.execute(domainModel)
             }
-            false
+            true
         }
+    }
+
+    fun checkIsFavorite(domainModel: DomainModel): Boolean {
+        return favoriteWords.contains(domainModel.text)
     }
 
     fun getTranslate(word: String) {
