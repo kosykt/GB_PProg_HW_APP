@@ -1,4 +1,4 @@
-package com.example.gb_pprog.hw4.presentation
+package com.example.gb_pprog.mytimer
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".hw4.presentation.TimerFragment">
+    tools:context=".mytimer.TimerFragment">
 
     <TextView
         android:id="@+id/ft_timer_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="00.00.00"
+        android:text="00:00:00"
         android:textColor="@color/secondaryTextColor"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

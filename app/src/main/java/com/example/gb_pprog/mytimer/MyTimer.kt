@@ -1,4 +1,4 @@
-package com.example.gb_pprog.hw4.data.timer
+package com.example.gb_pprog.mytimer
 
 import android.util.Log
 import kotlinx.coroutines.delay

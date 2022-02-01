@@ -1,18 +1,15 @@
-package com.example.gb_pprog.hw4.presentation
+package com.example.gb_pprog.mytimer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gb_pprog.hw4.domain.TimerInteractor
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class TimerViewModel(
-    private val interactor: TimerInteractor,
+    private val myTimer: MyTimer,
 ) : ViewModel() {
 
     private var timeMillis: Long = BASE_VALUE
@@ -25,16 +22,16 @@ class TimerViewModel(
     fun start() {
         if (!timerIsRunning) {
             timerIsRunning = true
-            interactor.setParams(timeMillis = timeMillis, isRunning = timerIsRunning)
+            myTimer.setStartingValue(timeMillis = timeMillis, isRunning = timerIsRunning)
             startJob()
         }
     }
 
     private fun startJob() {
         viewModelScope.launch {
-            interactor.getTimeRepresentation()
-                .flowOn(Dispatchers.Main)
-                .collect { millis ->
+            myTimer.getTimeMillis()
+                .collect {
+                        millis ->
                     timeMillis = millis
                     _ticker.value = format(millis)
                 }
@@ -43,7 +40,7 @@ class TimerViewModel(
 
     fun pause() {
         timerIsRunning = false
-        interactor.setParams(timeMillis = timeMillis, isRunning = timerIsRunning)
+        myTimer.setStartingValue(timeMillis = timeMillis, isRunning = timerIsRunning)
     }
 
     fun stop() {
