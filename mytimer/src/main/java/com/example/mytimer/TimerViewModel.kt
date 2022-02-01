@@ -1,4 +1,4 @@
-package com.example.gb_pprog.mytimer
+package com.example.mytimer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

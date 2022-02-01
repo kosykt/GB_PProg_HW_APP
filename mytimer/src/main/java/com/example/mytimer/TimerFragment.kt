@@ -1,12 +1,12 @@
-package com.example.gb_pprog.mytimer
+package com.example.mytimer
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.gb_pprog.databinding.FragmentTimerBinding
+import com.example.mytimer.databinding.FragmentTimerBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
