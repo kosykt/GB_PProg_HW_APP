@@ -6,14 +6,14 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk Config.compile_sdk
 
     defaultConfig {
-        applicationId "com.example.gb_pprog"
-        minSdk 27
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        applicationId Config.application_id
+        minSdk Config.min_sdk
+        targetSdk Config.target_sdk
+        versionCode Releases.version_code
+        versionName Releases.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility Config.java_version
+        targetCompatibility Config.java_version
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = Config.jvm_target
     }
     buildFeatures {
         viewBinding true
@@ -41,6 +41,15 @@ dependencies {
     //Modules
     implementation project(Modules.domain)
     implementation project(Modules.data)
+
+    //Room
+    implementation Room.room_runtime
+    kapt Room.room_compiler
+    implementation Room.room_ktx
+
+    // Retrofit
+    implementation Retrofit.retrofit
+    implementation Retrofit.retrofit_converter_gson
 
     //Glide
     implementation Glide.glide

@@ -1,6 +1,22 @@
+import org.gradle.api.JavaVersion
+
 object Modules {
     const val domain = ":domain"
     const val data = ":data"
+}
+
+object Config {
+    const val application_id = "com.example.gb_pprog"
+    const val compile_sdk = 31
+    const val min_sdk = 27
+    const val target_sdk = 31
+    const val jvm_target = "1.8"
+    val java_version = JavaVersion.VERSION_1_8
+}
+
+object Releases {
+    const val version_code = 1
+    const val version_name = "1.0"
 }
 
 object Versions {
