@@ -1,4 +1,4 @@
-package com.example.mytimer
+package com.example.gb_pprog.mytimer
 
 import org.junit.Test
 
