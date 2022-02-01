@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gb_pprog.data.connectivity.NetworkStatus
 import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
@@ -19,7 +18,6 @@ import kotlinx.coroutines.launch
 class TranslatorViewModel(
     private val getTranslateUseCase: GetTranslateUseCase,
     private val saveFavoriteUseCase: SaveFavoriteUseCase,
-    private val networkStatus: NetworkStatus,
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
 ) : ViewModel() {
@@ -80,11 +78,7 @@ class TranslatorViewModel(
     }
 
     private fun checkNetwork(word: String) {
-        if (!networkStatus.isOnline()) {
-            refreshData(loading = false, error = "Connection error", response = null)
-        } else {
-            getData(word)
-        }
+        getData(word)
     }
 
     private fun getData(word: String) {

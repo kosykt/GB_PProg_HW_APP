@@ -2,7 +2,6 @@ package com.example.gb_pprog.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.gb_pprog.data.connectivity.NetworkStatus
 import com.example.gb_pprog.data.database.AppDatabase
 import com.example.gb_pprog.data.database.DatabaseRepositoryImpl
 import com.example.gb_pprog.data.network.NetworkRepositoryImpl
@@ -16,10 +15,6 @@ import org.koin.dsl.module
 private const val DB_NAME = "words.db"
 
 val dataModule = module {
-
-    single<NetworkStatus> {
-        NetworkStatus(context = get<Context>())
-    }
 
     single<AppDatabase> {
         Room.databaseBuilder<AppDatabase?>(
