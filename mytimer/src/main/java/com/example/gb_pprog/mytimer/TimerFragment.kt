@@ -68,4 +68,9 @@ class TimerFragment : Fragment(), KoinScopeComponent {
             vm.stop()
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scope.close()
+    }
 }

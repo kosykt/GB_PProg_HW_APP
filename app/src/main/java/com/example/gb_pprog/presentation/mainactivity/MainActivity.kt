@@ -119,4 +119,9 @@ class MainActivity : AppCompatActivity(), KoinScopeComponent {
             }
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scope.close()
+    }
 }

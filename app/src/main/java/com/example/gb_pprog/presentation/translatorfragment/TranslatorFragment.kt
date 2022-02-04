@@ -82,4 +82,9 @@ class TranslatorFragment : Fragment(), KoinScopeComponent {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scope.close()
+    }
 }
