@@ -8,16 +8,23 @@ import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
+import org.koin.core.component.KoinScopeComponent
+import org.koin.core.component.createScope
+import org.koin.core.scope.Scope
 
 private const val TRANSLATOR_F = "translator"
 private const val TIMER_F = "timer"
 private const val FAVORITE_F = "favorite"
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KoinScopeComponent {
+
+    override val scope: Scope by lazy {
+        createScope(this)
+    }
 
     private lateinit var binding: ActivityMainBinding
-    private val vm: ActivityViewModel by viewModel<ActivityViewModel>()
+    private val vm: ActivityViewModel by inject()
     private var fragmentOnView = TRANSLATOR_F
 
     override fun onCreate(savedInstanceState: Bundle?) {

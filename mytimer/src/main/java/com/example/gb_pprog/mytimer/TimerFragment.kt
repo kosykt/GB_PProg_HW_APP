@@ -1,20 +1,27 @@
 package com.example.gb_pprog.mytimer
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.gb_pprog.mytimer.databinding.FragmentTimerBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinScopeComponent
+import org.koin.core.component.createScope
+import org.koin.core.component.inject
+import org.koin.core.scope.Scope
 
-class TimerFragment : Fragment() {
+class TimerFragment : Fragment(), KoinScopeComponent {
 
-    private val vm by viewModel<TimerViewModel>()
+    override val scope: Scope by lazy {
+        createScope(this)
+    }
+
+    private val vm: TimerViewModel by inject<TimerViewModel>()
 
     private var _binding: FragmentTimerBinding? = null
     private val binding: FragmentTimerBinding

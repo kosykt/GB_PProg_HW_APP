@@ -8,11 +8,18 @@ import androidx.fragment.app.Fragment
 import com.example.gb_pprog.databinding.FragmentFavoriteBinding
 import com.example.gb_pprog.presentation.favoritefragment.adapter.FavoriteAdapter
 import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinScopeComponent
+import org.koin.core.component.createScope
+import org.koin.core.component.inject
+import org.koin.core.scope.Scope
 
-class FavoriteFragment : Fragment() {
+class FavoriteFragment : Fragment(), KoinScopeComponent {
 
-    private val vm by viewModel<FavoriteViewModel>()
+    override val scope: Scope by lazy {
+        createScope(this)
+    }
+
+    private val vm by inject<FavoriteViewModel>()
     private val adapter by lazy {
         FavoriteAdapter(
             onItemClickListener = vm::deleteFavorite
@@ -34,7 +41,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.favoriteRv.adapter = adapter
-        vm.favoriteWords.observe(viewLifecycleOwner){
+        vm.favoriteWords.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
         vm.getAll()

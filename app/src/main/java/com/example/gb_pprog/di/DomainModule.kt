@@ -5,19 +5,11 @@ import org.koin.dsl.module
 
 val domainModule = module {
 
-    factory<GetTranslateUseCase> {
-        GetTranslateUseCase(domainRepository = get<DomainRepository>())
-    }
-
-    factory<SaveFavoriteUseCase> {
-        SaveFavoriteUseCase(domainRepository = get<DomainRepository>())
-    }
-
-    factory<GetAllFavoritesUseCase> {
+    single<GetAllFavoritesUseCase> {
         GetAllFavoritesUseCase(domainRepository = get<DomainRepository>())
     }
 
-    factory<DeleteFavoriteUseCase> {
+    single<DeleteFavoriteUseCase> {
         DeleteFavoriteUseCase(domainRepository = get<DomainRepository>())
     }
 }

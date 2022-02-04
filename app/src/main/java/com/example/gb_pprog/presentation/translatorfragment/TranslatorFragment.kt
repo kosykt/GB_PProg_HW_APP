@@ -14,11 +14,18 @@ import com.example.gb_pprog.presentation.translatorfragment.adapter.TranslatorAd
 import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinScopeComponent
+import org.koin.core.component.createScope
+import org.koin.core.component.inject
+import org.koin.core.scope.Scope
 
-class TranslatorFragment : Fragment() {
+class TranslatorFragment : Fragment(), KoinScopeComponent {
 
-    private val vm by viewModel<TranslatorViewModel>()
+    override val scope: Scope by lazy {
+        createScope(this)
+    }
 
+    private val vm by inject<TranslatorViewModel>()
     private val adapter by lazy {
         TranslatorAdapter(
             imageLoader = GlideImageLoader(),

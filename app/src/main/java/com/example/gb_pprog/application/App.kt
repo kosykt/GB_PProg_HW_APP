@@ -14,11 +14,14 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 listOf(
-                    appModule,
+                    mainActivityScope,
+                    translatorFragmentScope,
+                    favoriteFragmentScope,
+                    timerFragmentScope,
                     domainModule,
                     dataModule,
                     retrofitModule,
-                    hw4Module,
+                    databaseModule,
                 )
             )
         }
