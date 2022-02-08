@@ -1,7 +1,9 @@
 package com.example.gb_pprog.presentation.mainactivity
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.gb_pprog.R
@@ -28,6 +30,9 @@ class MainActivity : AppCompatActivity(), KoinScopeComponent {
     private var fragmentOnView = TRANSLATOR_F
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.S) {
+            installSplashScreen()
+        }
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
