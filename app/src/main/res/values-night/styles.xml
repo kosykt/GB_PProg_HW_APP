@@ -5,15 +5,15 @@
         <item name="android:background">@color/secondaryLightColor</item>
     </style>
 
-    <style name="ff_view_style.dark_theme">
+    <style name="translator_view_style.dark_theme">
         <item name="android:background">@color/secondaryBackgroundColor</item>
     </style>
 
-    <style name="ff_cv_input_style.dark_theme">
+    <style name="translator_cv_input_style.dark_theme">
         <item name="android:backgroundTint">@color/secondaryLightColor</item>
     </style>
 
-    <style name="ff_til_style.dark_theme">
+    <style name="translator_til_style.dark_theme">
         <item name="android:textColorHint">@color/secondaryTextColor</item>
         <item name="boxStrokeColor">@color/secondaryTextColor</item>
         <item name="counterTextColor">@color/secondaryTextColor</item>
@@ -22,20 +22,20 @@
         <item name="startIconTint">@color/secondaryTextColor</item>
     </style>
 
-    <style name="ff_tiet_style.dark_theme">
+    <style name="translator_tiet_style.dark_theme">
         <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="android:textColor">@color/secondaryTextColor</item>
     </style>
 
-    <style name="ff_item_cv_style.dark_theme">
+    <style name="translator_item_cv_style.dark_theme">
         <item name="android:backgroundTint">@color/secondaryLightColor</item>
     </style>
 
-    <style name="ff_item_tv_translate_style.dark_theme">
+    <style name="translator_item_tv_translate_style.dark_theme">
         <item name="android:textColor">@color/secondaryTextColor</item>
     </style>
 
-    <style name="ff_item_tv_note_style.dark_theme">
+    <style name="translator_item_tv_note_style.dark_theme">
         <item name="android:textColor">@color/secondaryTextColor</item>
     </style>
 

@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.MySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/secondaryTextSelectHandle</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_icon_translate</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Theme.GB_PProg</item>
+    </style>
+</resources>

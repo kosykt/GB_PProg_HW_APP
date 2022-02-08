@@ -1,12 +1,15 @@
 package com.example.gb_pprog.di
 
-import com.example.gb_pprog.domain.DomainRepository
-import com.example.gb_pprog.domain.SearchWordUseCase
+import com.example.gb_pprog.domain.*
 import org.koin.dsl.module
 
 val domainModule = module {
 
-    factory<SearchWordUseCase> {
-        SearchWordUseCase(domainRepository = get<DomainRepository>())
+    single<GetAllFavoritesUseCase> {
+        GetAllFavoritesUseCase(domainRepository = get<DomainRepository>())
+    }
+
+    single<DeleteFavoriteUseCase> {
+        DeleteFavoriteUseCase(domainRepository = get<DomainRepository>())
     }
 }
