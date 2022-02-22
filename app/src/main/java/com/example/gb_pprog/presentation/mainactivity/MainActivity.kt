@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_view_timer_fragment -> {
-                    if (fragmentOnView == FAVORITE_F) {
+                    if (fragmentOnView != TRANSLATOR_F) {
                         navigateToTranslatorFragment()
                         navigateToTimerFragment()
                     } else {
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_view_favorite_fragment -> {
-                    if (fragmentOnView == TIMER_F) {
+                    if (fragmentOnView != TRANSLATOR_F) {
                         navigateToTranslatorFragment()
                         navigateToFavoriteFragment()
                     } else {
@@ -91,7 +91,12 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_view_email_validator_fragment -> {
-                    navigateToEmailValidatorFragment()
+                    if (fragmentOnView != TRANSLATOR_F){
+                        navigateToTranslatorFragment()
+                        navigateToEmailValidatorFragment()
+                    } else {
+                        navigateToEmailValidatorFragment()
+                    }
                     true
                 }
                 else -> {
@@ -115,10 +120,7 @@ class MainActivity : AppCompatActivity() {
             TRANSLATOR_F -> {
                 super.onBackPressed()
             }
-            TIMER_F -> {
-                binding.mainBnv.selectedItemId = R.id.bottom_view_translator_fragment
-            }
-            FAVORITE_F -> {
+            else -> {
                 binding.mainBnv.selectedItemId = R.id.bottom_view_translator_fragment
             }
         }
