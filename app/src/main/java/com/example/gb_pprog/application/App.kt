@@ -18,7 +18,6 @@ class App : Application() {
                     domainModule,
                     dataModule,
                     retrofitModule,
-                    hw4Module,
                 )
             )
         }

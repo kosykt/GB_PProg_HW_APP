@@ -4,6 +4,8 @@ import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.SaveFavoriteUseCase
+import com.example.gb_pprog.mytimer.MyTimer
+import com.example.gb_pprog.mytimer.TimerViewModel
 import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModel
 import com.example.gb_pprog.presentation.mainactivity.ActivityViewModel
 import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModel
@@ -32,5 +34,9 @@ val appModule = module {
         ActivityViewModel(
             getAllFavoritesUseCase = get<GetAllFavoritesUseCase>()
         )
+    }
+
+    viewModel<TimerViewModel> {
+        TimerViewModel(myTimer = get<MyTimer>())
     }
 }

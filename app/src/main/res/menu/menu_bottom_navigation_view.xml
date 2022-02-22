@@ -16,5 +16,10 @@
         android:icon="@drawable/ic_baseline_timer"
         android:title="@string/bottom_view_icon_timer_title"/>
 
+    <item
+        android:id="@+id/bottom_view_email_validator_fragment"
+        android:icon="@drawable/ic_baseline_alternate_email_24"
+        android:title="@string/email_validator"/>
+
 
 </menu>

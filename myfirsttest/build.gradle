@@ -1,21 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs'
 }
 
 android {
     compileSdk Config.compile_sdk
 
     defaultConfig {
-        applicationId Config.application_id
         minSdk Config.min_sdk
         targetSdk Config.target_sdk
         versionCode Releases.version_code
         versionName Releases.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -38,40 +36,6 @@ android {
 
 dependencies {
 
-    //Modules
-    implementation project(Modules.data)
-    implementation project(Modules.mytimer)
-    implementation project(Modules.myfirsttest)
-
-    //Room
-    implementation Room.room_runtime
-    kapt Room.room_compiler
-    implementation Room.room_ktx
-
-    // Retrofit
-    implementation Retrofit.retrofit
-    implementation Retrofit.retrofit_converter_gson
-
-    //Glide
-    implementation Glide.glide
-
-    //Jetpack navigation
-    implementation JetpackNavigation.navigation_fragment
-    implementation JetpackNavigation.navigation_ui
-
-    //Coroutines
-    implementation Coroutines.coroutines_core
-    implementation Coroutines.coroutines_android
-
-    //LifecycleComponents
-    implementation LifecycleComponents.runtime_ktx
-    implementation LifecycleComponents.viewmodel_ktx
-
-    //Koin
-    implementation Koin.koin_core
-    implementation Koin.koin_android
-    testImplementation Koin.koin_test
-
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
 
@@ -79,6 +43,7 @@ dependencies {
     implementation Design.appcompat
     implementation Design.material
     implementation Design.constraint_layout
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //Test
     testImplementation TestImpl.junit

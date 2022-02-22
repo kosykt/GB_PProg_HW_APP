@@ -10,6 +10,7 @@ import com.example.gb_pprog.data.repository.DatabaseRepository
 import com.example.gb_pprog.data.repository.DomainRepositoryImpl
 import com.example.gb_pprog.data.repository.NetworkRepository
 import com.example.gb_pprog.domain.DomainRepository
+import com.example.gb_pprog.mytimer.MyTimer
 import org.koin.dsl.module
 
 private const val DB_NAME = "words.db"
@@ -39,5 +40,9 @@ val dataModule = module {
             network = get<NetworkRepository>(),
             database = get<DatabaseRepository>()
         )
+    }
+
+    single<MyTimer> {
+        MyTimer()
     }
 }
