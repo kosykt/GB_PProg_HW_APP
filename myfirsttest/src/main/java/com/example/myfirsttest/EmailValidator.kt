@@ -9,7 +9,7 @@ class EmailValidator : TextWatcher {
 
     internal var isValid = false
 
-    override fun afterTextChanged(editableText: Editable) {
+    override fun afterTextChanged(editableText: Editable?) {
         isValid = isValidEmail(editableText)
     }
 
@@ -19,9 +19,9 @@ class EmailValidator : TextWatcher {
 
     companion object {
 
-        /**
-         * Паттерн для сравнения.
-         */
+        const val EQUALS_EMAIL = "equals@email.com"
+        const val NOT_EQUALS_EMAIL = "notequals@email.com"
+
         private val EMAIL_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                     "\\@" +
@@ -34,6 +34,14 @@ class EmailValidator : TextWatcher {
 
         fun isValidEmail(email: CharSequence?): Boolean {
             return email != null && EMAIL_PATTERN.matcher(email).matches()
+        }
+
+        fun isEqualsEmail(email: CharSequence?): Boolean {
+            return email != null && email == EQUALS_EMAIL
+        }
+
+        fun isEntryNull(email: CharSequence?): CharSequence? {
+            return email
         }
     }
 }

@@ -39,6 +39,7 @@ android {
 dependencies {
 
     //Modules
+    implementation project(Modules.domain)
     implementation project(Modules.data)
     implementation project(Modules.mytimer)
     implementation project(Modules.myfirsttest)
