@@ -83,10 +83,14 @@ class TranslatorViewModel(
 
     private fun getData(word: String) {
         viewModelScope.launch {
-            getTranslateUseCase.execute(word).flowOn(Dispatchers.IO)
-                .collect {
-                    refreshData(loading = false, error = null, response = it)
-                }
+            try {
+                getTranslateUseCase.execute(word).flowOn(Dispatchers.IO)
+                    .collect {
+                        refreshData(loading = false, error = null, response = it)
+                    }
+            }catch (e: Exception){
+                refreshData(loading = false, error = e.message, response = null)
+            }
         }
     }
 
