@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 private const val TRANSLATOR_F = "translator"
 private const val TIMER_F = "timer"
 private const val FAVORITE_F = "favorite"
-private const val EMAIL_VALIDATOR_F = "validator"
+private const val MY_FIRST_TEST_F = "test"
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,8 +59,8 @@ class MainActivity : AppCompatActivity() {
             .navigate(R.id.action_translatorFragment_to_favoriteFragment)
     }
 
-    private fun navigateToEmailValidatorFragment() {
-        fragmentOnView = EMAIL_VALIDATOR_F
+    private fun navigateToMyFirstTestFragment() {
+        fragmentOnView = MY_FIRST_TEST_F
         Navigation.findNavController(this, R.id.main_container)
             .navigate(R.id.action_translatorFragment_to_myFirstTestFragment)
     }
@@ -93,9 +93,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.bottom_view_email_validator_fragment -> {
                     if (fragmentOnView != TRANSLATOR_F){
                         navigateToTranslatorFragment()
-                        navigateToEmailValidatorFragment()
+                        navigateToMyFirstTestFragment()
                     } else {
-                        navigateToEmailValidatorFragment()
+                        navigateToMyFirstTestFragment()
                     }
                     true
                 }
