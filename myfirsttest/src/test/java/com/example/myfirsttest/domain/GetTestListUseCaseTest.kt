@@ -1,36 +1,55 @@
 package com.example.myfirsttest.domain
 
-import org.junit.Assert
 import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions
 import org.mockito.Mockito
 import org.mockito.kotlin.mock
 
 class GetTestListUseCaseTest {
 
     private val useCaseRepository = mock<UseCaseRepository>()
-    private val useCaseTest = GetListUseCase(useCaseRepository)
-    private val testData = listOf(
-        UseCaseModel("one"),
-        UseCaseModel("two"),
-        UseCaseModel("three"),
-    )
+
+    @AfterEach
+    fun tearDown() {
+        Mockito.reset(useCaseRepository)
+    }
 
 
     @Test
-    fun shouldReturnCorrectData(){
+    fun shouldReturnCorrectData() {
+        val useCaseTest = GetListUseCase(useCaseRepository)
+        val testData = listOf(
+            UseCaseModel("one"),
+            UseCaseModel("two"),
+            UseCaseModel("three"),
+        )
         Mockito.`when`(useCaseRepository.getList()).thenReturn(testData)
         val actual = useCaseTest.execute()
         val expected = testData
 
-        Assert.assertEquals(actual, expected)
+        Assertions.assertEquals(actual, expected)
     }
 
     @Test
-    fun shouldReturnUnCorrectData(){
+    fun shouldReturnUnCorrectData() {
+        val useCaseTest = GetListUseCase(useCaseRepository)
+        val testData = listOf(
+            UseCaseModel("one"),
+            UseCaseModel("two"),
+            UseCaseModel("three"),
+        )
         Mockito.`when`(useCaseRepository.getList()).thenReturn(testData)
         val actual = useCaseTest.execute()
         val expected = listOf(UseCaseModel("one"))
 
-        Assert.assertNotEquals(actual, expected)
+        Assertions.assertNotEquals(actual, expected)
+    }
+
+    @Test
+    fun shouldMockitoVerifyCurrentTimes() {
+        val useCaseTest = GetListUseCase(useCaseRepository)
+        useCaseTest.execute()
+        Mockito.verify(useCaseRepository, Mockito.times(1)).getList()
     }
 }

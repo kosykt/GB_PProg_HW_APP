@@ -32,20 +32,20 @@ class MyFirstTestAdapter() :
             vb.repositoryName.text = model.text
         }
     }
-}
 
-object MyItemCallback : DiffUtil.ItemCallback<UseCaseModel>() {
-    override fun areItemsTheSame(
-        oldItem: UseCaseModel,
-        newItem: UseCaseModel,
-    ): Boolean {
-        return oldItem == newItem
-    }
+    companion object MyItemCallback : DiffUtil.ItemCallback<UseCaseModel>() {
+        override fun areItemsTheSame(
+            oldItem: UseCaseModel,
+            newItem: UseCaseModel,
+        ): Boolean {
+            return oldItem == newItem
+        }
 
-    override fun areContentsTheSame(
-        oldItem: UseCaseModel,
-        newItem: UseCaseModel,
-    ): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(
+            oldItem: UseCaseModel,
+            newItem: UseCaseModel,
+        ): Boolean {
+            return oldItem == newItem
+        }
     }
 }
