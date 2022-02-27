@@ -28,7 +28,7 @@ class GetTestListUseCaseTest {
         val actual = useCaseTest.execute()
         val expected = testData
 
-        Assert.assertEquals(expected, actual)
+        Assert.assertEquals("Return data is not equal to input data",expected, actual)
     }
 
     @Test
@@ -43,7 +43,7 @@ class GetTestListUseCaseTest {
         val actual = useCaseTest.execute()
         val expected = listOf(UseCaseModel("one"))
 
-        Assert.assertNotEquals(expected, actual)
+        Assert.assertNotEquals("Return data is equal to input data",expected, actual)
     }
 
     @Test
