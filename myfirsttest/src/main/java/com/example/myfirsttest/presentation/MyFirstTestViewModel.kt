@@ -1,4 +1,4 @@
-package com.example.myfirsttest.presenteration
+package com.example.myfirsttest.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

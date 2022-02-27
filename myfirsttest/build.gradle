@@ -36,7 +36,6 @@ android {
 
 dependencies {
 
-
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
 
@@ -48,13 +47,12 @@ dependencies {
     implementation Design.material
     implementation Design.constraint_layout
 
-    //Test
+    //Unit test
     testImplementation TestImpl.junit
+    testImplementation TestImpl.mockito_core
+    testImplementation TestImpl.mockito_kotlin
+
+    //Ui test
     androidTestImplementation TestImpl.ext_junit
     androidTestImplementation TestImpl.espresso
-
-    testImplementation "org.mockito:mockito-core:4.0.0"
-    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
-
-    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
 }

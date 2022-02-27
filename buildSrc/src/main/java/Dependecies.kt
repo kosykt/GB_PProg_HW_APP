@@ -62,6 +62,7 @@ object Versions {
     const val jUnit = "4.13.2"
     const val extjUnit = "1.1.3"
     const val espressoCore = "3.4.0"
+    const val mockito = "4.0.0"
 }
 
 object Glide {
@@ -118,4 +119,6 @@ object TestImpl {
     const val junit = "junit:junit:${Versions.jUnit}"
     const val ext_junit = "androidx.test.ext:junit:${Versions.extjUnit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"
+    const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
 }

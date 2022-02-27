@@ -1,4 +1,4 @@
-package com.example.myfirsttest.presenteration
+package com.example.myfirsttest.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,7 +24,7 @@ class MyFirstTestAdapter() :
         holder.bind(currentList[position])
     }
 
-    inner class MyItemViewHolder(
+    class MyItemViewHolder(
         private val vb: MyFirstTestItemBinding,
     ) : RecyclerView.ViewHolder(vb.root) {
 

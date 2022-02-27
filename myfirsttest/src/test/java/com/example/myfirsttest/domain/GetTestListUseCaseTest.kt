@@ -1,8 +1,8 @@
 package com.example.myfirsttest.domain
 
+import org.junit.After
+import org.junit.Assert
 import org.junit.Test
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions
 import org.mockito.Mockito
 import org.mockito.kotlin.mock
 
@@ -10,14 +10,14 @@ class GetTestListUseCaseTest {
 
     private val useCaseRepository = mock<UseCaseRepository>()
 
-    @AfterEach
+    @After
     fun tearDown() {
         Mockito.reset(useCaseRepository)
     }
 
 
     @Test
-    fun shouldReturnCorrectData() {
+    fun should_return_correct_data() {
         val useCaseTest = GetListUseCase(useCaseRepository)
         val testData = listOf(
             UseCaseModel("one"),
@@ -28,11 +28,11 @@ class GetTestListUseCaseTest {
         val actual = useCaseTest.execute()
         val expected = testData
 
-        Assertions.assertEquals(actual, expected)
+        Assert.assertEquals(expected, actual)
     }
 
     @Test
-    fun shouldReturnUnCorrectData() {
+    fun should_return_un_correct_data() {
         val useCaseTest = GetListUseCase(useCaseRepository)
         val testData = listOf(
             UseCaseModel("one"),
@@ -43,11 +43,11 @@ class GetTestListUseCaseTest {
         val actual = useCaseTest.execute()
         val expected = listOf(UseCaseModel("one"))
 
-        Assertions.assertNotEquals(actual, expected)
+        Assert.assertNotEquals(expected, actual)
     }
 
     @Test
-    fun shouldMockitoVerifyCurrentTimes() {
+    fun should_mockito_verify_current_times() {
         val useCaseTest = GetListUseCase(useCaseRepository)
         useCaseTest.execute()
         Mockito.verify(useCaseRepository, Mockito.times(1)).getList()
