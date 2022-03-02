@@ -22,6 +22,21 @@ class NetworkRepositoryImplTest {
     }
 
     @Test
+    fun should_return_notNull() {
+        val networkRepositoryImpl = NetworkRepositoryImpl(retrofitService)
+        val testData = listOf<RetrofitTranslateDto>(
+            RetrofitTranslateDto(0, listOf<Meaning>(), "test1"),
+            RetrofitTranslateDto(1, listOf<Meaning>(), "test2"),
+            RetrofitTranslateDto(2, listOf<Meaning>(), "test3"),
+        )
+        runBlocking {
+            Mockito.`when`(retrofitService.getNetworkData("test")).thenReturn(testData)
+            val actual = networkRepositoryImpl.getData("test")
+            Assert.assertNotNull("Return data is null", actual)
+        }
+    }
+
+    @Test
     fun should_return_correct_data() {
         val networkRepositoryImpl = NetworkRepositoryImpl(retrofitService)
         val testData = listOf<RetrofitTranslateDto>(
