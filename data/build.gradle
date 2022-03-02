@@ -54,12 +54,10 @@ dependencies {
 
     //Test
     testImplementation TestImpl.junit
-    androidTestImplementation TestImpl.ext_junit
-    androidTestImplementation TestImpl.espresso
 
     testImplementation TestImpl.mockito_core
     testImplementation TestImpl.mockito_kotlin
-    testImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
+    testImplementation TestImpl.mock_web_server
 
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation TestImpl.arch_core
 }

@@ -63,6 +63,8 @@ object Versions {
     const val extjUnit = "1.1.3"
     const val espressoCore = "3.4.0"
     const val mockito = "4.0.0"
+    const val mockWebServer = "4.9.1"
+    const val archCore = "2.1.0"
 }
 
 object Glide {
@@ -121,4 +123,6 @@ object TestImpl {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"
     const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
+    const val mock_web_server = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
+    const val arch_core = "androidx.arch.core:core-testing:${Versions.archCore}"
 }

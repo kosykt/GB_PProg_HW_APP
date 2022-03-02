@@ -2,7 +2,6 @@ package com.example.data.network
 
 import com.example.gb_pprog.data.network.RetrofitService
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
