@@ -14,6 +14,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.stopKoin
 import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
@@ -27,6 +28,16 @@ class MainActivityTest {
     fun setup() {
         scenario = ActivityScenario.launch(MainActivity::class.java)
         context = ApplicationProvider.getApplicationContext()
+    }
+
+    @After
+    fun close() {
+        /** без stopKoin() тесты все по очередно не выполняются. Вызывается исключение
+         * с сообщением: "A Koin Application has already been started".
+         * Но при использовании stopKoin() есть утечка в памяти(возможно),
+         * System.logW: A resource was acquired at attached stack trace but never released.**/
+        stopKoin()
+        scenario.close()
     }
 
     @Test
@@ -97,10 +108,5 @@ class MainActivityTest {
             val translatorFragment = it.findViewById<View>(R.id.fragment_translator)
             TestCase.assertNotNull("translatorFragment is null", translatorFragment)
         }
-    }
-
-    @After
-    fun close() {
-        scenario.close()
     }
 }
