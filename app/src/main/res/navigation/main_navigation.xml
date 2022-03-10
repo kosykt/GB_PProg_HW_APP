@@ -20,11 +20,6 @@
             app:destination="@id/favoriteFragment"
             app:popUpTo="@id/translatorFragment"
             app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_translatorFragment_to_myFirstTestFragment"
-            app:destination="@id/myFirstTestFragment"
-            app:popUpTo="@id/translatorFragment"
-            app:popUpToInclusive="false"/>
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
@@ -36,9 +31,4 @@
         android:name="com.example.gb_pprog.presentation.favoritefragment.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
-    <fragment
-        android:id="@+id/myFirstTestFragment"
-        android:name="com.example.myfirsttest.presentation.MyFirstTestFragment"
-        android:label="MyFirstTestFragment"
-        tools:layout="@layout/fragment_my_first_test"/>
 </navigation>

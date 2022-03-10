@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class TimerViewModel(
-    private val myTimer: MyTimer,
+    private val myTimer: MyTimer
 ) : ViewModel() {
 
     private var timeMillis: Long = BASE_VALUE

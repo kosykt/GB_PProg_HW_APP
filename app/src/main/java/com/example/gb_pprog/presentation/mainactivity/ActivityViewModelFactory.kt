@@ -10,9 +10,7 @@ class ActivityViewModelFactory @Inject constructor(
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ActivityViewModel::class.java)) {
-            return ActivityViewModel(
-                getAllFavoritesUseCase
-            ) as T
+            return ActivityViewModel(getAllFavoritesUseCase) as T
         } else {
             throw RuntimeException("ActivityViewModelFactory: ViewModel class - $modelClass")
         }

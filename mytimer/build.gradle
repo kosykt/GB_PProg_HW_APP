@@ -35,9 +35,7 @@ android {
 }
 
 dependencies {
-
-    //Koin
-    implementation Koin.koin_android
+    implementation "com.google.dagger:dagger:2.41"
 
     //Coroutines
     implementation Coroutines.coroutines_core

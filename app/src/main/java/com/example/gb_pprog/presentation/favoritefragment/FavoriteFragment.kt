@@ -5,14 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentFavoriteBinding
 import com.example.gb_pprog.presentation.favoritefragment.adapter.FavoriteAdapter
 import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
 
-    private val vm by viewModel<FavoriteViewModel>()
+    private val vm: FavoriteViewModel by lazy {
+        ViewModelProvider(
+            this,
+            App.appComponent.injectFavoriteViewModelFactory()
+        )[FavoriteViewModel::class.java]
+    }
     private val adapter by lazy {
         FavoriteAdapter(
             onItemClickListener = vm::deleteFavorite

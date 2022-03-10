@@ -5,16 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.gb_pprog.mytimer.databinding.FragmentTimerBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TimerFragment : Fragment() {
 
-    private val vm by viewModel<TimerViewModel>()
+    private val vm: TimerViewModel by lazy {
+        ViewModelProvider(
+            this,
+            TODO()
+        )[TimerViewModel::class.java]
+    }
 
     private var _binding: FragmentTimerBinding? = null
     private val binding: FragmentTimerBinding
