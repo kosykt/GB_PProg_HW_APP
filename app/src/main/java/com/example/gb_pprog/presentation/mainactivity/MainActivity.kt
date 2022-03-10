@@ -2,13 +2,14 @@ package com.example.gb_pprog.presentation.mainactivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.gb_pprog.R
+import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val TRANSLATOR_F = "translator"
 private const val TIMER_F = "timer"
@@ -18,7 +19,12 @@ private const val MY_FIRST_TEST_F = "test"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val vm: ActivityViewModel by viewModel<ActivityViewModel>()
+    private val vm: ActivityViewModel by lazy {
+        ViewModelProvider(
+            this,
+            App.appComponent.injectActivityViewModelFactory()
+        )[ActivityViewModel::class.java]
+    }
     private var fragmentOnView = TRANSLATOR_F
 
     override fun onCreate(savedInstanceState: Bundle?) {

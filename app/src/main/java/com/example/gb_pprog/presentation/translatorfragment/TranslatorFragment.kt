@@ -6,18 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentTranslatorBinding
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.presentation.imageloader.GlideImageLoader
 import com.example.gb_pprog.presentation.translatorfragment.adapter.TranslatorAdapter
 import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModel
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TranslatorFragment : Fragment() {
 
-    private val vm by viewModel<TranslatorViewModel>()
+    private val vm: TranslatorViewModel by lazy {
+        ViewModelProvider(
+            this,
+            App.appComponent.injectTranslatorViewModelFactory()
+        )[TranslatorViewModel::class.java]
+    }
 
     private val adapter by lazy {
         TranslatorAdapter(
