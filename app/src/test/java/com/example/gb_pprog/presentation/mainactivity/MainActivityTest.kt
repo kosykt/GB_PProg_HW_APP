@@ -14,7 +14,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.core.context.stopKoin
 import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
@@ -32,11 +31,6 @@ class MainActivityTest {
 
     @After
     fun close() {
-        /** без stopKoin() тесты все по очередно не выполняются. Вызывается исключение
-         * с сообщением: "A Koin Application has already been started".
-         * Но при использовании stopKoin() есть утечка в памяти(возможно),
-         * System.logW: A resource was acquired at attached stack trace but never released.**/
-        stopKoin()
         scenario.close()
     }
 
@@ -66,7 +60,7 @@ class MainActivityTest {
     fun activityBottomNav_Size() {
         scenario.onActivity {
             val bottomNav = it.findViewById<BottomNavigationView>(R.id.main_bnv)
-            val expected = 4
+            val expected = 3
             val actual = bottomNav.menu.size()
             TestCase.assertEquals("BottomNav menu size is not correct", expected, actual)
         }
@@ -96,9 +90,11 @@ class MainActivityTest {
             val fragmentContainerView = it.findViewById<View>(R.id.main_container)
             val expected = View.VISIBLE
             val actual = fragmentContainerView.visibility
-            TestCase.assertEquals("FragmentContainerView visibility is not correct",
+            TestCase.assertEquals(
+                "FragmentContainerView visibility is not correct",
                 expected,
-                actual)
+                actual
+            )
         }
     }
 
