@@ -18,11 +18,9 @@ import kotlinx.coroutines.launch
 
 class TranslatorFragment : Fragment() {
 
+    private val vmFactory: ViewModelProvider.Factory = App.appComponent.injectViewModelFactory()
     private val vm: TranslatorViewModel by lazy {
-        ViewModelProvider(
-            this,
-            App.appComponent.injectTranslatorViewModelFactory()
-        )[TranslatorViewModel::class.java]
+        ViewModelProvider(this, vmFactory)[TranslatorViewModel::class.java]
     }
 
     private val adapter by lazy {

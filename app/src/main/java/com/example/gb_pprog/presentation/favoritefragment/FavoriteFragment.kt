@@ -13,11 +13,9 @@ import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteView
 
 class FavoriteFragment : Fragment() {
 
+    private val vmFactory: ViewModelProvider.Factory = App.appComponent.injectViewModelFactory()
     private val vm: FavoriteViewModel by lazy {
-        ViewModelProvider(
-            this,
-            App.appComponent.injectFavoriteViewModelFactory()
-        )[FavoriteViewModel::class.java]
+        ViewModelProvider(this, vmFactory)[FavoriteViewModel::class.java]
     }
     private val adapter by lazy {
         FavoriteAdapter(

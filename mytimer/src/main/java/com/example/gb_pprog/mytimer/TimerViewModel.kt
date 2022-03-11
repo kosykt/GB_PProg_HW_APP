@@ -7,8 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TimerViewModel(
+class TimerViewModel @Inject constructor(
     private val myTimer: MyTimer
 ) : ViewModel() {
 

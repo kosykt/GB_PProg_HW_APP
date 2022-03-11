@@ -9,10 +9,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val BASE_COUNT = 0
 
-class ActivityViewModel(
+class ActivityViewModel @Inject constructor(
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
 ) : ViewModel() {
 

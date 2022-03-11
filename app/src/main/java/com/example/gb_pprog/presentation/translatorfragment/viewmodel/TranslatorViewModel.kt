@@ -14,8 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TranslatorViewModel(
+class TranslatorViewModel @Inject constructor(
     private val getTranslateUseCase: GetTranslateUseCase,
     private val saveFavoriteUseCase: SaveFavoriteUseCase,
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase,

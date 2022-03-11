@@ -14,11 +14,9 @@ import kotlinx.coroutines.launch
 
 class TimerFragment : Fragment() {
 
+    private val vmFactory: ViewModelProvider.Factory = TODO()//App.appComponent.injectViewModelFactory()
     private val vm: TimerViewModel by lazy {
-        ViewModelProvider(
-            this,
-            TODO()
-        )[TimerViewModel::class.java]
+        ViewModelProvider(this, vmFactory)[TimerViewModel::class.java]
     }
 
     private var _binding: FragmentTimerBinding? = null

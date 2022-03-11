@@ -18,11 +18,10 @@ private const val FAVORITE_F = "favorite"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val vmFactory: ViewModelProvider.Factory = App.appComponent.injectViewModelFactory()
     private val vm: ActivityViewModel by lazy {
-        ViewModelProvider(
-            this,
-            App.appComponent.injectActivityViewModelFactory()
-        )[ActivityViewModel::class.java]
+        ViewModelProvider(this, vmFactory)[ActivityViewModel::class.java]
     }
     private var fragmentOnView = TRANSLATOR_F
 

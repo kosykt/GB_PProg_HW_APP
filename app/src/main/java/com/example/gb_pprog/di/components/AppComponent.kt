@@ -1,10 +1,8 @@
 package com.example.gb_pprog.di.components
 
 import com.example.gb_pprog.di.modules.*
-import com.example.gb_pprog.mytimer.TimerViewModelFactory
-import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModelFactory
-import com.example.gb_pprog.presentation.mainactivity.ActivityViewModelFactory
-import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModelFactory
+import com.example.gb_pprog.di.viewmodels.ViewModelFactory
+import com.example.gb_pprog.di.viewmodels.ViewModelModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -18,13 +16,10 @@ import javax.inject.Singleton
         DomainModule::class,
         AppModule::class,
         MyTimerModule::class,
+        ViewModelModule::class,
     ]
 )
 interface AppComponent {
 
-    fun injectActivityViewModelFactory(): ActivityViewModelFactory
-    fun injectTranslatorViewModelFactory(): TranslatorViewModelFactory
-    fun injectFavoriteViewModelFactory(): FavoriteViewModelFactory
-    fun injectTimerViewModelFactory(): TimerViewModelFactory
-
+    fun injectViewModelFactory(): ViewModelFactory
 }
