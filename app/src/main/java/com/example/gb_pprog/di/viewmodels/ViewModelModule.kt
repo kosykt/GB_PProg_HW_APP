@@ -2,9 +2,9 @@ package com.example.gb_pprog.di.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.mytimer.TimerViewModel
 import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModel
 import com.example.gb_pprog.presentation.mainactivity.ActivityViewModel
+import com.example.gb_pprog.presentation.timerfragment.TimerViewModel
 import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModel
 import dagger.Binds
 import dagger.Module

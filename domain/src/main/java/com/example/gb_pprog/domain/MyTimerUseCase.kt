@@ -1,12 +1,10 @@
-package com.example.gb_pprog.mytimer
+package com.example.gb_pprog.domain
 
-import android.util.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class MyTimer {
-
+class MyTimerUseCase {
     companion object {
         private const val BASE_START_VALUE: Long = 0
         private var running = false
@@ -29,7 +27,6 @@ class MyTimer {
             while (running) {
                 delay(30)
                 emit((System.currentTimeMillis() - timerStartedTime) + startingValue)
-                Log.d("testTimer", "${(System.currentTimeMillis() - timerStartedTime) + startingValue}")
             }
         }
     }

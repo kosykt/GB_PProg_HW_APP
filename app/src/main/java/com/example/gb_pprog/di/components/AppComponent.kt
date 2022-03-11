@@ -15,7 +15,6 @@ import javax.inject.Singleton
         DataModule::class,
         DomainModule::class,
         AppModule::class,
-        MyTimerModule::class,
         ViewModelModule::class,
     ]
 )

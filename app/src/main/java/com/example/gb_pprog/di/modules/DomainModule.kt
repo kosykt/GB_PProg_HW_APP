@@ -51,4 +51,10 @@ class DomainModule {
     ): DeleteFavoriteUseCase {
         return DeleteFavoriteUseCase(domainRepository)
     }
+
+    @Singleton
+    @Provides
+    fun provideMyTimerUseCase(): MyTimerUseCase {
+        return MyTimerUseCase()
+    }
 }

@@ -3,8 +3,6 @@ import org.gradle.api.JavaVersion
 object Modules {
     const val domain = ":domain"
     const val data = ":data"
-    const val mytimer = ":mytimer"
-    const val myfirsttest = ":myfirsttest"
 }
 
 object Config {
@@ -39,9 +37,6 @@ object Versions {
     //Lifecycle KTX
     const val lifecycleViewModel = "2.4.0"
     const val lifecycleRunTime = "2.4.0"
-
-    //Koin
-    const val koin = "3.1.3"
 
     //Retrofit
     const val retrofit = "2.9.0"
@@ -93,12 +88,6 @@ object LifecycleComponents {
     const val viewmodel_ktx =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleViewModel}"
     const val runtime_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRunTime}"
-}
-
-object Koin {
-    const val koin_core = "io.insert-koin:koin-core:${Versions.koin}"
-    const val koin_android = "io.insert-koin:koin-android:${Versions.koin}"
-    const val koin_test = "io.insert-koin:koin-test:${Versions.koin}"
 }
 
 object Retrofit {
