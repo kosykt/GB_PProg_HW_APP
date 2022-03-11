@@ -53,6 +53,9 @@ object Versions {
     //constraintLayout
     const val constraintLayout = "2.1.2"
 
+    //Dagger
+    const val dagger = "2.41"
+
     //Test
     const val jUnit = "4.13.2"
     const val extjUnit = "1.1.3"
@@ -104,6 +107,11 @@ object Design {
     const val material = "com.google.android.material:material:${Versions.material}"
     const val constraint_layout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+}
+
+object Dagger {
+    const val dagger_d = "com.google.dagger:dagger:${Versions.dagger}"
+    const val dagger_k = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 }
 
 object TestImpl {

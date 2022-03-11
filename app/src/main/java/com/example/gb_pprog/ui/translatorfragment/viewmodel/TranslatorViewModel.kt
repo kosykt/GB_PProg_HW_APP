@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.translatorfragment.viewmodel
+package com.example.gb_pprog.ui.translatorfragment.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

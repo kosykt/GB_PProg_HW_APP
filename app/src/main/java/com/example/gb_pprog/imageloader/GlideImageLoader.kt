@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.imageloader
+package com.example.gb_pprog.imageloader
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

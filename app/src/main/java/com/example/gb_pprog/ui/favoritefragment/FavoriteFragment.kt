@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.favoritefragment
+package com.example.gb_pprog.ui.favoritefragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentFavoriteBinding
-import com.example.gb_pprog.presentation.favoritefragment.adapter.FavoriteAdapter
-import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModel
+import com.example.gb_pprog.ui.favoritefragment.adapter.FavoriteAdapter
+import com.example.gb_pprog.ui.favoritefragment.viewmodel.FavoriteViewModel
 
 class FavoriteFragment : Fragment() {
 

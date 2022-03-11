@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.translatorfragment
+package com.example.gb_pprog.ui.translatorfragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentTranslatorBinding
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.gb_pprog.presentation.imageloader.GlideImageLoader
-import com.example.gb_pprog.presentation.translatorfragment.adapter.TranslatorAdapter
-import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModel
+import com.example.gb_pprog.imageloader.GlideImageLoader
+import com.example.gb_pprog.ui.translatorfragment.adapter.TranslatorAdapter
+import com.example.gb_pprog.ui.translatorfragment.viewmodel.TranslatorViewModel
 import kotlinx.coroutines.launch
 
 class TranslatorFragment : Fragment() {

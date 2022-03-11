@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.timerfragment
+package com.example.gb_pprog.ui.timerfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

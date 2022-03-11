@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.timerfragment
+package com.example.gb_pprog.ui.timerfragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

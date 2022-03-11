@@ -2,10 +2,10 @@ package com.example.gb_pprog.di.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.presentation.favoritefragment.viewmodel.FavoriteViewModel
-import com.example.gb_pprog.presentation.mainactivity.ActivityViewModel
-import com.example.gb_pprog.presentation.timerfragment.TimerViewModel
-import com.example.gb_pprog.presentation.translatorfragment.viewmodel.TranslatorViewModel
+import com.example.gb_pprog.ui.favoritefragment.viewmodel.FavoriteViewModel
+import com.example.gb_pprog.ui.mainactivity.ActivityViewModel
+import com.example.gb_pprog.ui.timerfragment.TimerViewModel
+import com.example.gb_pprog.ui.translatorfragment.viewmodel.TranslatorViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

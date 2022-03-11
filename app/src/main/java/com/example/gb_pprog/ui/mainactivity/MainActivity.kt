@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.mainactivity
+package com.example.gb_pprog.ui.mainactivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

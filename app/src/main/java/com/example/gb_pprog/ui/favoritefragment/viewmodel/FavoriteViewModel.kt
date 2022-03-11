@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.favoritefragment.viewmodel
+package com.example.gb_pprog.ui.favoritefragment.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

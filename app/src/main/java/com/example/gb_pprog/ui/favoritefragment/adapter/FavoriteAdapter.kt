@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.favoritefragment.adapter
+package com.example.gb_pprog.ui.favoritefragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

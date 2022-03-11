@@ -1,4 +1,4 @@
-package com.example.gb_pprog.presentation.translatorfragment.adapter
+package com.example.gb_pprog.ui.translatorfragment.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gb_pprog.R
 import com.example.gb_pprog.databinding.TranslatorItemBinding
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.gb_pprog.presentation.imageloader.ImageLoader
+import com.example.gb_pprog.imageloader.ImageLoader
 
 class TranslatorAdapter(
     private val imageLoader: ImageLoader<ImageView>,

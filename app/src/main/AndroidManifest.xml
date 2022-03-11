@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GB_PProg">
         <activity
-            android:name=".presentation.mainactivity.MainActivity"
+            android:name=".ui.mainactivity.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
