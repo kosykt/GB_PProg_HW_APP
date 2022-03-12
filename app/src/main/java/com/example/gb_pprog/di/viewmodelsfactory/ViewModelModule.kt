@@ -1,4 +1,4 @@
-package com.example.gb_pprog.di.modules.singletons
+package com.example.gb_pprog.di.viewmodelsfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
