@@ -28,7 +28,7 @@ object Versions {
     const val room = "2.4.1"
 
     //Jetpack Navigation
-    const val jetNav = "2.3.5"
+    const val jetNav = "2.4.1"
 
     //Kotlin coroutines
     const val coroutinesCore = "1.5.2"
