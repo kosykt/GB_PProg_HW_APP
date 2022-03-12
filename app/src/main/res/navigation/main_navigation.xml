@@ -9,18 +9,7 @@
         android:id="@+id/translatorFragment"
         android:name="com.example.gb_pprog.ui.translatorfragment.TranslatorFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_translator" >
-        <action
-            android:id="@+id/action_translatorFragment_to_timerFragment"
-            app:destination="@id/timerFragment"
-            app:popUpTo="@id/translatorFragment"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_translatorFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment"
-            app:popUpTo="@id/translatorFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
+        tools:layout="@layout/fragment_translator" />
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.example.gb_pprog.ui.timerfragment.TimerFragment"
