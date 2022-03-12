@@ -12,5 +12,5 @@ import dagger.Subcomponent
 )
 interface TimerSubcomponent {
 
-    fun injectTimerViewModule(): ViewModelFactory
+    fun injectTimerViewModelFactory(): ViewModelFactory
 }

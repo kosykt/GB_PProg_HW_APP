@@ -26,9 +26,4 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(TranslatorViewModel::class)
     fun bindTranslatorViewModel(translatorViewModel: TranslatorViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(FavoriteViewModel::class)
-    fun bindFavoriteViewModel(favoriteViewModel: FavoriteViewModel): ViewModel
 }
