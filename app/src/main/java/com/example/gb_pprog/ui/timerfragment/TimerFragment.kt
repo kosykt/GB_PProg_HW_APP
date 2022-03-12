@@ -1,10 +1,10 @@
 package com.example.gb_pprog.ui.timerfragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.gb_pprog.application.App
@@ -15,8 +15,11 @@ import kotlinx.coroutines.launch
 
 class TimerFragment : Fragment() {
 
-    private val vmFactory: ViewModelProvider.Factory = App.appComponent.injectViewModelFactory()
+    private val vmFactory: ViewModelProvider.Factory = App.instance.appComponent
+        .provideTimerSubcomponent()
+        .injectTimerViewModule()
     private val vm: TimerViewModel by lazy {
+        App.instance.initTimerSubcomponent()
         ViewModelProvider(this, vmFactory)[TimerViewModel::class.java]
     }
 

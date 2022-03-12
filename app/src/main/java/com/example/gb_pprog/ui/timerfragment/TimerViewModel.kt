@@ -2,6 +2,7 @@ package com.example.gb_pprog.ui.timerfragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gb_pprog.di.containers.TimerContainer
 import com.example.gb_pprog.domain.MyTimerUseCase
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +12,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TimerViewModel @Inject constructor(
-    private val myTimer: MyTimerUseCase
+    private val myTimer: MyTimerUseCase,
+    private val timerContainer: TimerContainer,
 ) : ViewModel() {
 
     private var timeMillis: Long = BASE_VALUE
@@ -67,6 +69,11 @@ class TimerViewModel @Inject constructor(
     }
 
     private fun Long.pad(desiredLength: Int) = this.toString().padStart(desiredLength, '0')
+
+    override fun onCleared() {
+        super.onCleared()
+        timerContainer.destroyTimerSubcomponent()
+    }
 
     companion object {
         private const val BASE_VALUE: Long = 0

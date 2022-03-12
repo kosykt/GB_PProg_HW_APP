@@ -13,7 +13,8 @@ import com.example.gb_pprog.ui.favoritefragment.viewmodel.FavoriteViewModel
 
 class FavoriteFragment : Fragment() {
 
-    private val vmFactory: ViewModelProvider.Factory = App.appComponent.injectViewModelFactory()
+    private val vmFactory: ViewModelProvider.Factory =
+        App.instance.appComponent.injectViewModelFactory()
     private val vm: FavoriteViewModel by lazy {
         ViewModelProvider(this, vmFactory)[FavoriteViewModel::class.java]
     }
@@ -38,7 +39,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.favoriteRv.adapter = adapter
-        vm.favoriteWords.observe(viewLifecycleOwner){
+        vm.favoriteWords.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
         vm.getAll()

@@ -1,7 +1,9 @@
-package com.example.gb_pprog.di.viewmodels
+package com.example.gb_pprog.di.modules.singletons
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.gb_pprog.di.viewmodelsfactory.ViewModelFactory
+import com.example.gb_pprog.di.viewmodelsfactory.ViewModelKey
 import com.example.gb_pprog.ui.favoritefragment.viewmodel.FavoriteViewModel
 import com.example.gb_pprog.ui.mainactivity.ActivityViewModel
 import com.example.gb_pprog.ui.timerfragment.TimerViewModel
@@ -30,9 +32,4 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(FavoriteViewModel::class)
     fun bindFavoriteViewModel(favoriteViewModel: FavoriteViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(TimerViewModel::class)
-    fun bindTimerViewModel(timerViewModel: TimerViewModel): ViewModel
 }

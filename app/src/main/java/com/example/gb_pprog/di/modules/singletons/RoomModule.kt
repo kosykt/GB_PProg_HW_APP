@@ -1,7 +1,7 @@
-package com.example.gb_pprog.di.modules
+package com.example.gb_pprog.di.modules.singletons
 
-import android.content.Context
 import androidx.room.Room
+import com.example.gb_pprog.application.App
 import com.example.gb_pprog.data.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -14,9 +14,9 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun provideRoomDatabase(context: Context): AppDatabase {
+    fun provideRoomDatabase(app: App): AppDatabase {
         return Room.databaseBuilder<AppDatabase?>(
-            context,
+            app.applicationContext,
             AppDatabase::class.java,
             DB_NAME
         )

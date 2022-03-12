@@ -1,24 +1,24 @@
 package com.example.gb_pprog.di.components
 
-import com.example.gb_pprog.di.modules.*
-import com.example.gb_pprog.di.viewmodels.ViewModelFactory
-import com.example.gb_pprog.di.viewmodels.ViewModelModule
+import com.example.gb_pprog.di.modules.singletons.*
+import com.example.gb_pprog.di.viewmodelsfactory.ViewModelFactory
+import com.example.gb_pprog.di.modules.singletons.ViewModelModule
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
-        ContextModule::class,
+        AppModule::class,
         RoomModule::class,
         RetrofitModule::class,
         DataModule::class,
         DomainModule::class,
-        AppModule::class,
         ViewModelModule::class,
     ]
 )
 interface AppComponent {
 
     fun injectViewModelFactory(): ViewModelFactory
+    fun provideTimerSubcomponent(): TimerSubcomponent
 }

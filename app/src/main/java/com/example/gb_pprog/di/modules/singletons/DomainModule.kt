@@ -1,4 +1,4 @@
-package com.example.gb_pprog.di.modules
+package com.example.gb_pprog.di.modules.singletons
 
 import com.example.gb_pprog.data.repository.DatabaseRepository
 import com.example.gb_pprog.data.repository.DomainRepositoryImpl
@@ -50,11 +50,5 @@ class DomainModule {
         domainRepository: DomainRepository
     ): DeleteFavoriteUseCase {
         return DeleteFavoriteUseCase(domainRepository)
-    }
-
-    @Singleton
-    @Provides
-    fun provideMyTimerUseCase(): MyTimerUseCase {
-        return MyTimerUseCase()
     }
 }

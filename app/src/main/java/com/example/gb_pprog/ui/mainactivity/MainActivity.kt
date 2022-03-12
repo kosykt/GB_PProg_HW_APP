@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val vmFactory: ViewModelProvider.Factory = App.appComponent.injectViewModelFactory()
+    private val vmFactory: ViewModelProvider.Factory =
+        App.instance.appComponent.injectViewModelFactory()
     private val vm: ActivityViewModel by lazy {
         ViewModelProvider(this, vmFactory)[ActivityViewModel::class.java]
     }
