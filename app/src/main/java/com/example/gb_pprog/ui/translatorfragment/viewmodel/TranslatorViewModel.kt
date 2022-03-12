@@ -51,10 +51,12 @@ class TranslatorViewModel @Inject constructor(
     fun favoriteWordOperator(domainModel: DomainModel): Boolean {
         return if (favoriteWords.contains(domainModel.text)) {
             viewModelScope.launch(Dispatchers.IO) {
-                deleteFavoriteUseCase.execute(FavoriteModel(
-                    word = domainModel.text,
-                    translation = domainModel.meanings[0].translation.text
-                ))
+                deleteFavoriteUseCase.execute(
+                    FavoriteModel(
+                        word = domainModel.text,
+                        translation = domainModel.meanings[0].translation.text
+                    )
+                )
             }
             false
         } else {
@@ -89,7 +91,7 @@ class TranslatorViewModel @Inject constructor(
                     .collect {
                         refreshData(loading = false, error = null, response = it)
                     }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 refreshData(loading = false, error = e.message, response = null)
             }
         }

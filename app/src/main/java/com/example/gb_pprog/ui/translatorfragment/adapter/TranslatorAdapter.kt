@@ -23,9 +23,9 @@ class TranslatorAdapter(
 
         private fun initClickListener(dto: DomainModel) {
             vb.translatorItemFavoriteBtn.setOnClickListener {
-                if (onItemClickListener(dto)){
+                if (onItemClickListener(dto)) {
                     vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_active)
-                }else{
+                } else {
                     vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_diactive)
                 }
             }
@@ -41,7 +41,7 @@ class TranslatorAdapter(
         private fun initFavoriteChecker(dto: DomainModel) {
             if (checkIsFavorite(dto)) {
                 vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_active)
-            }else {
+            } else {
                 vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_diactive)
             }
         }
