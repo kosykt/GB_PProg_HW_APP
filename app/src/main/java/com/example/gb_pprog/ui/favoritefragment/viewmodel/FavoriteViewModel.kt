@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gb_pprog.di.containers.FavoriteContainer
 import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.model.FavoriteModel
@@ -17,7 +16,6 @@ import javax.inject.Inject
 class FavoriteViewModel @Inject constructor(
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
-    private val favoriteContainer: FavoriteContainer
 ) : ViewModel() {
 
     private var _favoriteWords = MutableLiveData<List<FavoriteModel>>()
@@ -37,10 +35,5 @@ class FavoriteViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             deleteFavoriteUseCase.execute(model)
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        favoriteContainer.destroyFavoriteSubcomponent()
     }
 }

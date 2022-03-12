@@ -17,7 +17,7 @@ class TimerFragment : Fragment() {
 
     private val vmFactory: ViewModelProvider.Factory = App.instance.appComponent
         .provideTimerSubcomponent()
-        .injectTimerViewModelFactory()
+        .injectTimerViewModule()
     private val vm: TimerViewModel by lazy {
         App.instance.initTimerSubcomponent()
         ViewModelProvider(this, vmFactory)[TimerViewModel::class.java]

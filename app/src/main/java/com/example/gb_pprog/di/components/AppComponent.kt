@@ -20,5 +20,4 @@ interface AppComponent {
 
     fun injectViewModelFactory(): ViewModelFactory
     fun provideTimerSubcomponent(): TimerSubcomponent
-    fun provideFavoriteSubcomponent(): FavoriteSubcomponent
 }
