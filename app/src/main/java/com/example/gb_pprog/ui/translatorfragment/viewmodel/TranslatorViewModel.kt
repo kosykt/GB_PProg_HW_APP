@@ -12,7 +12,6 @@ import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -87,10 +86,7 @@ class TranslatorViewModel @Inject constructor(
     private fun getData(word: String) {
         viewModelScope.launch {
             try {
-                getTranslateUseCase.execute(word).flowOn(Dispatchers.IO)
-                    .collect {
-                        refreshData(loading = false, error = null, response = it)
-                    }
+                _responseData.value = getTranslateUseCase.execute(word)
             } catch (e: Exception) {
                 refreshData(loading = false, error = e.message, response = null)
             }

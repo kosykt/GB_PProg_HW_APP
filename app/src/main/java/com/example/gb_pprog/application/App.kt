@@ -21,7 +21,7 @@ class App : Application(), TimerContainer {
             .build()
     }
 
-    var timerSubcomponent: TimerSubcomponent? = null
+    private var timerSubcomponent: TimerSubcomponent? = null
 
     override fun initTimerSubcomponent() = appComponent.provideTimerSubcomponent().also {
         timerSubcomponent = it
