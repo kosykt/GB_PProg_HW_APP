@@ -3,6 +3,7 @@ import org.gradle.api.JavaVersion
 object Modules {
     const val domain = ":domain"
     const val data = ":data"
+    const val my_timer = ":mytimer"
 }
 
 object Config {

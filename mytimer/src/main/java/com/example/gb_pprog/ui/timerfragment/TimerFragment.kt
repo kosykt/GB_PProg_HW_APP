@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentTimerBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -15,11 +14,8 @@ import kotlinx.coroutines.launch
 
 class TimerFragment : Fragment() {
 
-    private val vmFactory: ViewModelProvider.Factory = App.instance.appComponent
-        .provideTimerSubcomponent()
-        .injectTimerViewModule()
+    private val vmFactory: ViewModelProvider.Factory = TODO()
     private val vm: TimerViewModel by lazy {
-        App.instance.initTimerSubcomponent()
         ViewModelProvider(this, vmFactory)[TimerViewModel::class.java]
     }
 
