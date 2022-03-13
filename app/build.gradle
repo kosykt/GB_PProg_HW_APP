@@ -45,7 +45,6 @@ dependencies {
     //Modules
     implementation project(Modules.domain)
     implementation project(Modules.data)
-    implementation project(Modules.my_timer)
 
     //Dagger
     implementation Dagger.dagger_d

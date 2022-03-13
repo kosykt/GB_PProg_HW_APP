@@ -20,4 +20,5 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun injectViewModelFactory(): ViewModelFactory
+    fun provideTimerSubcomponent(): TimerSubcomponent
 }
