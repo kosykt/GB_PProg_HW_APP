@@ -46,7 +46,7 @@ class NetworkRepositoryImplTest {
         )
         runBlocking {
             Mockito.`when`(retrofitService.getNetworkData("test")).thenReturn(testData)
-            val actual = networkRepositoryImpl.getData("test").toList()[0]
+            val actual = networkRepositoryImpl.getData("test").toList()
             val expected = testData
             Assert.assertEquals("Return data is not equal to input data", expected, actual)
         }

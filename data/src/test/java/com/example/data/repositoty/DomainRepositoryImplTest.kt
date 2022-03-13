@@ -82,31 +82,31 @@ class DomainRepositoryImplTest {
     @Test
     fun should_get_notNull_translate_data() {
         val domainRepositoryImpl = DomainRepositoryImpl(network, database)
-        val testData: Flow<List<RetrofitTranslateDto>> = flowOf(
+        val testData: List<RetrofitTranslateDto> =
             listOf<RetrofitTranslateDto>(
                 RetrofitTranslateDto(0, listOf<Meaning>(), "test1"),
                 RetrofitTranslateDto(1, listOf<Meaning>(), "test2"),
                 RetrofitTranslateDto(2, listOf<Meaning>(), "test3"),
             )
-        )
-        Mockito.`when`(network.getData("test")).thenReturn(testData)
-        Assert.assertNotNull("Return data is null", domainRepositoryImpl.translate("test"))
+        runBlocking {
+            Mockito.`when`(network.getData("test")).thenReturn(testData)
+            Assert.assertNotNull("Return data is null", domainRepositoryImpl.translate("test"))
+        }
     }
 
     @Test
     fun should_get_correct_translate_data() {
         val domainRepositoryImpl = DomainRepositoryImpl(network, database)
-        val testData: Flow<List<RetrofitTranslateDto>> = flowOf(
+        val testData: List<RetrofitTranslateDto> =
             listOf<RetrofitTranslateDto>(
                 RetrofitTranslateDto(0, listOf<Meaning>(), "test1"),
                 RetrofitTranslateDto(1, listOf<Meaning>(), "test2"),
                 RetrofitTranslateDto(2, listOf<Meaning>(), "test3"),
             )
-        )
-        Mockito.`when`(network.getData("test")).thenReturn(testData)
         runBlocking {
-            val actual = domainRepositoryImpl.translate("test").toList()
-            val expected = testData.map { it.toListDomainModel() }.toList()
+            Mockito.`when`(network.getData("test")).thenReturn(testData)
+            val actual = domainRepositoryImpl.translate("test")
+            val expected = testData.toListDomainModel()
             Assert.assertEquals("Return data is not equal to input data", expected, actual)
         }
     }
@@ -114,17 +114,16 @@ class DomainRepositoryImplTest {
     @Test
     fun should_get_un_correct_translate_data() {
         val domainRepositoryImpl = DomainRepositoryImpl(network, database)
-        val testData: Flow<List<RetrofitTranslateDto>> = flowOf(
+        val testData: List<RetrofitTranslateDto> =
             listOf<RetrofitTranslateDto>(
                 RetrofitTranslateDto(0, listOf<Meaning>(), "test1"),
                 RetrofitTranslateDto(1, listOf<Meaning>(), "test2"),
                 RetrofitTranslateDto(2, listOf<Meaning>(), "test3"),
             )
-        )
-        Mockito.`when`(network.getData("test")).thenReturn(testData)
         runBlocking {
-            val actual = domainRepositoryImpl.translate("test").toList()
-            val expected = flowOf(DomainModel(0, listOf<DomainMeaning>(), "test1")).toString()
+            Mockito.`when`(network.getData("test")).thenReturn(testData)
+            val actual = domainRepositoryImpl.translate("test")
+            val expected = DomainModel(0, listOf<DomainMeaning>(), "test1")
             Assert.assertNotEquals("Return data is equal to input data", expected, actual)
         }
     }
