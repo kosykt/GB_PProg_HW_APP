@@ -4,7 +4,6 @@ object Modules {
     const val domain = ":domain"
     const val data = ":data"
     const val utils = ":utils"
-    const val myTimer = ":myTimer"
 }
 
 object Config {
