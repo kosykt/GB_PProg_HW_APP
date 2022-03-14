@@ -14,10 +14,18 @@
         android:id="@+id/timerFragment"
         android:name="com.example.gb_pprog.ui.timerfragment.TimerFragment"
         android:label="fragment_timer"
-        tools:layout="@layout/fragment_timer" />
+        tools:layout="@layout/fragment_timer" >
+        <action
+            android:id="@+id/action_timerFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.gb_pprog.ui.favoritefragment.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="ru.kosykt.mylibrary.TestFragment"
+        android:label="TestFragment" />
 </navigation>

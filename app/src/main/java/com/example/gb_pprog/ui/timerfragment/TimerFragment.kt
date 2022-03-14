@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.gb_pprog.R
 import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentTimerBinding
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +41,9 @@ class TimerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initClickListeners()
         initTimerBinding()
+        binding.testBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_timerFragment_to_testFragment)
+        }
     }
 
     private fun initTimerBinding() {
