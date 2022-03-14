@@ -59,6 +59,10 @@ dependencies {
     implementation Retrofit.retrofit
     implementation Retrofit.retrofit_converter_gson
 
+    //okHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
+    implementation "com.squareup.okhttp3:okhttp:4.9.3"
+
     //Glide
     implementation Glide.glide
 
