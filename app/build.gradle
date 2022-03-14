@@ -45,6 +45,7 @@ dependencies {
     //Modules
     implementation project(Modules.domain)
     implementation project(Modules.data)
+    implementation project(Modules.utils)
 
     //Dagger
     implementation Dagger.dagger_d
@@ -60,8 +61,8 @@ dependencies {
     implementation Retrofit.retrofit_converter_gson
 
     //okHttp
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
-    implementation "com.squareup.okhttp3:okhttp:4.9.3"
+    implementation OkHttpDeps.ok_http
+    implementation OkHttpDeps.ok_http_logging_interceptor
 
     //Glide
     implementation Glide.glide

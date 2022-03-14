@@ -3,6 +3,7 @@ import org.gradle.api.JavaVersion
 object Modules {
     const val domain = ":domain"
     const val data = ":data"
+    const val utils = ":utils"
 }
 
 object Config {
@@ -40,6 +41,9 @@ object Versions {
 
     //Retrofit
     const val retrofit = "2.9.0"
+
+    //OkHttp
+    const val okHttpVer = "4.9.3"
 
     //Kotlin ktx
     const val kotlinCoreKtx = "1.7.0"
@@ -96,6 +100,12 @@ object LifecycleComponents {
 object Retrofit {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+}
+
+object OkHttpDeps {
+    const val ok_http = "com.squareup.okhttp3:okhttp:${Versions.okHttpVer}"
+    const val ok_http_logging_interceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVer}"
 }
 
 object Kotlin {

@@ -2,7 +2,7 @@ package com.example.gb_pprog.di.components
 
 import com.example.gb_pprog.di.modules.singletons.*
 import com.example.gb_pprog.di.viewmodelsfactory.ViewModelFactory
-import com.example.gb_pprog.di.viewmodelsfactory.ViewModelModule
+import com.example.gb_pprog.di.modules.singletons.ViewModelModule
 import dagger.Component
 import javax.inject.Singleton
 
