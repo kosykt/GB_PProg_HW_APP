@@ -6,11 +6,8 @@ import com.example.gb_pprog.di.components.DaggerAppComponent
 import com.example.gb_pprog.di.components.TimerSubcomponent
 import com.example.gb_pprog.di.containers.TimerContainer
 import com.example.gb_pprog.di.modules.singletons.AppModule
-import ru.kosykt.mylibrary.DaggerTestComponent
-import ru.kosykt.mylibrary.TestComponent
-import ru.kosykt.mylibrary.TestProvider
 
-class App : Application(), TimerContainer, TestProvider {
+class App : Application(), TimerContainer {
 
     companion object {
         private var _instance: App? = null
@@ -37,9 +34,5 @@ class App : Application(), TimerContainer, TestProvider {
     override fun onCreate() {
         super.onCreate()
         _instance = this
-    }
-
-    override fun getTestComponent(): TestComponent {
-        return  DaggerTestComponent.builder().build()
     }
 }
