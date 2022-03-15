@@ -1,4 +1,4 @@
-package com.example.gb_pprog.di.modules.singletons
+package com.example.gb_pprog.di.modules
 
 import android.app.Application
 import androidx.room.Room

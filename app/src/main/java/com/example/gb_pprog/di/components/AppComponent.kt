@@ -1,6 +1,6 @@
 package com.example.gb_pprog.di.components
 
-import com.example.gb_pprog.di.modules.singletons.*
+import com.example.gb_pprog.di.modules.*
 import com.example.gb_pprog.di.viewmodelsfactory.ViewModelFactory
 import dagger.Component
 import javax.inject.Singleton

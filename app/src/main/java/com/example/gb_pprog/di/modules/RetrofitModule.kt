@@ -1,4 +1,4 @@
-package com.example.gb_pprog.di.modules.singletons
+package com.example.gb_pprog.di.modules
 
 import com.example.gb_pprog.data.network.RetrofitService
 import dagger.Module

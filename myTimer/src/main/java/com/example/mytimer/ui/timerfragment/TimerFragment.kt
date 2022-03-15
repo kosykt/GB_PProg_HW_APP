@@ -29,9 +29,9 @@ class TimerFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentTimerBinding? = null")
 
     override fun onAttach(context: Context) {
-        super.onAttach(context)
         (requireActivity().application as TimerComponentProvider).getTimerComponent()
             .inject(this)
+        super.onAttach(context)
     }
 
     override fun onCreateView(
