@@ -60,7 +60,7 @@ class MainActivityTest {
     fun activityBottomNav_Size() {
         scenario.onActivity {
             val bottomNav = it.findViewById<BottomNavigationView>(R.id.main_bnv)
-            val expected = 3
+            val expected = 2
             val actual = bottomNav.menu.size()
             TestCase.assertEquals("BottomNav menu size is not correct", expected, actual)
         }
