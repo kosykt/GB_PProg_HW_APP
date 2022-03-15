@@ -4,11 +4,10 @@ import android.app.Application
 import com.example.gb_pprog.di.components.AppComponent
 import com.example.gb_pprog.di.components.DaggerAppComponent
 import com.example.gb_pprog.di.modules.AppModule
-import com.example.mytimer.di.DaggerTimerComponent
-import com.example.mytimer.di.TimerComponent
-import com.example.mytimer.di.TimerComponentProvider
+import com.example.mytimer.di.TimerSubcomponent
+import com.example.mytimer.di.TimerSubcomponentProvider
 
-class App : Application(), TimerComponentProvider {
+class App : Application(), TimerSubcomponentProvider {
 
     companion object {
         private var _instance: App? = null
@@ -27,7 +26,13 @@ class App : Application(), TimerComponentProvider {
         _instance = this
     }
 
-    override fun getTimerComponent(): TimerComponent {
-        return DaggerTimerComponent.builder().build()
+    private var timerSubcomponent: TimerSubcomponent? = null
+
+    override fun initTimerSubcomponent() = appComponent.provideTimerSubcomponent().also {
+        timerSubcomponent = it
+    }
+
+    override fun destroyTimerSubcomponent() {
+        timerSubcomponent = null
     }
 }

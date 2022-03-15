@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.mytimer.databinding.FragmentTimerBinding
-import com.example.mytimer.di.TimerComponentProvider
+import com.example.mytimer.di.TimerSubcomponentProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -29,7 +29,7 @@ class TimerFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentTimerBinding? = null")
 
     override fun onAttach(context: Context) {
-        (requireActivity().application as TimerComponentProvider).getTimerComponent()
+        (requireActivity().application as TimerSubcomponentProvider).initTimerSubcomponent()
             .inject(this)
         super.onAttach(context)
     }

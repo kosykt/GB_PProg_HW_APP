@@ -2,13 +2,13 @@ package com.example.mytimer.di
 
 import com.example.gb_pprog.di.scopes.TimerScope
 import com.example.mytimer.ui.timerfragment.TimerFragment
-import dagger.Component
+import dagger.Subcomponent
 
 @TimerScope
-@Component(
+@Subcomponent(
     modules = [TimerModule::class]
 )
-interface TimerComponent {
+interface TimerSubcomponent {
 
     fun inject(fragment: TimerFragment)
 }
