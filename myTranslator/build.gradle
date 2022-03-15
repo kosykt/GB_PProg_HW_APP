@@ -41,6 +41,7 @@ dependencies {
 
     //Dagger
     implementation Dagger.dagger_d
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Dagger.dagger_k
 
     //Coroutines
@@ -51,8 +52,15 @@ dependencies {
     implementation LifecycleComponents.runtime_ktx
     implementation LifecycleComponents.viewmodel_ktx
 
+    //Jetpack navigation
+    implementation JetpackNavigation.navigation_fragment
+    implementation JetpackNavigation.navigation_ui
+
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
+
+    //Glide
+    implementation Glide.glide
 
     //Ui design
     implementation Design.appcompat

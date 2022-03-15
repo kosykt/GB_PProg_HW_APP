@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/translatorFragment"
-        android:name="com.example.gb_pprog.ui.translatorfragment.TranslatorFragment"
+        android:name="com.example.mytranslator.ui.translatorfragment.TranslatorFragment"
         android:label="fragment_translator"
         tools:layout="@layout/fragment_translator" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.gb_pprog.ui.favoritefragment.FavoriteFragment"
+        android:name="com.example.mytranslator.ui.favoritefragment.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
 </navigation>

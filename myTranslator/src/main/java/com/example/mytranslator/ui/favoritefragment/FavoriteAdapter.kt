@@ -1,12 +1,12 @@
-package com.example.gb_pprog.ui.favoritefragment.adapter
+package com.example.mytranslator.ui.favoritefragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gb_pprog.databinding.FavoriteItemBinding
 import com.example.gb_pprog.domain.model.FavoriteModel
+import com.example.mytranslator.databinding.FavoriteItemBinding
 
 class FavoriteAdapter(
     private val onItemClickListener: (FavoriteModel) -> Unit,

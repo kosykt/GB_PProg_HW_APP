@@ -1,4 +1,4 @@
-package com.example.gb_pprog.di.translatorscope
+package com.example.mytranslator.di
 
 interface TranslatorProvider {
 

@@ -1,10 +1,10 @@
-package com.example.gb_pprog.ui.translatorfragment.viewmodel
+package com.example.mytranslator.ui.translatorfragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gb_pprog.di.translatorscope.TranslatorProvider
+import com.example.mytranslator.di.TranslatorProvider
 import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase

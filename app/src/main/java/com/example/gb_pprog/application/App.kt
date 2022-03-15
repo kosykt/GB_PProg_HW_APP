@@ -4,8 +4,8 @@ import android.app.Application
 import com.example.gb_pprog.di.components.AppComponent
 import com.example.gb_pprog.di.components.DaggerAppComponent
 import com.example.gb_pprog.di.modules.AppModule
-import com.example.gb_pprog.di.translatorscope.TranslatorProvider
-import com.example.gb_pprog.di.translatorscope.TranslatorSubcomponent
+import com.example.mytranslator.di.TranslatorProvider
+import com.example.mytranslator.di.TranslatorSubcomponent
 import com.example.mytimer.di.TimerSubcomponent
 import com.example.mytimer.di.TimerSubcomponentProvider
 

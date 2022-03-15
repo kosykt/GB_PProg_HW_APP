@@ -1,5 +1,6 @@
-package com.example.gb_pprog.ui.translatorfragment
+package com.example.mytranslator.ui.translatorfragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +11,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.gb_pprog.R
-import com.example.gb_pprog.databinding.FragmentTranslatorBinding
-import com.example.gb_pprog.di.translatorscope.TranslatorProvider
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.gb_pprog.imageloader.GlideImageLoader
-import com.example.gb_pprog.ui.translatorfragment.adapter.TranslatorAdapter
-import com.example.gb_pprog.ui.translatorfragment.viewmodel.TranslatorViewModel
+import com.example.mytranslator.R
+import com.example.mytranslator.databinding.FragmentTranslatorBinding
+import com.example.mytranslator.di.TranslatorProvider
+import com.example.mytranslator.imageloader.GlideImageLoader
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@SuppressLint("UseCompatLoadingForDrawables")
 class TranslatorFragment : Fragment() {
 
     @Inject
@@ -32,7 +32,10 @@ class TranslatorFragment : Fragment() {
         TranslatorAdapter(
             imageLoader = GlideImageLoader(),
             onItemClickListener = vm::favoriteWordOperator,
-            checkIsFavorite = vm::checkIsFavorite
+            checkIsFavorite = vm::checkIsFavorite,
+            activeDrawable = requireContext().getDrawable(R.drawable.ic_baseline_favorite_active),
+            diActiveDrawable = requireContext().getDrawable(R.drawable.ic_baseline_favorite_diactive),
+            string = requireContext().getString(R.string.translator_item_tv_translate_text)
         )
     }
 
@@ -54,6 +57,7 @@ class TranslatorFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.translatorRv.adapter = adapter

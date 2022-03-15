@@ -1,12 +1,12 @@
-package com.example.gb_pprog.di.translatorscope
+package com.example.mytranslator.di
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import com.example.gb_pprog.di.scopes.TranslatorScope
 import com.example.gb_pprog.di.viewmodelsfactory.ViewModelKey
 import com.example.gb_pprog.domain.*
-import com.example.gb_pprog.ui.favoritefragment.viewmodel.FavoriteViewModel
-import com.example.gb_pprog.ui.translatorfragment.viewmodel.TranslatorViewModel
+import com.example.mytranslator.ui.favoritefragment.FavoriteViewModel
+import com.example.mytranslator.ui.translatorfragment.TranslatorViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -63,7 +63,7 @@ interface TranslatorModule {
 
         @TranslatorScope
         @Provides
-        fun provideTranslatorProvider(application: Application): TranslatorProvider{
+        fun provideTranslatorProvider(application: Application): TranslatorProvider {
             return (application as TranslatorProvider)
         }
     }

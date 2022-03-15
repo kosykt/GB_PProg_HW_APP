@@ -1,4 +1,4 @@
-package com.example.gb_pprog.imageloader
+package com.example.mytranslator.imageloader
 
 interface ImageLoader<T> {
 

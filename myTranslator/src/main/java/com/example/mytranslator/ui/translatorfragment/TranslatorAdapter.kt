@@ -1,5 +1,6 @@
-package com.example.gb_pprog.ui.translatorfragment.adapter
+package com.example.mytranslator.ui.translatorfragment
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +9,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gb_pprog.R
-import com.example.gb_pprog.databinding.TranslatorItemBinding
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.gb_pprog.imageloader.ImageLoader
+import com.example.mytranslator.databinding.TranslatorItemBinding
+import com.example.mytranslator.imageloader.ImageLoader
 
 class TranslatorAdapter(
     private val imageLoader: ImageLoader<ImageView>,
     private val onItemClickListener: (DomainModel) -> Boolean,
     private val checkIsFavorite: (DomainModel) -> Boolean,
+    private val activeDrawable: Drawable?,
+    private val diActiveDrawable: Drawable?,
+    private val string: String,
 ) : ListAdapter<DomainModel, TranslatorAdapter.TranslatorViewHolder>(TranslatorItemCallback) {
 
     inner class TranslatorViewHolder(private val vb: TranslatorItemBinding) :
@@ -24,9 +28,9 @@ class TranslatorAdapter(
         private fun initClickListener(dto: DomainModel) {
             vb.translatorItemFavoriteBtn.setOnClickListener {
                 if (onItemClickListener(dto)) {
-                    vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_active)
+                    vb.translatorItemFavoriteBtn.setImageDrawable(activeDrawable)
                 } else {
-                    vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_diactive)
+                    vb.translatorItemFavoriteBtn.setImageDrawable(diActiveDrawable)
                 }
             }
         }
@@ -40,9 +44,9 @@ class TranslatorAdapter(
 
         private fun initFavoriteChecker(dto: DomainModel) {
             if (checkIsFavorite(dto)) {
-                vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_active)
+                vb.translatorItemFavoriteBtn.setImageDrawable(activeDrawable)
             } else {
-                vb.translatorItemFavoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_diactive)
+                vb.translatorItemFavoriteBtn.setImageDrawable(diActiveDrawable)
             }
         }
 
@@ -51,7 +55,7 @@ class TranslatorAdapter(
             initImageLoader(dto)
             initClickListener(dto)
             vb.translatorItemTvTranslate.text = String.format(
-                itemView.context.getString(R.string.translator_item_tv_translate_text),
+                string,
                 dto.text,
                 dto.meanings[0].translation.text
             )

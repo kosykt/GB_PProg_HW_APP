@@ -1,4 +1,4 @@
-package com.example.gb_pprog.ui.favoritefragment.viewmodel
+package com.example.mytranslator.ui.favoritefragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
