@@ -29,7 +29,9 @@ class App : Application(), TimerSubcomponentProvider {
     private var timerSubcomponent: TimerSubcomponent? = null
 
     override fun initTimerSubcomponent() = appComponent.provideTimerSubcomponent().also {
-        timerSubcomponent = it
+        if(timerSubcomponent == null) {
+            timerSubcomponent = it
+        }
     }
 
     override fun destroyTimerSubcomponent() {
