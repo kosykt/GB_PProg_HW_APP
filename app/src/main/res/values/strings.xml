@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Translator</string>
 
-    <string name="ff_til_place_holder_text">Enter a word to translate</string>
-    <string name="ff_til_helper_text">maximum word length</string>
-    <string name="ff_til_hint_text">Translator</string>
-    <string name="ff_til_error_tiet_is_empty">Empty text field</string>
-    <string name="ff_til_error_incorrect_input">Incorrect input</string>
-    <string name="ff_item_tv_translate_text">%s - %s</string>
+    <string name="translator_til_place_holder_text">Enter a word to translate</string>
+    <string name="translator_til_helper_text">maximum word length</string>
+    <string name="translator_til_hint_text">Translator</string>
+    <string name="translator_til_error_tiet_is_empty">Empty text field</string>
+    <string name="translator_til_error_incorrect_input">Incorrect input</string>
+    <string name="translator_item_tv_translate_text">%s - %s</string>
+
     <string name="bottom_view_icon_timer_title">timer</string>
     <string name="bottom_view_icon_translator_title">translator</string>
+    <string name="bottom_view_icon_favorites_title">favorites</string>
+    <string name="email_validator">email validator</string>
 </resources>

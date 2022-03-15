@@ -3,12 +3,12 @@
 
     <attr name="attrActivityBottomNavView" format="reference"/>
 
-    <attr name="attrFfView" format="reference"/>
-    <attr name="attrFfCvInput" format="reference"/>
-    <attr name="attrFfTil" format="reference"/>
-    <attr name="attrFfTiet" format="reference"/>
+    <attr name="attrTranslatorView" format="reference"/>
+    <attr name="attrTranslatorCvInput" format="reference"/>
+    <attr name="attrTranslatorTil" format="reference"/>
+    <attr name="attrTranslatorTiet" format="reference"/>
 
-    <attr name="attrFfItemCv" format="reference"/>
-    <attr name="attrFfItemTvTranslate" format="reference"/>
-    <attr name="attrFfItemTvNote" format="reference"/>
+    <attr name="attrTranslatorItemCv" format="reference"/>
+    <attr name="attrTranslatorItemTvTranslate" format="reference"/>
+    <attr name="attrTranslatorItemTvNote" format="reference"/>
 </resources>

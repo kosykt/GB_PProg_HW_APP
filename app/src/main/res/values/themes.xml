@@ -20,13 +20,13 @@
         <item name="android:windowBackground">@color/secondaryBackgroundColor</item>
         <item name="android:textColorHighlight">@color/secondaryTextColorHighlight</item>
         <item name="android:textCursorDrawable">@drawable/cursor</item>
-        <item name="attrFfView">@style/ff_view_style</item>
-        <item name="attrFfCvInput">@style/ff_cv_input_style</item>
-        <item name="attrFfTil">@style/ff_til_style</item>
-        <item name="attrFfTiet">@style/ff_tiet_style</item>
-        <item name="attrFfItemCv">@style/ff_item_cv_style</item>
-        <item name="attrFfItemTvTranslate">@style/ff_item_tv_translate_style</item>
-        <item name="attrFfItemTvNote">@style/ff_item_tv_note_style</item>
+        <item name="attrTranslatorView">@style/translator_view_style</item>
+        <item name="attrTranslatorCvInput">@style/translator_cv_input_style</item>
+        <item name="attrTranslatorTil">@style/translator_til_style</item>
+        <item name="attrTranslatorTiet">@style/translator_tiet_style</item>
+        <item name="attrTranslatorItemCv">@style/translator_item_cv_style</item>
+        <item name="attrTranslatorItemTvTranslate">@style/translator_item_tv_translate_style</item>
+        <item name="attrTranslatorItemTvNote">@style/translator_item_tv_note_style</item>
         <item name="attrActivityBottomNavView">@style/activity_bottom_nav_view_style</item>
     </style>
 </resources>
