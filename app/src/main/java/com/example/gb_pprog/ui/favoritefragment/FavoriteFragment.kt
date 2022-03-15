@@ -1,20 +1,22 @@
 package com.example.gb_pprog.ui.favoritefragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentFavoriteBinding
+import com.example.gb_pprog.di.translatorscope.TranslatorProvider
 import com.example.gb_pprog.ui.favoritefragment.adapter.FavoriteAdapter
 import com.example.gb_pprog.ui.favoritefragment.viewmodel.FavoriteViewModel
+import javax.inject.Inject
 
 class FavoriteFragment : Fragment() {
 
-    private val vmFactory: ViewModelProvider.Factory =
-        App.instance.appComponent.injectViewModelFactory()
+    @Inject
+    lateinit var vmFactory: ViewModelProvider.Factory
     private val vm: FavoriteViewModel by lazy {
         ViewModelProvider(this, vmFactory)[FavoriteViewModel::class.java]
     }
@@ -27,6 +29,12 @@ class FavoriteFragment : Fragment() {
     private var _binding: FragmentFavoriteBinding? = null
     private val binding: FragmentFavoriteBinding
         get() = _binding ?: throw RuntimeException("FragmentFavoriteBinding? = null")
+
+    override fun onAttach(context: Context) {
+        (requireActivity().application as TranslatorProvider).initTranslatorSubcomponent()
+            .inject(this)
+        super.onAttach(context)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

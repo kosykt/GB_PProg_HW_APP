@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gb_pprog.di.translatorscope.TranslatorProvider
 import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
@@ -20,6 +21,7 @@ class TranslatorViewModel @Inject constructor(
     private val saveFavoriteUseCase: SaveFavoriteUseCase,
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
+    private val translatorProvider: TranslatorProvider
 ) : ViewModel() {
 
     private var favoriteWords: List<String> = emptyList<String>()
@@ -97,5 +99,10 @@ class TranslatorViewModel @Inject constructor(
         _isLoadingData.postValue(loading)
         _errorText.postValue(error)
         _responseData.postValue(response)
+    }
+
+    override fun onCleared() {
+        translatorProvider.destroyTranslatorSubcomponent()
+        super.onCleared()
     }
 }

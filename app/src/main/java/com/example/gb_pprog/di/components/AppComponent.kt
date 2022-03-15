@@ -1,6 +1,7 @@
 package com.example.gb_pprog.di.components
 
 import com.example.gb_pprog.di.modules.*
+import com.example.gb_pprog.di.translatorscope.TranslatorSubcomponent
 import com.example.gb_pprog.di.viewmodelsfactory.ViewModelFactory
 import com.example.mytimer.di.TimerSubcomponent
 import dagger.Component
@@ -19,6 +20,6 @@ import javax.inject.Singleton
 )
 interface AppComponent {
 
-    fun injectViewModelFactory(): ViewModelFactory
+    fun provideTranslatorSubcomponent(): TranslatorSubcomponent
     fun provideTimerSubcomponent(): TimerSubcomponent
 }
