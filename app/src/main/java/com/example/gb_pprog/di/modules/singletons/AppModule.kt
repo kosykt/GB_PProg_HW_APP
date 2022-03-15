@@ -1,16 +1,16 @@
 package com.example.gb_pprog.di.modules.singletons
 
-import com.example.gb_pprog.application.App
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule(private val app: App) {
+class AppModule(private val app: Application) {
 
     @Singleton
     @Provides
-    fun provideApplication(): App {
+    fun provideApplication(): Application {
         return app
     }
 }

@@ -1,5 +1,6 @@
-package com.example.gb_pprog.ui.timerfragment
+package com.example.mytimer.ui.timerfragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,25 +8,31 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.gb_pprog.application.App
-import com.example.gb_pprog.databinding.FragmentTimerBinding
+import com.example.mytimer.databinding.FragmentTimerBinding
+import com.example.mytimer.di.TimerComponentProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class TimerFragment : Fragment() {
 
-    private val vmFactory: ViewModelProvider.Factory = App.instance.appComponent
-        .provideTimerSubcomponent()
-        .injectTimerViewModule()
+    @Inject
+    lateinit var vmFactory: ViewModelProvider.Factory
+
     private val vm: TimerViewModel by lazy {
-        App.instance.initTimerSubcomponent()
         ViewModelProvider(this, vmFactory)[TimerViewModel::class.java]
     }
 
     private var _binding: FragmentTimerBinding? = null
     private val binding: FragmentTimerBinding
         get() = _binding ?: throw RuntimeException("FragmentTimerBinding? = null")
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as TimerComponentProvider).getTimerComponent()
+            .inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

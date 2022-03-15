@@ -1,12 +1,12 @@
-package com.example.gb_pprog.di.modules.timer
+package com.example.mytimer.di
 
 import androidx.lifecycle.ViewModel
-import com.example.gb_pprog.application.App
-import com.example.gb_pprog.di.containers.TimerContainer
+import androidx.lifecycle.ViewModelProvider
 import com.example.gb_pprog.di.scopes.TimerScope
+import com.example.gb_pprog.di.viewmodelsfactory.ViewModelFactory
 import com.example.gb_pprog.di.viewmodelsfactory.ViewModelKey
 import com.example.gb_pprog.domain.MyTimerUseCase
-import com.example.gb_pprog.ui.timerfragment.TimerViewModel
+import com.example.mytimer.ui.timerfragment.TimerViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -23,7 +23,7 @@ interface TimerModule {
 
     @TimerScope
     @Binds
-    fun provideTimerContainer(app: App): TimerContainer
+    fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     companion object {
 
