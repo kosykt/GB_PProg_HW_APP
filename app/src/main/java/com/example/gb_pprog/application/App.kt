@@ -18,6 +18,7 @@ class App : Application() {
                     domainModule,
                     dataModule,
                     retrofitModule,
+                    myFirstTestModule,
                 )
             )
         }
