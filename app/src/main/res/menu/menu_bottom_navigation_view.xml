@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/translatorFragment"
+        android:id="@+id/navigation"
         android:icon="@drawable/ic_icon_translate"
         android:title="@string/bottom_view_icon_translator_title" />
 
