@@ -7,9 +7,6 @@
 
     <style name="translator_view_style" parent="">
         <item name="android:background">@color/secondaryBackgroundColor</item>
-        <item name="android:layout_marginTop">@dimen/translator_constraint_layout_margin</item>
-        <item name="android:layout_marginHorizontal">@dimen/translator_constraint_layout_margin
-        </item>
     </style>
 
     <style name="translator_cv_input_style" parent="">

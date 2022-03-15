@@ -7,11 +7,6 @@
         android:title="@string/bottom_view_icon_translator_title" />
 
     <item
-        android:id="@+id/favoriteFragment"
-        android:icon="@drawable/ic_baseline_favorite_active"
-        android:title="@string/bottom_view_icon_favorites_title" />
-
-    <item
         android:id="@+id/timerFragment"
         android:icon="@drawable/ic_baseline_timer"
         android:title="@string/bottom_view_icon_timer_title" />

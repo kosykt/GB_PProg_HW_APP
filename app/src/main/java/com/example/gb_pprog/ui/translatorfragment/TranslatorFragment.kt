@@ -8,6 +8,8 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.gb_pprog.R
 import com.example.gb_pprog.application.App
 import com.example.gb_pprog.databinding.FragmentTranslatorBinding
 import com.example.gb_pprog.domain.model.DomainModel
@@ -49,6 +51,13 @@ class TranslatorFragment : Fragment() {
         binding.translatorRv.adapter = adapter
         initObservers()
         initTextInputLayout()
+        initClickListener()
+    }
+
+    private fun initClickListener() {
+        binding.translatorToFavoriteFab.setOnClickListener {
+            findNavController().navigate(R.id.action_translatorFragment_to_favoriteFragment)
+        }
     }
 
     private fun initObservers() {

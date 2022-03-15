@@ -9,7 +9,11 @@
         android:id="@+id/translatorFragment"
         android:name="com.example.gb_pprog.ui.translatorfragment.TranslatorFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_translator" />
+        tools:layout="@layout/fragment_translator" >
+        <action
+            android:id="@+id/action_translatorFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+    </fragment>
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.example.mytimer.ui.timerfragment.TimerFragment"
