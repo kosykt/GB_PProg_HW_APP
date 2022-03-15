@@ -5,6 +5,7 @@ object Modules {
     const val data = ":data"
     const val utils = ":utils"
     const val myTimer = ":myTimer"
+    const val myTranslator = ":myTranslator"
 }
 
 object Config {
