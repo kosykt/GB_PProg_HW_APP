@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.gb_pprog.domain.model.DomainModel
@@ -59,9 +60,10 @@ class TranslatorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.translatorRv.adapter = adapter
-        initObservers()
-        initTextInputLayout()
         initClickListener()
+        initTextInputLayout()
+        val observer = Observer<TranslatorState>{renderData(it)}
+        vm.translatorState.observe(viewLifecycleOwner, observer)
     }
 
     private fun initClickListener() {
@@ -70,22 +72,29 @@ class TranslatorFragment : Fragment() {
         }
     }
 
-    private fun initObservers() {
-        vm.responseData.observe(viewLifecycleOwner) {
-            refreshListAdapter(it)
-        }
-        vm.errorText.observe(viewLifecycleOwner) {
-            setErrorText(it)
-        }
-    }
-
-    private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
-
     private fun initTextInputLayout() {
         binding.translatorTiet.doAfterTextChanged {
             vm.getTranslate(binding.translatorTiet.text.toString())
         }
     }
+
+    private fun renderData(data: TranslatorState) {
+        when (data) {
+            is TranslatorState.Success -> {
+                binding.translatorTil.helperText = ""
+                refreshListAdapter(data.response)
+            }
+            is TranslatorState.Loading -> {
+                binding.translatorTil.helperText = "LOADING"
+            }
+            is TranslatorState.Error -> {
+                refreshListAdapter(emptyList())
+                setErrorText(data.error)
+            }
+        }
+    }
+
+    private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
 
     private fun setErrorText(errorText: String?) {
         binding.translatorTil.error = errorText

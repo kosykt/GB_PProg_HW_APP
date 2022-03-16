@@ -37,13 +37,28 @@ class TranslatorViewModel @Inject constructor(
         }
     }
 
-    private val _responseData = MutableLiveData<List<DomainModel>?>()
-    val responseData: LiveData<List<DomainModel>?>
-        get() = _responseData
+    private val _translatorState = MutableLiveData<TranslatorState>()
+    val translatorState: LiveData<TranslatorState> = _translatorState
 
-    private val _errorText = MutableLiveData<String?>()
-    val errorText: LiveData<String?>
-        get() = _errorText
+    fun getTranslate(word: String) {
+        _translatorState.value = TranslatorState.Loading
+        when {
+            word.isEmpty() -> {
+                _translatorState.value = TranslatorState.Success(emptyList())
+            }
+            else -> {
+                viewModelScope.launch(Dispatchers.IO) {
+                    try {
+                        _translatorState.postValue(
+                            TranslatorState.Success(getTranslateUseCase.execute(word))
+                        )
+                    } catch (e: Exception) {
+                        _translatorState.postValue(TranslatorState.Error(e.message.toString()))
+                    }
+                }
+            }
+        }
+    }
 
     fun favoriteWordOperator(domainModel: DomainModel): Boolean {
         return if (favoriteWords.contains(domainModel.text)) {
@@ -66,30 +81,6 @@ class TranslatorViewModel @Inject constructor(
 
     fun checkIsFavorite(domainModel: DomainModel): Boolean {
         return favoriteWords.contains(domainModel.text)
-    }
-
-    fun getTranslate(word: String) {
-        if (word.isBlank()) {
-            refreshData()
-        } else {
-            refreshData()
-            getData(word)
-        }
-    }
-
-    private fun getData(word: String) {
-        viewModelScope.launch {
-            try {
-                _responseData.value = getTranslateUseCase.execute(word)
-            } catch (e: Exception) {
-                refreshData(error = e.message, response = null)
-            }
-        }
-    }
-
-    private fun refreshData(error: String? = null, response: List<DomainModel>? = null) {
-        _errorText.postValue(error)
-        _responseData.postValue(response)
     }
 
     override fun onCleared() {
