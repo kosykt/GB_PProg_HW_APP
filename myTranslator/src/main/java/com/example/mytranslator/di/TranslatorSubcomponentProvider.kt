@@ -1,6 +1,6 @@
 package com.example.mytranslator.di
 
-interface TranslatorProvider {
+interface TranslatorSubcomponentProvider {
 
     fun initTranslatorSubcomponent(): TranslatorSubcomponent
     fun destroyTranslatorSubcomponent()

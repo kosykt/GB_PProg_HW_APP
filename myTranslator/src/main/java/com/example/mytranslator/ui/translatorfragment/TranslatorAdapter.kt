@@ -8,7 +8,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gb_pprog.R
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.mytranslator.databinding.TranslatorItemBinding
 import com.example.mytranslator.imageloader.ImageLoader

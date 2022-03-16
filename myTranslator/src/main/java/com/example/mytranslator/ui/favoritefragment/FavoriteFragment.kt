@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mytranslator.databinding.FragmentFavoriteBinding
-import com.example.mytranslator.di.TranslatorProvider
+import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import javax.inject.Inject
 
 class FavoriteFragment : Fragment() {
@@ -29,7 +29,7 @@ class FavoriteFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentFavoriteBinding? = null")
 
     override fun onAttach(context: Context) {
-        (requireActivity().application as TranslatorProvider).initTranslatorSubcomponent()
+        (requireActivity().application as TranslatorSubcomponentProvider).initTranslatorSubcomponent()
             .inject(this)
         super.onAttach(context)
     }

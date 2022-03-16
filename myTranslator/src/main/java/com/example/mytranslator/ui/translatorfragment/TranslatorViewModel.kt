@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mytranslator.di.TranslatorProvider
 import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.GetTranslateUseCase
 import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
+import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -21,7 +21,7 @@ class TranslatorViewModel @Inject constructor(
     private val saveFavoriteUseCase: SaveFavoriteUseCase,
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
-    private val translatorProvider: TranslatorProvider
+    private val translatorSubcomponentProvider: TranslatorSubcomponentProvider
 ) : ViewModel() {
 
     private var favoriteWords: List<String> = emptyList<String>()
@@ -40,10 +40,6 @@ class TranslatorViewModel @Inject constructor(
     private val _responseData = MutableLiveData<List<DomainModel>?>()
     val responseData: LiveData<List<DomainModel>?>
         get() = _responseData
-
-    private val _isLoadingData = MutableLiveData<Boolean>()
-    val loadingData: LiveData<Boolean>
-        get() = _isLoadingData
 
     private val _errorText = MutableLiveData<String?>()
     val errorText: LiveData<String?>
@@ -74,15 +70,11 @@ class TranslatorViewModel @Inject constructor(
 
     fun getTranslate(word: String) {
         if (word.isBlank()) {
-            refreshData(loading = false, error = null, response = null)
+            refreshData()
         } else {
-            refreshData(loading = true, error = null, response = null)
-            checkNetwork(word)
+            refreshData()
+            getData(word)
         }
-    }
-
-    private fun checkNetwork(word: String) {
-        getData(word)
     }
 
     private fun getData(word: String) {
@@ -90,19 +82,18 @@ class TranslatorViewModel @Inject constructor(
             try {
                 _responseData.value = getTranslateUseCase.execute(word)
             } catch (e: Exception) {
-                refreshData(loading = false, error = e.message, response = null)
+                refreshData(error = e.message, response = null)
             }
         }
     }
 
-    private fun refreshData(loading: Boolean, error: String?, response: List<DomainModel>?) {
-        _isLoadingData.postValue(loading)
+    private fun refreshData(error: String? = null, response: List<DomainModel>? = null) {
         _errorText.postValue(error)
         _responseData.postValue(response)
     }
 
     override fun onCleared() {
-        translatorProvider.destroyTranslatorSubcomponent()
+        translatorSubcomponentProvider.destroyTranslatorSubcomponent()
         super.onCleared()
     }
 }

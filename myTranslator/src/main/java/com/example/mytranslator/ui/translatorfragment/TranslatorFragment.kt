@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.mytranslator.R
 import com.example.mytranslator.databinding.FragmentTranslatorBinding
-import com.example.mytranslator.di.TranslatorProvider
+import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import com.example.mytranslator.imageloader.GlideImageLoader
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -44,7 +44,7 @@ class TranslatorFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentFirstBinding? = null")
 
     override fun onAttach(context: Context) {
-        (requireActivity().application as TranslatorProvider).initTranslatorSubcomponent()
+        (requireActivity().application as TranslatorSubcomponentProvider).initTranslatorSubcomponent()
             .inject(this)
         super.onAttach(context)
     }
@@ -84,11 +84,9 @@ class TranslatorFragment : Fragment() {
     private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
 
     private fun initTextInputLayout() {
-        binding.translatorTil.apply {
-            editText?.doAfterTextChanged {
-                lifecycleScope.launch {
-                    vm.getTranslate(binding.translatorTiet.text.toString())
-                }
+        binding.translatorTiet.doAfterTextChanged {
+            lifecycleScope.launch {
+                vm.getTranslate(binding.translatorTiet.text.toString())
             }
         }
     }

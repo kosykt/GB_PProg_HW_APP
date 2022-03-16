@@ -63,8 +63,8 @@ interface TranslatorModule {
 
         @TranslatorScope
         @Provides
-        fun provideTranslatorProvider(application: Application): TranslatorProvider {
-            return (application as TranslatorProvider)
+        fun provideTranslatorProvider(application: Application): TranslatorSubcomponentProvider {
+            return (application as TranslatorSubcomponentProvider)
         }
     }
 }
