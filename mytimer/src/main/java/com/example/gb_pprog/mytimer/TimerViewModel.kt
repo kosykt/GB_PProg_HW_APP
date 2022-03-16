@@ -30,8 +30,7 @@ class TimerViewModel(
     private fun startJob() {
         viewModelScope.launch {
             myTimer.getTimeMillis()
-                .collect {
-                        millis ->
+                .collect { millis ->
                     timeMillis = millis
                     _ticker.value = format(millis)
                 }

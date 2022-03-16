@@ -30,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = Config.jvm_target
     }
+    sourceSets {
+        test.resources.srcDirs += 'src/test/res'
+    }
 }
 
 dependencies {
@@ -51,6 +54,10 @@ dependencies {
 
     //Test
     testImplementation TestImpl.junit
-    androidTestImplementation TestImpl.ext_junit
-    androidTestImplementation TestImpl.espresso
+
+    testImplementation TestImpl.mockito_core
+    testImplementation TestImpl.mockito_kotlin
+    testImplementation TestImpl.mock_web_server
+
+    testImplementation TestImpl.arch_core
 }

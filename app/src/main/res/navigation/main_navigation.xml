@@ -38,7 +38,7 @@
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/myFirstTestFragment"
-        android:name="com.example.myfirsttest.MyFirstTestFragment"
+        android:name="com.example.myfirsttest.presentation.MyFirstTestFragment"
         android:label="MyFirstTestFragment"
         tools:layout="@layout/fragment_my_first_test"/>
 </navigation>

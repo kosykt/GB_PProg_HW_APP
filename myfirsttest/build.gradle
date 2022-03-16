@@ -39,14 +39,20 @@ dependencies {
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
 
+    //Koin
+    implementation Koin.koin_android
+
     //Ui design
     implementation Design.appcompat
     implementation Design.material
     implementation Design.constraint_layout
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    //Test
+    //Unit test
     testImplementation TestImpl.junit
+    testImplementation TestImpl.mockito_core
+    testImplementation TestImpl.mockito_kotlin
+
+    //Ui test
     androidTestImplementation TestImpl.ext_junit
     androidTestImplementation TestImpl.espresso
 }
