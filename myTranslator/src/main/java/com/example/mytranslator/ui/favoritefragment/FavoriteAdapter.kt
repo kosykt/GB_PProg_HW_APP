@@ -37,20 +37,20 @@ class FavoriteAdapter(
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         holder.showWords(currentList[position])
     }
-}
 
-object FavoriteItemCallback : DiffUtil.ItemCallback<FavoriteModel>() {
-    override fun areItemsTheSame(
-        oldItem: FavoriteModel,
-        newItem: FavoriteModel,
-    ): Boolean {
-        return oldItem == newItem
-    }
+    companion object FavoriteItemCallback : DiffUtil.ItemCallback<FavoriteModel>() {
+        override fun areItemsTheSame(
+            oldItem: FavoriteModel,
+            newItem: FavoriteModel,
+        ): Boolean {
+            return oldItem == newItem
+        }
 
-    override fun areContentsTheSame(
-        oldItem: FavoriteModel,
-        newItem: FavoriteModel,
-    ): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(
+            oldItem: FavoriteModel,
+            newItem: FavoriteModel,
+        ): Boolean {
+            return oldItem == newItem
+        }
     }
 }

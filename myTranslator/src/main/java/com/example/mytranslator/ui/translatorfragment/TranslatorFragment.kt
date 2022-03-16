@@ -9,14 +9,12 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.mytranslator.R
 import com.example.mytranslator.databinding.FragmentTranslatorBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import com.example.mytranslator.imageloader.GlideImageLoader
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @SuppressLint("UseCompatLoadingForDrawables")
@@ -85,9 +83,7 @@ class TranslatorFragment : Fragment() {
 
     private fun initTextInputLayout() {
         binding.translatorTiet.doAfterTextChanged {
-            lifecycleScope.launch {
-                vm.getTranslate(binding.translatorTiet.text.toString())
-            }
+            vm.getTranslate(binding.translatorTiet.text.toString())
         }
     }
 

@@ -49,16 +49,7 @@ class TranslatorAdapter(
             }
         }
 
-        fun showTranslate(dto: DomainModel) {
-            initFavoriteChecker(dto)
-            initImageLoader(dto)
-            initClickListener(dto)
-            vb.translatorItemTvTranslate.text = String.format(
-                string,
-                dto.text,
-                dto.meanings[0].translation.text
-            )
-            dto.meanings[0]
+        private fun initNoteSetter(dto: DomainModel) {
             if (dto.meanings[0].translation.note == "") {
                 vb.translatorItemTvNote.apply {
                     visibility = View.GONE
@@ -70,6 +61,22 @@ class TranslatorAdapter(
                     text = dto.meanings[0].translation.note
                 }
             }
+        }
+
+        private fun initTextSetter(dto: DomainModel) {
+            vb.translatorItemTvTranslate.text = String.format(
+                string,
+                dto.text,
+                dto.meanings[0].translation.text
+            )
+        }
+
+        fun showTranslate(dto: DomainModel) {
+            initFavoriteChecker(dto)
+            initImageLoader(dto)
+            initClickListener(dto)
+            initTextSetter(dto)
+            initNoteSetter(dto)
         }
     }
 
@@ -86,21 +93,20 @@ class TranslatorAdapter(
     override fun onBindViewHolder(holder: TranslatorViewHolder, position: Int) {
         holder.showTranslate(currentList[position])
     }
-}
 
+    companion object TranslatorItemCallback : DiffUtil.ItemCallback<DomainModel>() {
+        override fun areItemsTheSame(
+            oldItem: DomainModel,
+            newItem: DomainModel,
+        ): Boolean {
+            return oldItem == newItem
+        }
 
-object TranslatorItemCallback : DiffUtil.ItemCallback<DomainModel>() {
-    override fun areItemsTheSame(
-        oldItem: DomainModel,
-        newItem: DomainModel,
-    ): Boolean {
-        return oldItem == newItem
-    }
-
-    override fun areContentsTheSame(
-        oldItem: DomainModel,
-        newItem: DomainModel,
-    ): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(
+            oldItem: DomainModel,
+            newItem: DomainModel,
+        ): Boolean {
+            return oldItem == newItem
+        }
     }
 }
