@@ -61,8 +61,8 @@ class TranslatorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.translatorRv.adapter = adapter
         initClickListener()
-        initTextInputLayout()
-        val observer = Observer<TranslatorState>{renderData(it)}
+        textChangingHandler()
+        val observer = Observer<TranslatorState> { renderData(it) }
         vm.translatorState.observe(viewLifecycleOwner, observer)
     }
 
@@ -72,7 +72,7 @@ class TranslatorFragment : Fragment() {
         }
     }
 
-    private fun initTextInputLayout() {
+    private fun textChangingHandler() {
         binding.translatorTiet.doAfterTextChanged {
             vm.getTranslate(binding.translatorTiet.text.toString())
         }
@@ -89,16 +89,12 @@ class TranslatorFragment : Fragment() {
             }
             is TranslatorState.Error -> {
                 refreshListAdapter(emptyList())
-                setErrorText(data.error)
+                binding.translatorTil.error = data.error
             }
         }
     }
 
     private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
-
-    private fun setErrorText(errorText: String?) {
-        binding.translatorTil.error = errorText
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
