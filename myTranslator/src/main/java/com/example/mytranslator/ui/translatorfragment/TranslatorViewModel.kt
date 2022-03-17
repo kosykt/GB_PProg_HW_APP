@@ -1,7 +1,5 @@
 package com.example.mytranslator.ui.translatorfragment
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gb_pprog.domain.DeleteFavoriteUseCase
@@ -12,7 +10,9 @@ import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,24 +38,23 @@ class TranslatorViewModel @Inject constructor(
         }
     }
 
-    private val _translatorState = MutableLiveData<TranslatorState>()
-    val translatorState: LiveData<TranslatorState> = _translatorState
+    private val _translatorState =
+        MutableStateFlow<TranslatorState>(TranslatorState.Success(emptyList()))
+    val translatorState: StateFlow<TranslatorState> = _translatorState
 
     fun getTranslate(word: String) {
         _translatorState.value = TranslatorState.Loading
         when {
             word.isEmpty() -> {
+                viewModelScope.coroutineContext.cancelChildren()
                 _translatorState.value = TranslatorState.Success(emptyList())
             }
             else -> {
                 viewModelScope.launch(Dispatchers.IO) {
-                    try {
-                        _translatorState.postValue(
-                            TranslatorState.Success(getTranslateUseCase.execute(word))
-                        )
-                    } catch (e: Exception) {
-                        _translatorState.postValue(TranslatorState.Error(e.message.toString()))
-                    }
+                    getTranslateUseCase.execute(word)
+                        .collect {
+                            _translatorState.value = TranslatorState.Success(it)
+                        }
                 }
             }
         }

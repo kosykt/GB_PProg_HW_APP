@@ -8,14 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.mytranslator.R
 import com.example.mytranslator.databinding.FragmentTranslatorBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import com.example.mytranslator.imageloader.GlideImageLoader
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @SuppressLint("UseCompatLoadingForDrawables")
@@ -62,8 +64,11 @@ class TranslatorFragment : Fragment() {
         binding.translatorRv.adapter = adapter
         initClickListener()
         textChangingHandler()
-        val observer = Observer<TranslatorState> { renderData(it) }
-        vm.translatorState.observe(viewLifecycleOwner, observer)
+        lifecycleScope.launch {
+            vm.translatorState.collect {
+                renderData(it)
+            }
+        }
     }
 
     private fun initClickListener() {
