@@ -12,6 +12,7 @@ import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,13 +25,13 @@ class TranslatorViewModel @Inject constructor(
     private val translatorSubcomponentProvider: TranslatorSubcomponentProvider
 ) : ViewModel() {
 
-    private var favoriteWords: List<String> = emptyList<String>()
+    private val favoriteWords = MutableStateFlow<List<String>>(emptyList())
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             getAllFavoritesUseCase.execute()
                 .collect { ListModels ->
-                    favoriteWords = ListModels.map {
+                    favoriteWords.value = ListModels.map {
                         it.word
                     }
                 }
@@ -61,7 +62,7 @@ class TranslatorViewModel @Inject constructor(
     }
 
     fun favoriteWordOperator(domainModel: DomainModel): Boolean {
-        return if (favoriteWords.contains(domainModel.text)) {
+        return if (favoriteWords.value.contains(domainModel.text)) {
             viewModelScope.launch(Dispatchers.IO) {
                 deleteFavoriteUseCase.execute(
                     FavoriteModel(
@@ -80,7 +81,7 @@ class TranslatorViewModel @Inject constructor(
     }
 
     fun checkIsFavorite(domainModel: DomainModel): Boolean {
-        return favoriteWords.contains(domainModel.text)
+        return favoriteWords.value.contains(domainModel.text)
     }
 
     override fun onCleared() {
