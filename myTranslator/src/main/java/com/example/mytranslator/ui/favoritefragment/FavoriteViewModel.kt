@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,6 +25,13 @@ class FavoriteViewModel @Inject constructor(
     fun getAll() {
         viewModelScope.launch(Dispatchers.IO) {
             getAllFavoritesUseCase.execute()
+                .filter {
+                    if (true){
+                        true
+                    }else{
+                        false
+                    }
+                }
                 .collect {
                     _favoriteWords.value = it
                 }

@@ -10,10 +10,7 @@ import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -44,17 +41,23 @@ class TranslatorViewModel @Inject constructor(
 
     fun getTranslate(word: String) {
         _translatorState.value = TranslatorState.Loading
-        when {
-            word.isEmpty() -> {
-                viewModelScope.coroutineContext.cancelChildren()
-                _translatorState.value = TranslatorState.Success(emptyList())
-            }
-            else -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    _translatorState.value =
-                        TranslatorState.Success(getTranslateUseCase.execute(word))
+        viewModelScope.launch(Dispatchers.IO) {
+            getTranslateUseCase.execute(word)
+                .filter {
+                    return@filter when{
+                        word.isEmpty() -> {
+                            _translatorState.value = TranslatorState.Success(emptyList())
+                            false
+                        }
+                        else -> true
+                    }
                 }
-            }
+                .distinctUntilChanged()
+                .catch { e ->
+                    _translatorState.value = TranslatorState.Error(e.message.toString())
+                }.collectLatest { list ->
+                    _translatorState.value = TranslatorState.Success(list)
+                }
         }
     }
 
