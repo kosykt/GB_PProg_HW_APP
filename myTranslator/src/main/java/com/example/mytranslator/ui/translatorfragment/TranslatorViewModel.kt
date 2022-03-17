@@ -51,10 +51,8 @@ class TranslatorViewModel @Inject constructor(
             }
             else -> {
                 viewModelScope.launch(Dispatchers.IO) {
-                    getTranslateUseCase.execute(word)
-                        .collect {
-                            _translatorState.value = TranslatorState.Success(it)
-                        }
+                    _translatorState.value =
+                        TranslatorState.Success(getTranslateUseCase.execute(word))
                 }
             }
         }
