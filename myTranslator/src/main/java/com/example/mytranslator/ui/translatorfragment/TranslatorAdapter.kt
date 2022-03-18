@@ -4,16 +4,15 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.mytranslator.databinding.TranslatorItemBinding
-import com.example.mytranslator.imageloader.ImageLoader
+import com.example.gb_pprog.imageloader.ImageLoader
 
 class TranslatorAdapter(
-    private val imageLoader: ImageLoader<ImageView>,
+    private val imageLoader: ImageLoader,
     private val onItemClickListener: (DomainModel) -> Boolean,
     private val checkIsFavorite: (DomainModel) -> Boolean,
     private val activeDrawable: Drawable?,

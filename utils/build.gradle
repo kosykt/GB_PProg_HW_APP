@@ -36,6 +36,9 @@ dependencies {
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
 
+    //Glide
+    implementation Glide.glide
+
     //Ui design
     implementation Design.appcompat
 }

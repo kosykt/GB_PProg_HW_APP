@@ -1,9 +1,9 @@
-package com.example.mytranslator.imageloader
+package com.example.gb_pprog.imageloader
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 
-class GlideImageLoader : ImageLoader<ImageView> {
+class GlideImageLoader : ImageLoader {
 
     override fun loadInto(url: String, container: ImageView) {
         Glide.with(container.context)

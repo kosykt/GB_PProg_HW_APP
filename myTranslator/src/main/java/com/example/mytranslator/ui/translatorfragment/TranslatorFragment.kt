@@ -15,7 +15,7 @@ import com.example.gb_pprog.domain.model.DomainModel
 import com.example.mytranslator.R
 import com.example.mytranslator.databinding.FragmentTranslatorBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
-import com.example.mytranslator.imageloader.GlideImageLoader
+import com.example.gb_pprog.imageloader.ImageLoader
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,13 +25,17 @@ class TranslatorFragment : Fragment() {
 
     @Inject
     lateinit var vmFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
     private val vm: TranslatorViewModel by lazy {
         ViewModelProvider(this, vmFactory)[TranslatorViewModel::class.java]
     }
 
     private val adapter by lazy {
         TranslatorAdapter(
-            imageLoader = GlideImageLoader(),
+            imageLoader = imageLoader,
             onItemClickListener = vm::favoriteWordOperator,
             checkIsFavorite = vm::checkIsFavorite,
             activeDrawable = requireContext().getDrawable(R.drawable.ic_baseline_favorite_active),

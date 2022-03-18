@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.example.gb_pprog.di.scopes.TranslatorScope
 import com.example.gb_pprog.di.viewmodelsfactory.ViewModelKey
 import com.example.gb_pprog.domain.*
+import com.example.gb_pprog.imageloader.GlideImageLoader
+import com.example.gb_pprog.imageloader.ImageLoader
 import com.example.mytranslator.ui.favoritefragment.FavoriteViewModel
 import com.example.mytranslator.ui.translatorfragment.TranslatorViewModel
 import dagger.Binds
@@ -28,6 +30,12 @@ interface TranslatorModule {
     fun bindFavoriteViewModel(vm: FavoriteViewModel): ViewModel
 
     companion object {
+
+        @TranslatorScope
+        @Provides
+        fun provideGlide(): ImageLoader {
+            return GlideImageLoader()
+        }
 
         @TranslatorScope
         @Provides
