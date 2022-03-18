@@ -12,9 +12,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mytimer.databinding.FragmentTimerBinding
 import com.example.mytimer.di.TimerSubcomponentProvider
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TimerFragment : Fragment() {
@@ -51,7 +49,7 @@ class TimerFragment : Fragment() {
     }
 
     private fun initTimerBinding() {
-        lifecycleScope.launch(Dispatchers.Main) {
+        lifecycleScope.launchWhenStarted {
             vm.ticker
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {

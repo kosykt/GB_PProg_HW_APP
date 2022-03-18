@@ -19,7 +19,6 @@ import com.example.mytranslator.R
 import com.example.mytranslator.databinding.FragmentTranslatorBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @SuppressLint("UseCompatLoadingForDrawables")
@@ -69,7 +68,7 @@ class TranslatorFragment : Fragment() {
         binding.translatorRv.adapter = adapter
         initClickListener()
         textChangingHandler()
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             vm.translatorState
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {

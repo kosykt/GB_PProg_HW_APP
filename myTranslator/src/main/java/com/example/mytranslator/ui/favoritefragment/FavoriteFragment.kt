@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mytranslator.databinding.FragmentFavoriteBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FavoriteFragment : Fragment() {
@@ -50,7 +49,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.favoriteRv.adapter = adapter
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             vm.favoriteWords
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
