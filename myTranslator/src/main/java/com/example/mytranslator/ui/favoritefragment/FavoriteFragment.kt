@@ -48,7 +48,6 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.favoriteRv.adapter = adapter
-        vm.getAll()
         lifecycleScope.launch {
             vm.favoriteWords.collect {
                 adapter.submitList(it)

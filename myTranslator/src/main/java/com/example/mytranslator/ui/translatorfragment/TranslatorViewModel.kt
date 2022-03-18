@@ -15,36 +15,35 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TranslatorViewModel @Inject constructor(
+    getAllFavoritesUseCase: GetAllFavoritesUseCase,
     private val getTranslateUseCase: GetTranslateUseCase,
     private val saveFavoriteUseCase: SaveFavoriteUseCase,
-    private val getAllFavoritesUseCase: GetAllFavoritesUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
     private val translatorSubcomponentProvider: TranslatorSubcomponentProvider
 ) : ViewModel() {
 
-    private val favoriteWords = MutableStateFlow<List<String>>(emptyList())
-
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            getAllFavoritesUseCase.execute()
-                .collect { ListModels ->
-                    favoriteWords.value = ListModels.map {
-                        it.word
-                    }
-                }
+    private val favoriteWords: StateFlow<List<String>> = getAllFavoritesUseCase.execute()
+        .map { list ->
+            list.map {
+                it.word
+            }
         }
-    }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Eagerly,
+            initialValue = emptyList()
+        )
 
     private val _translatorState =
         MutableStateFlow<TranslatorState>(TranslatorState.Success(emptyList()))
-    val translatorState: StateFlow<TranslatorState> = _translatorState
+    val translatorState: StateFlow<TranslatorState> = _translatorState.asStateFlow()
 
     fun getTranslate(word: String) {
         _translatorState.value = TranslatorState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             getTranslateUseCase.execute(word)
                 .filter {
-                    return@filter when{
+                    return@filter when {
                         word.isEmpty() -> {
                             _translatorState.value = TranslatorState.Success(emptyList())
                             false
