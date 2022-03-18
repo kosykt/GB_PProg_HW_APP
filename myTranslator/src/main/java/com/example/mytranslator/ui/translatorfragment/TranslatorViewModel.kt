@@ -42,15 +42,6 @@ class TranslatorViewModel @Inject constructor(
         _translatorState.value = TranslatorState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             getTranslateUseCase.execute(word)
-                .filter {
-                    return@filter when {
-                        word.isEmpty() -> {
-                            _translatorState.value = TranslatorState.Success(emptyList())
-                            false
-                        }
-                        else -> true
-                    }
-                }
                 .distinctUntilChanged()
                 .catch { e ->
                     _translatorState.value = TranslatorState.Error(e.message.toString())

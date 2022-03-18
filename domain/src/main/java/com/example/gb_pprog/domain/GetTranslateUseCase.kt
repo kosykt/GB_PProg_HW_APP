@@ -7,7 +7,15 @@ import kotlinx.coroutines.flow.flow
 class GetTranslateUseCase(
     private val domainRepository: DomainRepository,
 ) {
-    fun execute(word: String): Flow<List<DomainModel>> = flow {
-        emit(domainRepository.translate(word))
+    fun execute(word: String): Flow<List<DomainModel>> {
+        return if (word.isEmpty()) {
+            flow {
+                emit(emptyList())
+            }
+        } else {
+            flow {
+                emit(domainRepository.translate(word))
+            }
+        }
     }
 }
