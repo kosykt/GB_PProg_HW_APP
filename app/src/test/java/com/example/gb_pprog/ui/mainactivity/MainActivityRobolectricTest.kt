@@ -18,7 +18,7 @@ import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [Build.VERSION_CODES.O_MR1])
-class MainActivityTest {
+class MainActivityRobolectricTest {
 
     private lateinit var scenario: ActivityScenario<MainActivity>
     private lateinit var context: Context
