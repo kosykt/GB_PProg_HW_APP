@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mytimer.databinding.FragmentTimerBinding
 import com.example.mytimer.di.TimerSubcomponentProvider
@@ -50,9 +52,11 @@ class TimerFragment : Fragment() {
 
     private fun initTimerBinding() {
         lifecycleScope.launch(Dispatchers.Main) {
-            vm.ticker.collect {
-                binding.ftTimerTv.text = it
-            }
+            vm.ticker
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.ftTimerTv.text = it
+                }
         }
     }
 

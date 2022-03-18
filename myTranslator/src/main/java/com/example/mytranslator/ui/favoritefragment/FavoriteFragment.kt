@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mytranslator.databinding.FragmentFavoriteBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
@@ -49,9 +51,11 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.favoriteRv.adapter = adapter
         lifecycleScope.launch {
-            vm.favoriteWords.collect {
-                adapter.submitList(it)
-            }
+            vm.favoriteWords
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    adapter.submitList(it)
+                }
         }
     }
 
