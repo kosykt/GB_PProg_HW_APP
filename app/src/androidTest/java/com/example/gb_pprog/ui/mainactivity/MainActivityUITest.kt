@@ -1,13 +1,15 @@
-package com.example.gb_pprog
+package com.example.gb_pprog.ui.mainactivity
 
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.pressBack
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.gb_pprog.ui.mainactivity.MainActivity
+import com.example.gb_pprog.R
 import junit.framework.TestCase
 import org.junit.After
 import org.junit.Before
@@ -79,6 +81,32 @@ class MainActivityUITest {
 
     @Test
     fun activity_fragment_translator_IsDisplayed() {
+        onView(withId(R.id.fragment_translator)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun activity_fragment_timer_IsDisplayed() {
+        onView(withId(R.id.timerFragment)).perform(click())
+        onView(withId(R.id.fragment_timer)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun activity_fragment_timer_pressBack() {
+        onView(withId(R.id.timerFragment)).perform(click())
+        onView(withId(R.id.main_activity)).perform(pressBack())
+        onView(withId(R.id.fragment_translator)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun activity_fragment_favorite_IsDisplayed() {
+        onView(withId(R.id.translator_to_favorite_fab)).perform(click())
+        onView(withId(R.id.fragment_favorite)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun activity_fragment_favorite_pressBack() {
+        onView(withId(R.id.translator_to_favorite_fab)).perform(click())
+        onView(withId(R.id.main_activity)).perform(pressBack())
         onView(withId(R.id.fragment_translator)).check(matches(isDisplayed()))
     }
 }
