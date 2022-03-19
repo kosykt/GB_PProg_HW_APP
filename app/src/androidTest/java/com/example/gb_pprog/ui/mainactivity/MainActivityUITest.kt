@@ -99,13 +99,13 @@ class MainActivityUITest {
 
     @Test
     fun activity_fragment_favorite_IsDisplayed() {
-        onView(withId(R.id.translator_to_favorite_fab)).perform(click())
+        onView(withId(R.id.translator_to_favorite_ibutton)).perform(click())
         onView(withId(R.id.fragment_favorite)).check(matches(isDisplayed()))
     }
 
     @Test
     fun activity_fragment_favorite_pressBack() {
-        onView(withId(R.id.translator_to_favorite_fab)).perform(click())
+        onView(withId(R.id.translator_to_favorite_ibutton)).perform(click())
         onView(withId(R.id.main_activity)).perform(pressBack())
         onView(withId(R.id.fragment_translator)).check(matches(isDisplayed()))
     }

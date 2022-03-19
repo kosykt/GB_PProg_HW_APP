@@ -22,12 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/translator_to_favorite_fab"
+            <ImageButton
+                android:id="@+id/translator_to_favorite_ibutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
-                app:fabSize="mini"
+                android:background="#00FFFFFF"
+                android:backgroundTintMode="screen"
+                android:src="@drawable/ic_baseline_favorite_active"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/translator_til"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +43,7 @@
                 android:layout_gravity="start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/translator_to_favorite_fab"
+                app:layout_constraintStart_toEndOf="@id/translator_to_favorite_ibutton"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -51,9 +53,7 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.cardview.widget.CardView>
 

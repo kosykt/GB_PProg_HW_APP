@@ -78,7 +78,7 @@ class TranslatorFragment : Fragment() {
     }
 
     private fun initClickListener() {
-        binding.translatorToFavoriteFab.setOnClickListener {
+        binding.translatorToFavoriteIbutton.setOnClickListener {
             findNavController().navigate(R.id.action_translatorFragment_to_favoriteFragment)
         }
     }
