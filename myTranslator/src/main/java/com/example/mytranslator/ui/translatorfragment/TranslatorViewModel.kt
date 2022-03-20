@@ -10,6 +10,7 @@ import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -41,6 +42,10 @@ class TranslatorViewModel @Inject constructor(
     fun getTranslate(word: String) {
         _translatorState.value = TranslatorState.Loading
         viewModelScope.launch(Dispatchers.IO) {
+            if (word.isEmpty()) {
+                _translatorState.value = TranslatorState.Success(emptyList())
+                viewModelScope.coroutineContext.cancelChildren()
+            }
             getTranslateUseCase.execute(word)
                 .distinctUntilChanged()
                 .catch { e ->
