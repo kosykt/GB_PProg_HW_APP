@@ -1,6 +1,5 @@
 package com.example.mytranslator.ui.translatorfragment
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +20,6 @@ import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
-@SuppressLint("UseCompatLoadingForDrawables")
 class TranslatorFragment : Fragment() {
 
     @Inject
@@ -39,8 +37,6 @@ class TranslatorFragment : Fragment() {
             imageLoader = imageLoader,
             onItemClickListener = vm::favoriteWordOperator,
             checkIsFavorite = vm::checkIsFavorite,
-            activeDrawable = requireContext().getDrawable(R.drawable.ic_baseline_favorite_active),
-            diActiveDrawable = requireContext().getDrawable(R.drawable.ic_baseline_favorite_diactive),
             string = requireContext().getString(R.string.translator_item_tv_translate_text)
         )
     }

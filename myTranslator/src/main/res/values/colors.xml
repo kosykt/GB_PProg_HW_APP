@@ -11,6 +11,8 @@
     <color name="test_yellow">#F6FF00</color>
     <color name="test_green">#26FF00</color>
 
+    <color name="favorite_color">#BAFA0000</color>
+
     <color name="secondaryColor">#90a4ae</color>
     <color name="secondaryLightColor">#F5FBFF</color>
     <color name="secondaryDarkColor">#62757f</color>

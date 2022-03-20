@@ -64,17 +64,18 @@
             app:barrierDirection="start"
             app:constraint_referenced_ids="translator_item_favorite_btn" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <CheckBox
             android:id="@+id/translator_item_favorite_btn"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="6dp"
-            android:background="@drawable/translator_item_favorite_btn_drawable"
-            android:src="@drawable/ic_baseline_favorite_diactive"
+            app:buttonTint="@color/favorite_color"
+            android:button="@drawable/sl_favourite_check"
             app:layout_constraintBottom_toBottomOf="@id/translator_constraint"
             app:layout_constraintEnd_toEndOf="@id/translator_constraint"
             app:layout_constraintStart_toEndOf="@id/translator_item_barrier_2"
             app:layout_constraintTop_toTopOf="@id/translator_constraint" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

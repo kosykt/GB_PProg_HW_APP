@@ -1,6 +1,5 @@
 package com.example.mytranslator.ui.translatorfragment
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,15 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.mytranslator.databinding.TranslatorItemBinding
 import com.example.gb_pprog.imageloader.ImageLoader
+import com.example.mytranslator.databinding.TranslatorItemBinding
 
 class TranslatorAdapter(
     private val imageLoader: ImageLoader,
     private val onItemClickListener: (DomainModel) -> Boolean,
     private val checkIsFavorite: (DomainModel) -> Boolean,
-    private val activeDrawable: Drawable?,
-    private val diActiveDrawable: Drawable?,
     private val string: String,
 ) : ListAdapter<DomainModel, TranslatorAdapter.TranslatorViewHolder>(TranslatorItemCallback) {
 
@@ -25,11 +22,7 @@ class TranslatorAdapter(
 
         private fun initClickListener(dto: DomainModel) {
             vb.translatorItemFavoriteBtn.setOnClickListener {
-                if (onItemClickListener(dto)) {
-                    vb.translatorItemFavoriteBtn.setImageDrawable(activeDrawable)
-                } else {
-                    vb.translatorItemFavoriteBtn.setImageDrawable(diActiveDrawable)
-                }
+                vb.translatorItemFavoriteBtn.isChecked = onItemClickListener(dto)
             }
         }
 
@@ -41,11 +34,7 @@ class TranslatorAdapter(
         }
 
         private fun initFavoriteChecker(dto: DomainModel) {
-            if (checkIsFavorite(dto)) {
-                vb.translatorItemFavoriteBtn.setImageDrawable(activeDrawable)
-            } else {
-                vb.translatorItemFavoriteBtn.setImageDrawable(diActiveDrawable)
-            }
+            vb.translatorItemFavoriteBtn.isChecked = checkIsFavorite(dto)
         }
 
         private fun initNoteSetter(dto: DomainModel) {

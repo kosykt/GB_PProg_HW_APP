@@ -35,9 +35,8 @@
                 app:layout_constraintEnd_toStartOf="@id/translator_til"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:rippleColor="#013ED8"
                 app:srcCompat="@drawable/ic_baseline_favorite_active"
-                app:tint="@color/test_red" />
+                app:tint="@color/favorite_color" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/translator_til"
