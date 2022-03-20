@@ -22,18 +22,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/translator_to_favorite_ibutton"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/translator_to_favorite_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="#00FFFFFF"
-                android:backgroundTintMode="screen"
-                android:src="@drawable/ic_baseline_favorite_active"
+                android:layout_marginStart="6dp"
+                android:backgroundTint="@color/secondaryBackgroundColor"
+                android:clickable="true"
+                app:borderWidth="0dp"
+                app:fabSize="mini"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/translator_til"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="#013ED8"
+                app:srcCompat="@drawable/ic_baseline_favorite_active"
+                app:tint="@color/test_red" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/translator_til"
@@ -43,7 +47,7 @@
                 android:layout_gravity="start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/translator_to_favorite_ibutton"
+                app:layout_constraintStart_toEndOf="@id/translator_to_favorite_fab"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
