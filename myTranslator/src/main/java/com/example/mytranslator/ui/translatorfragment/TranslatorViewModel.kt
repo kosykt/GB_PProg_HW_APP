@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 import javax.inject.Inject
 
 class TranslatorViewModel @Inject constructor(
@@ -30,7 +31,7 @@ class TranslatorViewModel @Inject constructor(
             }
         }
         .stateIn(
-            scope = viewModelScope,
+            scope = viewModelScope.plus(Dispatchers.IO),
             started = SharingStarted.Eagerly,
             initialValue = emptyList()
         )
