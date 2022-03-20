@@ -9,11 +9,8 @@ import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.plus
 import javax.inject.Inject
 
 class TranslatorViewModel @Inject constructor(
@@ -24,6 +21,7 @@ class TranslatorViewModel @Inject constructor(
     private val translatorSubcomponentProvider: TranslatorSubcomponentProvider
 ) : ViewModel() {
 
+    private val myCoroutine = CoroutineScope(Dispatchers.IO)
     private val favoriteWords: StateFlow<List<String>> = getAllFavoritesUseCase.execute()
         .map { list ->
             list.map {
@@ -31,7 +29,7 @@ class TranslatorViewModel @Inject constructor(
             }
         }
         .stateIn(
-            scope = viewModelScope.plus(Dispatchers.IO),
+            scope = myCoroutine,
             started = SharingStarted.Eagerly,
             initialValue = emptyList()
         )
@@ -82,6 +80,7 @@ class TranslatorViewModel @Inject constructor(
 
     override fun onCleared() {
         translatorSubcomponentProvider.destroyTranslatorSubcomponent()
+        myCoroutine.coroutineContext.cancelChildren()
         super.onCleared()
     }
 }
