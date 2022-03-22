@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="attrActivityBottomNavView" format="reference"/>
-
-    <attr name="attrTranslatorView" format="reference"/>
-    <attr name="attrTranslatorCvInput" format="reference"/>
-    <attr name="attrTranslatorTil" format="reference"/>
-    <attr name="attrTranslatorTiet" format="reference"/>
-
-    <attr name="attrTranslatorItemCv" format="reference"/>
-    <attr name="attrTranslatorItemTvTranslate" format="reference"/>
-    <attr name="attrTranslatorItemTvNote" format="reference"/>
+    <attr name="attrActivityBottomNavView" format="reference" />
 </resources>

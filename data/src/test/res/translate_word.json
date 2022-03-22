@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1949,
+    "text": "hello",
+    "meanings": [
+      {
+        "id": 147323,
+        "partOfSpeechCode": "n",
+        "translation": {
+          "text": "\u043f\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/29afbf0985bbed8d91ded344881fa656.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/29afbf0985bbed8d91ded344881fa656.jpeg",
+        "transcription": "h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=h%C9%9B%CB%88l%C9%99%CA%8A&transcription=1"
+      },
+      {
+        "id": 233664,
+        "partOfSpeechCode": "exc",
+        "translation": {
+          "text": "\u0437\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/d13c75571402dd8593ef5a7f142b6b2c.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/d13c75571402dd8593ef5a7f142b6b2c.jpeg",
+        "transcription": "h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=hello"
+      },
+      {
+        "id": 236167,
+        "partOfSpeechCode": "exc",
+        "translation": {
+          "text": "\u0430\u043b\u043b\u043e",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/png\/60\/733473c519c043d119db8b4eb20dc7b7.png",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/png\/60\/733473c519c043d119db8b4eb20dc7b7.png",
+        "transcription": "h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=hello"
+      },
+      {
+        "id": 236171,
+        "partOfSpeechCode": "exc",
+        "translation": {
+          "text": "\u043f\u0440\u0438\u0432\u0435\u0442",
+          "note": ""
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/a3cd73659a08221a02c3a4de7b9be0ec.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/a3cd73659a08221a02c3a4de7b9be0ec.jpeg",
+        "transcription": "h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=hello"
+      }
+    ]
+  },
+  {
+    "id": 176672,
+    "text": "Hi\/Hello\/Dear",
+    "meanings": [
+      {
+        "id": 251054,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u041f\u0440\u0438\u0432\u0435\u0442\/\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\/\u0414\u043e\u0440\u043e\u0433\u043e\u0439",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/8f2c6723653d0a95c8af9489f4897fb5.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/8f2c6723653d0a95c8af9489f4897fb5.jpeg",
+        "transcription": "ha\u026a h\u025b\u02c8l\u0259\u028a d\u026a\u0259",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=ha%C9%AA+h%C9%9B%CB%88l%C9%99%CA%8A+d%C9%AA%C9%99&transcription=1"
+      }
+    ]
+  },
+  {
+    "id": 179106,
+    "text": "nod hello",
+    "meanings": [
+      {
+        "id": 254904,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u043f\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c",
+          "note": ""
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/png\/60\/7942495dcd745c592e772ce637a84a52.png",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/png\/60\/7942495dcd745c592e772ce637a84a52.png",
+        "transcription": "n\u0252d h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=nod+hello"
+      }
+    ]
+  },
+  {
+    "id": 170654,
+    "text": "Hello!",
+    "meanings": [
+      {
+        "id": 244343,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u041f\u0440\u0438\u0432\u0435\u0442!",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/151368aeb3d65f3fa009f8e1c688a04d.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/151368aeb3d65f3fa009f8e1c688a04d.jpeg",
+        "transcription": "h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=Hello%21"
+      },
+      {
+        "id": 244844,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u0410\u043b\u043b\u043e!",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/280222598f1f5fa6af9c78ffc43c8ab4.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/280222598f1f5fa6af9c78ffc43c8ab4.jpeg",
+        "transcription": "h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=Hello%21"
+      }
+    ]
+  },
+  {
+    "id": 177662,
+    "text": "You had me at hello",
+    "meanings": [
+      {
+        "id": 252130,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u042f \u0431\u044b\u043b\u0430 \u0442\u0432\u043e\u044f, \u0435\u0449\u0435 \u043a\u043e\u0433\u0434\u0430 \u0442\u044b \u0432\u043e\u0448\u0435\u043b \u0438 \u043f\u043e\u0437\u0434\u043e\u0440\u043e\u0432\u0430\u043b\u0441\u044f",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/png\/60\/ff3076d0ac63c5df390a09199b84fecb.png",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/png\/60\/ff3076d0ac63c5df390a09199b84fecb.png",
+        "transcription": "ju\u02d0 h\u00e6d mi\u02d0 \u00e6t h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=You+had+me+at+hello"
+      }
+    ]
+  },
+  {
+    "id": 176538,
+    "text": "Hello, may I help you?",
+    "meanings": [
+      {
+        "id": 250920,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435, \u044f \u043c\u043e\u0433\u0443 \u0432\u0430\u043c \u043f\u043e\u043c\u043e\u0447\u044c?",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/e6f010ca1ea5ca22e53849e2586b7d67.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/e6f010ca1ea5ca22e53849e2586b7d67.jpeg",
+        "transcription": "h\u025b\u02c8l\u0259\u028a me\u026a a\u026a h\u025blp ju\u02d0",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=Hello+may+I+help+you%3F"
+      }
+    ]
+  },
+  {
+    "id": 176542,
+    "text": "Hello, this is\u2026 calling.",
+    "meanings": [
+      {
+        "id": 250924,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435, \u044d\u0442\u043e ... \u0437\u0432\u043e\u043d\u0438\u0442.",
+          "note": ""
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/jpeg\/60\/769764f6f8589b7fa15f477de4c5fff5.jpeg",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/jpeg\/60\/769764f6f8589b7fa15f477de4c5fff5.jpeg",
+        "transcription": "h\u025b\u02c8l\u0259\u028a \u00f0\u026as \u026az \u02c8k\u0254\u02d0l\u026a\u014b",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=Hello+this+is%E2%80%A6+calling."
+      }
+    ]
+  },
+  {
+    "id": 160793,
+    "text": "say hello",
+    "meanings": [
+      {
+        "id": 230210,
+        "partOfSpeechCode": "ph",
+        "translation": {
+          "text": "\u0437\u0434\u043e\u0440\u043e\u0432\u0430\u0442\u044c\u0441\u044f",
+          "note": null
+        },
+        "previewUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/96x72\/png\/60\/21f3deb2a29a58ab4d10ab859816d3af.png",
+        "imageUrl": "\/\/cdn-user77752.skyeng.ru\/resized-images\/640x480\/png\/60\/21f3deb2a29a58ab4d10ab859816d3af.png",
+        "transcription": "se\u026a h\u025b\u02c8l\u0259\u028a",
+        "soundUrl": "\/\/d2fmfepycn0xw0.cloudfront.net?gender=male&accent=british&text=say+hello"
+      }
+    ]
+  }
+]

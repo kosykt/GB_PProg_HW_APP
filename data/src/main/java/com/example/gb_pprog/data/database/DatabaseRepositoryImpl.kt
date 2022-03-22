@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 class DatabaseRepositoryImpl(
     private val db: AppDatabase
-): DatabaseRepository {
+) : DatabaseRepository {
 
     override fun insert(model: RoomModel) {
         db.roomDao().insert(model)
