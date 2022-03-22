@@ -33,6 +33,21 @@ class BehaviorTest {
     }
 
     @Test
+    fun test_device_notNull(){
+        Assert.assertNotNull(uiDevice)
+    }
+
+    @Test
+    fun test_app_package_notNull() {
+        Assert.assertNotNull(packageName)
+    }
+
+    @Test
+    fun test_mainActivity_intent_notNull() {
+        Assert.assertNotNull(intent)
+    }
+
+    @Test
     fun test_startDestination() {
         val fragment = uiDevice.findObject(By.res(packageName, "fragment_translator"))
         Assert.assertNotNull(fragment)
