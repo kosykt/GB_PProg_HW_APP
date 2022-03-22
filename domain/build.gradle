@@ -12,4 +12,10 @@ dependencies {
 
     //Coroutines
     implementation Coroutines.coroutines_core
+
+    //Test
+    testImplementation TestImpl.junit
+
+    testImplementation TestImpl.mockito_core
+    testImplementation TestImpl.mockito_kotlin
 }

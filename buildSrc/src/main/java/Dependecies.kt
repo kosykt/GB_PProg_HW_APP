@@ -3,8 +3,9 @@ import org.gradle.api.JavaVersion
 object Modules {
     const val domain = ":domain"
     const val data = ":data"
-    const val mytimer = ":mytimer"
-    const val myfirsttest = ":myfirsttest"
+    const val utils = ":utils"
+    const val myTimer = ":myTimer"
+    const val myTranslator = ":myTranslator"
 }
 
 object Config {
@@ -30,7 +31,7 @@ object Versions {
     const val room = "2.4.1"
 
     //Jetpack Navigation
-    const val jetNav = "2.3.5"
+    const val jetNav = "2.4.1"
 
     //Kotlin coroutines
     const val coroutinesCore = "1.5.2"
@@ -40,11 +41,11 @@ object Versions {
     const val lifecycleViewModel = "2.4.0"
     const val lifecycleRunTime = "2.4.0"
 
-    //Koin
-    const val koin = "3.1.3"
-
     //Retrofit
     const val retrofit = "2.9.0"
+
+    //OkHttp
+    const val okHttpVer = "4.9.3"
 
     //Kotlin ktx
     const val kotlinCoreKtx = "1.7.0"
@@ -58,10 +59,16 @@ object Versions {
     //constraintLayout
     const val constraintLayout = "2.1.2"
 
+    //Dagger
+    const val dagger = "2.41"
+
     //Test
     const val jUnit = "4.13.2"
     const val extjUnit = "1.1.3"
     const val espressoCore = "3.4.0"
+    const val mockito = "4.0.0"
+    const val mockWebServer = "4.9.1"
+    const val archCore = "2.1.0"
 }
 
 object Glide {
@@ -92,15 +99,15 @@ object LifecycleComponents {
     const val runtime_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRunTime}"
 }
 
-object Koin {
-    const val koin_core = "io.insert-koin:koin-core:${Versions.koin}"
-    const val koin_android = "io.insert-koin:koin-android:${Versions.koin}"
-    const val koin_test = "io.insert-koin:koin-test:${Versions.koin}"
-}
-
 object Retrofit {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+}
+
+object OkHttpDeps {
+    const val ok_http = "com.squareup.okhttp3:okhttp:${Versions.okHttpVer}"
+    const val ok_http_logging_interceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVer}"
 }
 
 object Kotlin {
@@ -114,8 +121,17 @@ object Design {
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 }
 
+object Dagger {
+    const val dagger_d = "com.google.dagger:dagger:${Versions.dagger}"
+    const val dagger_k = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+}
+
 object TestImpl {
     const val junit = "junit:junit:${Versions.jUnit}"
     const val ext_junit = "androidx.test.ext:junit:${Versions.extjUnit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"
+    const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
+    const val mock_web_server = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
+    const val arch_core = "androidx.arch.core:core-testing:${Versions.archCore}"
 }
