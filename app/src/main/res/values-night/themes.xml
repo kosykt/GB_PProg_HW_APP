@@ -22,8 +22,11 @@
         <item name="attrTranslatorTil">@style/translator_til_style.dark_theme</item>
         <item name="attrTranslatorTiet">@style/translator_tiet_style.dark_theme</item>
         <item name="attrTranslatorItemCv">@style/translator_item_cv_style.dark_theme</item>
-        <item name="attrTranslatorItemTvTranslate">@style/translator_item_tv_translate_style.dark_theme</item>
+        <item name="attrTranslatorItemTvTranslate">
+            @style/translator_item_tv_translate_style.dark_theme
+        </item>
         <item name="attrTranslatorItemTvNote">@style/translator_item_tv_note_style.dark_theme</item>
-        <item name="attrActivityBottomNavView">@style/activity_bottom_nav_view_style.dark_theme</item>
+        <item name="attrActivityBottomNavView">@style/activity_bottom_nav_view_style.dark_theme
+        </item>
     </style>
 </resources>

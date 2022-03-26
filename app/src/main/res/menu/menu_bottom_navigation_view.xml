@@ -2,24 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/bottom_view_translator_fragment"
+        android:id="@+id/nav_graph_translator"
         android:icon="@drawable/ic_icon_translate"
-        android:title="@string/bottom_view_icon_translator_title"/>
+        android:title="@string/bottom_view_icon_translator_title" />
 
     <item
-        android:id="@+id/bottom_view_favorite_fragment"
-        android:icon="@drawable/ic_baseline_favorite_active"
-        android:title="@string/bottom_view_icon_favorites_title"/>
-
-    <item
-        android:id="@+id/bottom_view_timer_fragment"
+        android:id="@+id/timerFragment"
         android:icon="@drawable/ic_baseline_timer"
-        android:title="@string/bottom_view_icon_timer_title"/>
-
-    <item
-        android:id="@+id/bottom_view_email_validator_fragment"
-        android:icon="@drawable/ic_baseline_alternate_email_24"
-        android:title="@string/email_validator"/>
-
+        android:title="@string/bottom_view_icon_timer_title" />
 
 </menu>

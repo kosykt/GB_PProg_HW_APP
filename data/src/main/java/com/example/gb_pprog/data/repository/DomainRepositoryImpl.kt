@@ -11,11 +11,8 @@ class DomainRepositoryImpl(
     private val database: DatabaseRepository,
 ) : DomainRepository {
 
-    override fun translate(word: String): Flow<List<DomainModel>> {
-        return network.getData(word)
-            .map {
-                it.toListDomainModel()
-            }
+    override suspend fun translate(word: String): List<DomainModel> {
+        return network.getData(word).toListDomainModel()
     }
 
     override suspend fun saveFavorite(domainModel: DomainModel) {
