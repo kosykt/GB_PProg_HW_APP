@@ -28,6 +28,9 @@ android {
     kotlinOptions {
         jvmTarget = Config.jvm_target
     }
+    //sourceSets {
+    //        test.resources.srcDirs += 'src/test/res'
+    //    }
     sourceSets {
         test.resources.srcDirs += 'src/test/res'
     }

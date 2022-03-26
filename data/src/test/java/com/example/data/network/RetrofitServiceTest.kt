@@ -24,7 +24,7 @@ class RetrofitServiceTest : MockWebServerTest() {
 
     @Test
     fun api_service_response_notNull() {
-        enqueue("translate_word.json")
+        enqueue("translate_hello.json")
         runBlocking {
             val apiResponse = service.getNetworkData("hello")
             Assert.assertNotNull("response is null", apiResponse)
@@ -33,7 +33,7 @@ class RetrofitServiceTest : MockWebServerTest() {
 
     @Test
     fun api_service_response_notEmpty() {
-        enqueue("translate_word.json")
+        enqueue("translate_hello.json")
         runBlocking {
             val apiResponse = service.getNetworkData("hello")
             Assert.assertTrue("response is empty", apiResponse.isNotEmpty())
@@ -42,12 +42,23 @@ class RetrofitServiceTest : MockWebServerTest() {
 
     @Test
     fun api_service_response_id_is_correct() {
-        enqueue("translate_word.json")
+        enqueue("translate_hello.json")
         runBlocking {
             val apiResponse = service.getNetworkData("hello")
             val expected = 1949
             val actual = apiResponse[0].id
             Assert.assertEquals("response id is not correct", expected, actual)
+        }
+    }
+
+    @Test
+    fun api_service_response_id_is_unCorrect() {
+        enqueue("translate_hi.json")
+        runBlocking {
+            val apiResponse = service.getNetworkData("hello")
+            val expected = 1949
+            val actual = apiResponse[0].id
+            Assert.assertNotEquals("response id is not correct", expected, actual)
         }
     }
 }
