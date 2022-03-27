@@ -17,6 +17,7 @@ import com.example.gb_pprog.imageloader.ImageLoader
 import com.example.mytranslator.R
 import com.example.mytranslator.databinding.FragmentTranslatorBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
+import com.example.mytranslator.ui.detailsfragment.DetailsModel
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
@@ -105,8 +106,15 @@ class TranslatorFragment : Fragment() {
     private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
 
     private fun navigateToDetails(model: DomainModel) {
+        val detailsModel = DetailsModel(
+            word = model.text,
+            transcription = model.meanings[0].transcription,
+            translation = model.meanings[0].translation.text,
+            note = model.meanings[0].translation.note,
+            imageUrl = model.meanings[0].imageUrl
+        )
         findNavController().navigate(
-            TranslatorFragmentDirections.actionTranslatorFragmentToDetailsFragment(model)
+            TranslatorFragmentDirections.actionTranslatorFragmentToDetailsFragment(detailsModel)
         )
     }
 

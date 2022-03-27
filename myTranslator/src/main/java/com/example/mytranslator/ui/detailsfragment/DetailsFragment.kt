@@ -42,18 +42,18 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imageLoader.loadInto(args.model.meanings[0].imageUrl, binding.detailsImageView)
+        imageLoader.loadInto(args.detailsModel.imageUrl, binding.detailsImageView)
 
-        binding.detailsText.text = args.model.text
-        binding.detailsTranscription.text = args.model.meanings[0].transcription
-        binding.detailsTranslation.text = args.model.meanings[0].translation.text
-        when (args.model.meanings[0].translation.note.isEmpty()) {
+        binding.detailsText.text = args.detailsModel.word
+        binding.detailsTranscription.text = args.detailsModel.transcription
+        binding.detailsTranslation.text = args.detailsModel.translation
+        when (args.detailsModel.note.isEmpty()) {
             true -> binding.detailsNote.visibility = View.GONE
-            false -> binding.detailsNote.text = args.model.meanings[0].translation.note
+            false -> binding.detailsNote.text = args.detailsModel.note
         }
 
         binding.detailsSearchBtn.setOnClickListener {
-            searchWeb(args.model.text)
+            searchWeb(args.detailsModel.word)
         }
     }
 
