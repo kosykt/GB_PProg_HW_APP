@@ -1,5 +1,6 @@
 package com.example.gb_pprog.domain.model
 
+import java.io.Serializable
 
 data class DomainMeaning(
     val id: Int,
@@ -9,4 +10,4 @@ data class DomainMeaning(
     val soundUrl: String,
     val transcription: String,
     val translation: DomainTranslation,
-)
+) : Serializable
