@@ -9,6 +9,4 @@
     <string name="bottom_view_icon_timer_title">timer</string>
     <string name="bottom_view_icon_translator_title">translator</string>
     <string name="bottom_view_icon_favorites_title">favorites</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

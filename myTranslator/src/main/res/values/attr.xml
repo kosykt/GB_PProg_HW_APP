@@ -9,4 +9,6 @@
     <attr name="attrTranslatorItemCv" format="reference" />
     <attr name="attrTranslatorItemTvTranslate" format="reference" />
     <attr name="attrTranslatorItemTvNote" format="reference" />
+
+    <attr name="attrDetailsText" format="reference" />
 </resources>

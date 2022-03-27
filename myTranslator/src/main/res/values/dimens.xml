@@ -15,4 +15,5 @@
     <dimen name="translator_item_tv_margin">8dp</dimen>
     <dimen name="translator_item_tv_translate_text_size">24sp</dimen>
     <dimen name="translator_item_tv_note_text_size">16sp</dimen>
+    <dimen name="details_cv_constraint_margin">25dp</dimen>
 </resources>

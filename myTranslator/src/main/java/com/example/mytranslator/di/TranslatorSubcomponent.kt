@@ -1,6 +1,7 @@
 package com.example.mytranslator.di
 
 import com.example.gb_pprog.di.scopes.TranslatorScope
+import com.example.mytranslator.ui.detailsfragment.DetailsFragment
 import com.example.mytranslator.ui.favoritefragment.FavoriteFragment
 import com.example.mytranslator.ui.translatorfragment.TranslatorFragment
 import dagger.Subcomponent
@@ -11,4 +12,5 @@ interface TranslatorSubcomponent {
 
     fun inject(fragment: TranslatorFragment)
     fun inject(fragment: FavoriteFragment)
+    fun inject(fragment: DetailsFragment)
 }
