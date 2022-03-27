@@ -15,12 +15,13 @@ class TranslatorAdapter(
     private val onItemClickListener: (DomainModel) -> Boolean,
     private val checkIsFavorite: (DomainModel) -> Boolean,
     private val string: String,
+    private val navigateClickListener: (DomainModel) -> Unit
 ) : ListAdapter<DomainModel, TranslatorAdapter.TranslatorViewHolder>(TranslatorItemCallback) {
 
     inner class TranslatorViewHolder(private val vb: TranslatorItemBinding) :
         RecyclerView.ViewHolder(vb.root) {
 
-        private fun initClickListener(dto: DomainModel) {
+        private fun initItemFavoriteBtnClickListener(dto: DomainModel) {
             vb.translatorItemFavoriteBtn.setOnClickListener {
                 vb.translatorItemFavoriteBtn.isChecked = onItemClickListener(dto)
             }
@@ -59,10 +60,17 @@ class TranslatorAdapter(
             )
         }
 
+        private fun initNavigateClickListener(dto: DomainModel){
+            vb.root.setOnClickListener {
+                navigateClickListener(dto)
+            }
+        }
+
         fun showTranslate(dto: DomainModel) {
+            initNavigateClickListener(dto)
             initFavoriteChecker(dto)
             initImageLoader(dto)
-            initClickListener(dto)
+            initItemFavoriteBtnClickListener(dto)
             initTextSetter(dto)
             initNoteSetter(dto)
         }

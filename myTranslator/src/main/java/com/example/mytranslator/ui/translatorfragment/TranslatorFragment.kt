@@ -37,7 +37,8 @@ class TranslatorFragment : Fragment() {
             imageLoader = imageLoader,
             onItemClickListener = vm::favoriteWordOperator,
             checkIsFavorite = vm::checkIsFavorite,
-            string = requireContext().getString(R.string.translator_item_tv_translate_text)
+            string = requireContext().getString(R.string.translator_item_tv_translate_text),
+            navigateClickListener = this::navigateToDetails
         )
     }
 
@@ -102,6 +103,10 @@ class TranslatorFragment : Fragment() {
     }
 
     private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
+
+    private fun navigateToDetails(model: DomainModel) {
+        findNavController().navigate(R.id.action_translatorFragment_to_detailsFragment)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
