@@ -1,6 +1,8 @@
 package com.example.mytranslator.ui.detailsfragment
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,13 +41,26 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         imageLoader.loadInto(args.model.meanings[0].imageUrl, binding.detailsImageView)
+
         binding.detailsText.text = args.model.text
         binding.detailsTranscription.text = args.model.meanings[0].transcription
         binding.detailsTranslation.text = args.model.meanings[0].translation.text
-        when(args.model.meanings[0].translation.note.isEmpty()){
+        when (args.model.meanings[0].translation.note.isEmpty()) {
             true -> binding.detailsNote.visibility = View.GONE
             false -> binding.detailsNote.text = args.model.meanings[0].translation.note
         }
+
+        binding.detailsSearchBtn.setOnClickListener {
+            searchWeb(args.model.text)
+        }
+    }
+
+    private fun searchWeb(word: String) {
+        val webpage: Uri = Uri
+            .parse("https://translate.google.com/?sl=en&tl=ru&text=${word}&op=translate")
+        val intent = Intent(Intent.ACTION_VIEW, webpage)
+        startActivity(intent)
     }
 }
