@@ -105,7 +105,9 @@ class TranslatorFragment : Fragment() {
     private fun refreshListAdapter(list: List<DomainModel>?) = adapter.submitList(list)
 
     private fun navigateToDetails(model: DomainModel) {
-        findNavController().navigate(R.id.action_translatorFragment_to_detailsFragment)
+        findNavController().navigate(
+            TranslatorFragmentDirections.actionTranslatorFragmentToDetailsFragment(model)
+        )
     }
 
     override fun onDestroyView() {

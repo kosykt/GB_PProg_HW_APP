@@ -26,5 +26,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.mytranslator.ui.detailsfragment.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="model"
+            app:argType="com.example.gb_pprog.domain.model.DomainModel" />
+    </fragment>
 </navigation>
