@@ -1,9 +1,9 @@
 package com.example.gb_pprog.di.modules
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.gb_pprog.di.viewmodelsfactory.ViewModelFactory
 import dagger.Binds
 import dagger.Module
+import ru.kosykt.utils.di.viewmodelsfactory.ViewModelFactory
 
 @Module
 interface ViewModelModule {

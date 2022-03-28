@@ -1,4 +1,4 @@
-package com.example.gb_pprog.di.viewmodelsfactory
+package ru.kosykt.utils.di.viewmodelsfactory
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

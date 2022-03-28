@@ -2,17 +2,17 @@ package com.example.mytranslator.di
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
-import com.example.gb_pprog.di.scopes.TranslatorScope
-import com.example.gb_pprog.di.viewmodelsfactory.ViewModelKey
 import com.example.gb_pprog.domain.*
-import com.example.gb_pprog.imageloader.GlideImageLoader
-import com.example.gb_pprog.imageloader.ImageLoader
 import com.example.mytranslator.ui.favoritefragment.FavoriteViewModel
 import com.example.mytranslator.ui.translatorfragment.TranslatorViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
+import ru.kosykt.utils.di.scopes.TranslatorScope
+import ru.kosykt.utils.di.viewmodelsfactory.ViewModelKey
+import ru.kosykt.utils.imageloader.GlideImageLoader
+import ru.kosykt.utils.imageloader.ImageLoader
 
 @Module
 interface TranslatorModule {

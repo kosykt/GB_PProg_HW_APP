@@ -9,9 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.gb_pprog.imageloader.ImageLoader
 import com.example.mytranslator.databinding.FragmentDetailsBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
+import ru.kosykt.utils.imageloader.ImageLoader
 import javax.inject.Inject
 
 class DetailsFragment : Fragment() {

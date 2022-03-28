@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gb_pprog.domain.model.DomainModel
-import com.example.gb_pprog.imageloader.ImageLoader
 import com.example.mytranslator.databinding.TranslatorItemBinding
+import ru.kosykt.utils.imageloader.ImageLoader
 
 class TranslatorAdapter(
     private val imageLoader: ImageLoader,
