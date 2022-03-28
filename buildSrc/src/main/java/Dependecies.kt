@@ -128,10 +128,21 @@ object Dagger {
 
 object TestImpl {
     const val junit = "junit:junit:${Versions.jUnit}"
+
     const val ext_junit = "androidx.test.ext:junit:${Versions.extjUnit}"
-    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+
     const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"
     const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
     const val mock_web_server = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
+
     const val arch_core = "androidx.arch.core:core-testing:${Versions.archCore}"
+
+    const val ui_automator = "androidx.test.uiautomator:uiautomator:2.2.0"
+
+    const val robolectric = "org.robolectric:robolectric:4.5.1"
+    const val test_core = "androidx.test:core:1.4.0"
+    const val test_runner = "androidx.test:runner:1.4.0"
+    const val ext_truth = "androidx.test.ext:truth:1.4.0"
+    const val espresso_intents = "androidx.test.espresso:espresso-intents:3.4.0"
 }

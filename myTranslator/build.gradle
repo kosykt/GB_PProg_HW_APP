@@ -43,7 +43,6 @@ dependencies {
 
     //Dagger
     implementation Dagger.dagger_d
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Dagger.dagger_k
 
     //Coroutines
@@ -69,5 +68,5 @@ dependencies {
     //Test
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit
-    androidTestImplementation TestImpl.espresso
+    androidTestImplementation TestImpl.espresso_core
 }

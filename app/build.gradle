@@ -92,18 +92,18 @@ dependencies {
 
     //Test
     testImplementation TestImpl.junit
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha05'
+    androidTestImplementation TestImpl.ext_junit
+    androidTestImplementation TestImpl.espresso_core
 
     //UI Automator
-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation TestImpl.ui_automator
 
     //Robolectric
-    testImplementation 'org.robolectric:robolectric:4.5.1'
-    testImplementation 'androidx.test:core:1.4.0'
-    testImplementation 'androidx.test:runner:1.4.0'
-    testImplementation 'androidx.test.ext:junit:1.1.3'
-    testImplementation 'androidx.test.ext:truth:1.4.0'
-    testImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha05'
-    testImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
+    testImplementation TestImpl.robolectric
+    testImplementation TestImpl.test_core
+    testImplementation TestImpl.test_runner
+    testImplementation TestImpl.ext_junit
+    testImplementation TestImpl.ext_truth
+    testImplementation TestImpl.espresso_core
+    testImplementation TestImpl.espresso_intents
 }

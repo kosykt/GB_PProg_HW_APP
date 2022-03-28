@@ -62,5 +62,5 @@ dependencies {
     //Test
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit
-    androidTestImplementation TestImpl.espresso
+    androidTestImplementation TestImpl.espresso_core
 }
