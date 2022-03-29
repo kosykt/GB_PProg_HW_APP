@@ -93,6 +93,8 @@ dependencies {
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit
     androidTestImplementation TestImpl.espresso_core
+    //
+    androidTestImplementation 'androidx.navigation:navigation-testing:2.4.1'
     //Fragment
     debugImplementation TestImpl.fragment_testing
     //RecyclerView
