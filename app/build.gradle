@@ -51,7 +51,6 @@ dependencies {
 
     //Dagger
     implementation Dagger.dagger_d
-    androidTestImplementation 'androidx.test:rules:1.4.1-alpha05'
     kapt Dagger.dagger_k
 
     //Room
@@ -94,16 +93,12 @@ dependencies {
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit
     androidTestImplementation TestImpl.espresso_core
+    //Fragment
+    debugImplementation TestImpl.fragment_testing
+    //RecyclerView
+    debugImplementation TestImpl.espresso_contrib
 
     //UI Automator
     androidTestImplementation TestImpl.ui_automator
-
-    //Robolectric
-    testImplementation TestImpl.robolectric
-    testImplementation TestImpl.test_core
-    testImplementation TestImpl.test_runner
-    testImplementation TestImpl.ext_junit
-    testImplementation TestImpl.ext_truth
-    testImplementation TestImpl.espresso_core
-    testImplementation TestImpl.espresso_intents
+    androidTestImplementation TestImpl.test_rules
 }

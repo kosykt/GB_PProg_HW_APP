@@ -131,6 +131,8 @@ object TestImpl {
 
     const val ext_junit = "androidx.test.ext:junit:${Versions.extjUnit}"
     const val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val fragment_testing = "androidx.fragment:fragment-testing:1.4.1"
+    const val espresso_contrib = "androidx.test.espresso:espresso-contrib:3.4.0"
 
     const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"
     const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
@@ -139,6 +141,7 @@ object TestImpl {
     const val arch_core = "androidx.arch.core:core-testing:${Versions.archCore}"
 
     const val ui_automator = "androidx.test.uiautomator:uiautomator:2.2.0"
+    const val test_rules = "androidx.test:rules:1.4.0"
 
     const val robolectric = "org.robolectric:robolectric:4.5.1"
     const val test_core = "androidx.test:core:1.4.0"
