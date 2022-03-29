@@ -18,6 +18,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.gb_pprog.R
 import com.example.mytranslator.ui.translatorfragment.TranslatorFragment
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matcher
 import org.junit.After
 import org.junit.Before
@@ -81,7 +83,7 @@ class TranslatorFragmentTest {
         onView(withId(R.id.translator_tiet)).perform(click())
         onView(withId(R.id.translator_tiet))
             .perform(replaceText("hello"), closeSoftKeyboard())
-
+        runBlocking { delay(1000) }
         onView(withId(R.id.translator_rv))
             .perform(
                 RecyclerViewActions
@@ -94,7 +96,7 @@ class TranslatorFragmentTest {
         onView(withId(R.id.translator_tiet)).perform(click())
         onView(withId(R.id.translator_tiet))
             .perform(replaceText("hello"), closeSoftKeyboard())
-
+        runBlocking { delay(1000) }
         onView(withId(R.id.translator_rv))
             .perform(
                 RecyclerViewActions

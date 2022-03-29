@@ -2,6 +2,9 @@ package com.example.gb_pprog.ui.timerfragment
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.navigation.Navigation
+import androidx.navigation.testing.TestNavHostController
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -18,10 +21,17 @@ import org.junit.runner.RunWith
 class TimerFragmentTest {
 
     private lateinit var scenario: FragmentScenario<TimerFragment>
+    private val navController = TestNavHostController(
+        ApplicationProvider.getApplicationContext()
+    )
 
     @Before
     fun setup() {
         scenario = launchFragmentInContainer(themeResId = R.style.Theme_GB_PProg)
+        scenario.onFragment { fragment ->
+            navController.setGraph(R.navigation.main_navigation)
+            Navigation.setViewNavController(fragment.requireView(), navController)
+        }
     }
 
     @After
