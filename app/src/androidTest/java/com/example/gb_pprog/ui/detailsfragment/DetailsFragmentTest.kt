@@ -9,8 +9,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.gb_pprog.R
 import com.example.mytranslator.ui.detailsfragment.DetailsFragment
@@ -88,6 +87,26 @@ class DetailsFragmentTest {
     @Test
     fun searchButton_isDisplayed() {
         onView(withId(R.id.details_search_btn)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun detailsText_isCorrect() {
+        onView(withId(R.id.details_text)).check(matches(withText("word")))
+    }
+
+    @Test
+    fun detailsTranslation_isCorrect() {
+        onView(withId(R.id.details_translation)).check(matches(withText("translation")))
+    }
+
+    @Test
+    fun detailsTranscription_isCorrect() {
+        onView(withId(R.id.details_transcription)).check(matches(withText("transcription")))
+    }
+
+    @Test
+    fun detailsNote_isCorrect() {
+        onView(withId(R.id.details_note)).check(matches(withText("note")))
     }
 
     @Test
