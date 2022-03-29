@@ -133,6 +133,7 @@ object TestImpl {
     const val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     const val fragment_testing = "androidx.fragment:fragment-testing:1.4.1"
     const val espresso_contrib = "androidx.test.espresso:espresso-contrib:3.4.0"
+    const val navigation_testing = "androidx.navigation:navigation-testing:${Versions.jetNav}"
 
     const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"
     const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
