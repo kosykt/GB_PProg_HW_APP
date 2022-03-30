@@ -1,6 +1,5 @@
 package com.example.gb_pprog.domain.model
 
-
 data class DomainMeaning(
     val id: Int,
     val imageUrl: String,
