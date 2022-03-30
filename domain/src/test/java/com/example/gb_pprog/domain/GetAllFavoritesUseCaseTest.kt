@@ -3,6 +3,7 @@ package com.example.gb_pprog.domain
 import com.example.gb_pprog.domain.model.FavoriteModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
 import org.junit.Test
@@ -62,5 +63,14 @@ class GetAllFavoritesUseCaseTest {
         val actual = useCase.execute()
         val expected = flowOf(listOf(FavoriteModel("test1", "data1")))
         Assert.assertNotEquals("Return data is not equal to input data", expected, actual)
+    }
+
+    @Test
+    fun verify(){
+        val useCase = GetAllFavoritesUseCase(domainRepository)
+        runBlocking {
+            useCase.execute()
+            Mockito.verify(domainRepository).getAllFavorite()
+        }
     }
 }

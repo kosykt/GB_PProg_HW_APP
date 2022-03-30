@@ -6,6 +6,7 @@ import com.example.gb_pprog.data.network.model.RetrofitTranslateDto
 import com.example.gb_pprog.data.repository.*
 import com.example.gb_pprog.domain.model.DomainMeaning
 import com.example.gb_pprog.domain.model.DomainModel
+import com.example.gb_pprog.domain.model.DomainTranslation
 import com.example.gb_pprog.domain.model.FavoriteModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -125,6 +126,51 @@ class DomainRepositoryImplTest {
             val actual = domainRepositoryImpl.translate("test")
             val expected = DomainModel(0, listOf<DomainMeaning>(), "test1")
             Assert.assertNotEquals("Return data is equal to input data", expected, actual)
+        }
+    }
+
+    @Test
+    fun verify_saveFavorite() {
+        val domainRepositoryImpl = DomainRepositoryImpl(network, database)
+        val domainMeaning = DomainMeaning(
+            id = 1,
+            imageUrl = "imageUrl",
+            partOfSpeechCode = "part",
+            previewUrl = "preview",
+            soundUrl = "sound",
+            transcription = "transcription",
+            translation = DomainTranslation(note = "note", text = "text")
+
+        )
+        val listMeanings = listOf(domainMeaning, domainMeaning)
+        val domainModel = DomainModel(0, listMeanings, "test")
+        val roomModel = domainModel.toRoomModel()
+        runBlocking {
+            domainRepositoryImpl.saveFavorite(domainModel)
+            Mockito.verify(database).insert(roomModel)
+        }
+    }
+
+    @Test
+    fun verify_deleteFavorite() {
+        val domainRepositoryImpl = DomainRepositoryImpl(network, database)
+        val domainMeaning = DomainMeaning(
+            id = 1,
+            imageUrl = "imageUrl",
+            partOfSpeechCode = "part",
+            previewUrl = "preview",
+            soundUrl = "sound",
+            transcription = "transcription",
+            translation = DomainTranslation(note = "note", text = "text")
+
+        )
+        val listMeanings = listOf(domainMeaning, domainMeaning)
+        val domainModel = DomainModel(0, listMeanings, "test")
+        val roomModel = domainModel.toRoomModel()
+        val favoriteModel = roomModel.toFavoriteModel()
+        runBlocking {
+            domainRepositoryImpl.deleteFavorite(favoriteModel)
+            Mockito.verify(database).delete(roomModel)
         }
     }
 }
