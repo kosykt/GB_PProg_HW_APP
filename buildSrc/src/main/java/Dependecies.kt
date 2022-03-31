@@ -138,6 +138,7 @@ object TestImpl {
     const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"
     const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
     const val mock_web_server = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
+    const val mock_inline = "org.mockito:mockito-inline:${Versions.mockWebServer}"
 
     const val arch_core = "androidx.arch.core:core-testing:${Versions.archCore}"
 
@@ -149,4 +150,7 @@ object TestImpl {
     const val test_runner = "androidx.test:runner:1.4.0"
     const val ext_truth = "androidx.test.ext:truth:1.4.0"
     const val espresso_intents = "androidx.test.espresso:espresso-intents:3.4.0"
+
+    const val coroutine_test =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
 }
