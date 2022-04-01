@@ -3,10 +3,10 @@ package com.example.mytimer.timerfragment
 import com.example.gb_pprog.domain.MyTimerUseCase
 import com.example.mytimer.di.TimerSubcomponentProvider
 import com.example.mytimer.ui.timerfragment.TimerViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -38,7 +38,7 @@ class TimerViewModelTest {
 
     @Test
     fun should_return_notNull_ticker_initialValue() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TimerViewModel(myTimer, timerSubcomponentProvider)
             Assert.assertNotNull("ticker value is null", viewModel.ticker.value)
         }
@@ -46,7 +46,7 @@ class TimerViewModelTest {
 
     @Test
     fun should_return_correct_ticker_initialValue() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TimerViewModel(myTimer, timerSubcomponentProvider)
             val expected = "00:00:000"
             val actual = viewModel.ticker.value
@@ -56,7 +56,7 @@ class TimerViewModelTest {
 
     @Test
     fun should_return_notCorrect_ticker_initialValue() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TimerViewModel(myTimer, timerSubcomponentProvider)
             val expected = 00.00
             val actual = viewModel.ticker.value
@@ -66,7 +66,7 @@ class TimerViewModelTest {
 
     @Test
     fun should_return_notNull_if_ticker_started(){
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TimerViewModel(myTimer, timerSubcomponentProvider)
             viewModel.start()
             Assert.assertNotNull("ticker value is null", viewModel.ticker.value)
@@ -75,7 +75,7 @@ class TimerViewModelTest {
 
     @Test
     fun should_return_notNull_if_ticker_paused(){
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TimerViewModel(myTimer, timerSubcomponentProvider)
             viewModel.pause()
             Assert.assertNotNull("ticker value is null", viewModel.ticker.value)
@@ -84,7 +84,7 @@ class TimerViewModelTest {
 
     @Test
     fun should_return_notNull_if_ticker_stopped(){
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TimerViewModel(myTimer, timerSubcomponentProvider)
             viewModel.stop()
             Assert.assertNotNull("ticker value is null", viewModel.ticker.value)
@@ -93,10 +93,9 @@ class TimerViewModelTest {
 
     @Test
     fun should_return_correct_time_if_ticker_stopped(){
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TimerViewModel(myTimer, timerSubcomponentProvider)
             viewModel.start()
-            delay(500)
             viewModel.stop()
             val expected = "00:00:000"
             val actual = viewModel.ticker.value

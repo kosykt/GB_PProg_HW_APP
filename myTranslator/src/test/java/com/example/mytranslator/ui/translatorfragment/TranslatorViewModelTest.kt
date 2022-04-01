@@ -7,13 +7,13 @@ import com.example.gb_pprog.domain.SaveFavoriteUseCase
 import com.example.gb_pprog.domain.model.DomainModel
 import com.example.gb_pprog.domain.model.FavoriteModel
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -53,7 +53,7 @@ class TranslatorViewModelTest {
 
     @Test
     fun translatorState_initialValue_notNull() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TranslatorViewModel(
                 getAllFavoritesUseCase,
                 getTranslateUseCase,
@@ -61,14 +61,13 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             Assert.assertNotNull("translatorState is null", viewModel.translatorState)
         }
     }
 
     @Test
     fun should_return_correct_translatorState_initialValue() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TranslatorViewModel(
                 getAllFavoritesUseCase,
                 getTranslateUseCase,
@@ -76,7 +75,6 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val expected = TranslatorState.Success(emptyList())
             val actual = viewModel.translatorState.value
             Assert.assertEquals("translatorState is not correct", expected, actual)
@@ -85,7 +83,7 @@ class TranslatorViewModelTest {
 
     @Test
     fun should_return_notCorrect_translatorState_initialValue() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TranslatorViewModel(
                 getAllFavoritesUseCase,
                 getTranslateUseCase,
@@ -93,7 +91,6 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val expected = TranslatorState.Success(listOf(DomainModel(0, emptyList(), "test")))
             val actual = viewModel.translatorState.value
             Assert.assertNotEquals("translatorState is not correct", expected, actual)
@@ -102,7 +99,7 @@ class TranslatorViewModelTest {
 
     @Test
     fun should_get_the_correct_translation_of_the_word() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TranslatorViewModel(
                 getAllFavoritesUseCase,
                 getTranslateUseCase,
@@ -110,7 +107,6 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val listModels = flowOf(
                 listOf(
                     DomainModel(id = 0, meanings = emptyList(), text = "test_0")
@@ -118,7 +114,6 @@ class TranslatorViewModelTest {
             )
             Mockito.`when`(getTranslateUseCase.execute("test")).thenReturn(listModels)
             viewModel.getTranslate("test")
-            delay(1000)
             val expected = TranslatorState.Success(listModels.first())
             val actual = viewModel.translatorState.value
             Assert.assertEquals("translation is not correct", expected, actual)
@@ -127,7 +122,7 @@ class TranslatorViewModelTest {
 
     @Test
     fun should_get_the_unCorrect_translation_of_the_word() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val viewModel = TranslatorViewModel(
                 getAllFavoritesUseCase,
                 getTranslateUseCase,
@@ -135,7 +130,6 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val listModels = flowOf(
                 listOf(
                     DomainModel(id = 0, meanings = emptyList(), text = "test_0")
@@ -143,7 +137,6 @@ class TranslatorViewModelTest {
             )
             Mockito.`when`(getTranslateUseCase.execute("test")).thenReturn(listModels)
             viewModel.getTranslate("test")
-            delay(1000)
             val expected = TranslatorState.Loading
             val actual = viewModel.translatorState.value
             Assert.assertNotEquals("translation is not correct", expected, actual)
@@ -152,7 +145,7 @@ class TranslatorViewModelTest {
 
     @Test
     fun should_return_true_if_favoriteWords_contain_domainModel() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val favoriteWords: Flow<List<FavoriteModel>> = flowOf(
                 listOf(
                     FavoriteModel(word = "test_1", translation = "model_1"),
@@ -169,7 +162,6 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val actual = viewModel.checkIsFavorite(domainModel)
             Assert.assertTrue("is not contain = false", actual)
         }
@@ -177,7 +169,7 @@ class TranslatorViewModelTest {
 
     @Test
     fun should_return_false_if_favoriteWords_notContain_domainModel() {
-        runBlocking {
+        CoroutineScope(Dispatchers.Main).launch {
             val favoriteWords: Flow<List<FavoriteModel>> = flowOf(
                 listOf(
                     FavoriteModel(word = "test_1", translation = "model_1"),
@@ -194,15 +186,14 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val actual = viewModel.checkIsFavorite(domainModel)
             Assert.assertFalse("is contain = true", actual)
         }
     }
 
     @Test
-    fun should_return_false_if_favoriteWordClickHandler_deleted_the_model(){
-        runBlocking {
+    fun should_return_false_if_favoriteWordClickHandler_deleted_the_model() {
+        CoroutineScope(Dispatchers.Main).launch {
             val favoriteWords: Flow<List<FavoriteModel>> = flowOf(
                 listOf(
                     FavoriteModel(word = "test_1", translation = "model_1"),
@@ -219,15 +210,14 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val actual = viewModel.favoriteWordClickHandler(domainModel)
             Assert.assertFalse("is contain = true", actual)
         }
     }
 
     @Test
-    fun should_return_true_if_favoriteWordClickHandler_saved_the_model(){
-        runBlocking {
+    fun should_return_true_if_favoriteWordClickHandler_saved_the_model() {
+        CoroutineScope(Dispatchers.Main).launch {
             val favoriteWords: Flow<List<FavoriteModel>> = flowOf(
                 listOf(
                     FavoriteModel(word = "test_1", translation = "model_1"),
@@ -244,7 +234,6 @@ class TranslatorViewModelTest {
                 deleteFavoriteUseCase,
                 translatorSubcomponentProvider
             )
-            delay(1000)
             val actual = viewModel.favoriteWordClickHandler(domainModel)
             Assert.assertTrue("is contain = true", actual)
         }
