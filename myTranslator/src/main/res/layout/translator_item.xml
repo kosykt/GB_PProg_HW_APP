@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?attrTranslatorItemCv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/translator_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/translator_item_iv"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginVertical="6dp"
+            android:layout_marginStart="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/translator_constraint"
+            app:layout_constraintEnd_toStartOf="@id/translator_item_barrier_1"
+            app:layout_constraintStart_toStartOf="@id/translator_constraint"
+            app:layout_constraintTop_toTopOf="@id/translator_constraint"
+            tools:src="@color/black" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/translator_item_barrier_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="translator_item_iv" />
+
+        <TextView
+            android:id="@+id/translator_item_tv_translate"
+            style="?attr/attrTranslatorItemTvTranslate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/translator_item_tv_note"
+            app:layout_constraintEnd_toStartOf="@id/translator_item_barrier_2"
+            app:layout_constraintStart_toEndOf="@id/translator_item_barrier_1"
+            app:layout_constraintTop_toTopOf="@id/translator_constraint"
+            app:layout_constraintWidth_percent="0.6"
+            tools:text="Test text" />
+
+        <TextView
+            android:id="@+id/translator_item_tv_note"
+            style="@style/translator_item_tv_note_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/translator_constraint"
+            app:layout_constraintEnd_toStartOf="@id/translator_item_barrier_2"
+            app:layout_constraintStart_toEndOf="@id/translator_item_barrier_1"
+            app:layout_constraintTop_toBottomOf="@id/translator_item_tv_translate"
+            app:layout_constraintWidth_percent="0.6"
+            tools:text="asdasf"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/translator_item_barrier_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="translator_item_favorite_btn" />
+
+        <CheckBox
+            android:id="@+id/translator_item_favorite_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="6dp"
+            app:buttonTint="@color/favorite_color"
+            android:button="@drawable/sl_favourite_check"
+            app:layout_constraintBottom_toBottomOf="@id/translator_constraint"
+            app:layout_constraintEnd_toEndOf="@id/translator_constraint"
+            app:layout_constraintStart_toEndOf="@id/translator_item_barrier_2"
+            app:layout_constraintTop_toTopOf="@id/translator_constraint" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

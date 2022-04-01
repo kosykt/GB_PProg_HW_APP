@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "58010101465",
+    "project_id": "gb-pprog",
+    "storage_bucket": "gb-pprog.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58010101465:android:18eca59653210a8cd840c8",
+        "android_client_info": {
+          "package_name": "com.example.gb_pprog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58010101465-2nagar1okg5fjrkq7cl698p45qencffi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFt644DwLwgFwC67ZmmMUZ3_E2Sw4JVQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58010101465-2nagar1okg5fjrkq7cl698p45qencffi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

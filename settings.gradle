@@ -10,5 +10,6 @@ rootProject.name = "GB_PProg"
 include ':app'
 include ':data'
 include ':domain'
-include ':mytimer'
-include ':myfirsttest'
+include ':myTimer'
+include ':myTranslator'
+include ':utils'

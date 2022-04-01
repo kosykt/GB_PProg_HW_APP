@@ -17,7 +17,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -41,8 +45,13 @@ dependencies {
     //Modules
     implementation project(Modules.domain)
     implementation project(Modules.data)
-    implementation project(Modules.mytimer)
-    implementation project(Modules.myfirsttest)
+    implementation project(Modules.utils)
+    implementation project(Modules.myTimer)
+    implementation project(Modules.myTranslator)
+
+    //Dagger
+    implementation Dagger.dagger_d
+    kapt Dagger.dagger_k
 
     //Room
     implementation Room.room_runtime
@@ -52,6 +61,10 @@ dependencies {
     // Retrofit
     implementation Retrofit.retrofit
     implementation Retrofit.retrofit_converter_gson
+
+    //okHttp
+    implementation OkHttpDeps.ok_http
+    implementation OkHttpDeps.ok_http_logging_interceptor
 
     //Glide
     implementation Glide.glide
@@ -68,11 +81,6 @@ dependencies {
     implementation LifecycleComponents.runtime_ktx
     implementation LifecycleComponents.viewmodel_ktx
 
-    //Koin
-    implementation Koin.koin_core
-    implementation Koin.koin_android
-    testImplementation Koin.koin_test
-
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
 
@@ -84,5 +92,15 @@ dependencies {
     //Test
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit
-    androidTestImplementation TestImpl.espresso
+    androidTestImplementation TestImpl.espresso_core
+    //navTest
+    androidTestImplementation TestImpl.navigation_testing
+    //Fragment
+    debugImplementation TestImpl.fragment_testing
+    //RecyclerView
+    debugImplementation TestImpl.espresso_contrib
+
+    //UI Automator
+    androidTestImplementation TestImpl.ui_automator
+    androidTestImplementation TestImpl.test_rules
 }
