@@ -12,7 +12,7 @@ import ru.kosykt.utils.imageloader.ImageLoader
 
 class TranslatorAdapter(
     private val imageLoader: ImageLoader,
-    private val onItemClickListener: (DomainModel) -> Boolean,
+    private val favoriteWordClickHandler: (DomainModel) -> Boolean,
     private val checkIsFavorite: (DomainModel) -> Boolean,
     private val string: String,
     private val navigateClickListener: (DomainModel) -> Unit
@@ -23,7 +23,7 @@ class TranslatorAdapter(
 
         private fun initItemFavoriteBtnClickListener(dto: DomainModel) {
             vb.translatorItemFavoriteBtn.setOnClickListener {
-                vb.translatorItemFavoriteBtn.isChecked = onItemClickListener(dto)
+                vb.translatorItemFavoriteBtn.isChecked = favoriteWordClickHandler(dto)
             }
         }
 

@@ -4,11 +4,13 @@ import com.example.gb_pprog.domain.DeleteFavoriteUseCase
 import com.example.gb_pprog.domain.GetAllFavoritesUseCase
 import com.example.gb_pprog.domain.model.FavoriteModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert
@@ -33,10 +35,12 @@ class FavoriteViewModelTest {
     fun tearDown() {
         Mockito.reset(getAllFavoritesUseCase)
         Mockito.reset(deleteFavoriteUseCase)
+        Dispatchers.resetMain()
+        mainThreadSurrogate.close()
     }
 
     @Test
-    fun favoriteWords_value_equals() {
+    fun should_return_correct_favoriteWords() {
         runBlocking {
             val expected: Flow<List<FavoriteModel>> = flowOf(
                 listOf(
@@ -47,13 +51,14 @@ class FavoriteViewModelTest {
             )
             Mockito.`when`(getAllFavoritesUseCase.execute()).thenReturn(expected)
             val viewModel = FavoriteViewModel(getAllFavoritesUseCase, deleteFavoriteUseCase)
+            delay(1000)
             val actual = viewModel.favoriteWords.value
             Assert.assertEquals("list not equals", expected.first(), actual)
         }
     }
 
     @Test
-    fun favoriteWords_value_NotEquals() {
+    fun should_return_unCorrect_favoriteWords() {
         runBlocking {
             val expected: Flow<List<FavoriteModel>> = flowOf(
                 listOf(
@@ -64,13 +69,14 @@ class FavoriteViewModelTest {
             )
             Mockito.`when`(getAllFavoritesUseCase.execute()).thenReturn(expected)
             val viewModel = FavoriteViewModel(getAllFavoritesUseCase, deleteFavoriteUseCase)
+            delay(1000)
             val actual = viewModel.favoriteWords.value.last()
             Assert.assertNotEquals("list equals", expected.first(), actual)
         }
     }
 
     @Test
-    fun delete_favoriteWords(){
+    fun should_delete_favoriteWords() {
         runBlocking {
             val model = FavoriteModel("test_1", "model_1")
             val expected: Flow<List<FavoriteModel>> = flowOf(
@@ -81,6 +87,7 @@ class FavoriteViewModelTest {
             )
             Mockito.`when`(getAllFavoritesUseCase.execute()).thenReturn(expected)
             val viewModel = FavoriteViewModel(getAllFavoritesUseCase, deleteFavoriteUseCase)
+            delay(1000)
             viewModel.deleteFavorite(model)
             Mockito.verify(deleteFavoriteUseCase).execute(model)
             val actual = viewModel.favoriteWords.value.last()

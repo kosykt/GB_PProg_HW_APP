@@ -55,7 +55,7 @@ class TranslatorViewModel @Inject constructor(
         }
     }
 
-    fun favoriteWordOperator(domainModel: DomainModel): Boolean {
+    fun favoriteWordClickHandler(domainModel: DomainModel): Boolean {
         return if (favoriteWords.value.contains(domainModel.text)) {
             viewModelScope.launch(Dispatchers.IO) {
                 deleteFavoriteUseCase.execute(

@@ -36,7 +36,7 @@ class TranslatorFragment : Fragment() {
     private val adapter by lazy {
         TranslatorAdapter(
             imageLoader = imageLoader,
-            onItemClickListener = vm::favoriteWordOperator,
+            favoriteWordClickHandler = vm::favoriteWordClickHandler,
             checkIsFavorite = vm::checkIsFavorite,
             string = requireContext().getString(R.string.translator_item_tv_translate_text),
             navigateClickListener = this::navigateToDetails
