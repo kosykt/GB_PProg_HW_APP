@@ -7,6 +7,7 @@ import com.example.mytimer.di.TimerSubcomponentProvider
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,8 +21,7 @@ class TimerViewModel @Inject constructor(
     private var timerIsRunning = false
 
     private val _ticker: MutableStateFlow<String> = MutableStateFlow(format(BASE_VALUE))
-    val ticker: StateFlow<String>
-        get() = _ticker
+    val ticker: StateFlow<String> = _ticker.asStateFlow()
 
     fun start() {
         if (!timerIsRunning) {
@@ -74,6 +74,7 @@ class TimerViewModel @Inject constructor(
         timerSubcomponentProvider.destroyTimerSubcomponent()
         super.onCleared()
     }
+
     companion object {
         private const val BASE_VALUE: Long = 0
     }
