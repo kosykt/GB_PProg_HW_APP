@@ -1,9 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id("androidx.navigation.safeargs")
     id 'kotlin-kapt'
-    id("kotlin-parcelize")
 }
 
 android {
@@ -38,7 +36,6 @@ android {
 dependencies {
 
     //Modules
-    implementation project(Modules.domain)
     implementation project(Modules.utils)
 
     //Dagger
@@ -46,17 +43,9 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Dagger.dagger_k
 
-    //Coroutines
-    implementation Coroutines.coroutines_core
-    implementation Coroutines.coroutines_android
-
     //LifecycleComponents
     implementation LifecycleComponents.runtime_ktx
     implementation LifecycleComponents.viewmodel_ktx
-
-    //Jetpack navigation
-    implementation JetpackNavigation.navigation_fragment
-    implementation JetpackNavigation.navigation_ui
 
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
@@ -70,9 +59,4 @@ dependencies {
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit
     androidTestImplementation TestImpl.espresso_core
-
-    testImplementation TestImpl.mockito_core
-    testImplementation TestImpl.mockito_kotlin
-    testImplementation "org.mockito:mockito-inline:4.0.0"
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
 }

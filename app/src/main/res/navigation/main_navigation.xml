@@ -12,4 +12,10 @@
         tools:layout="@layout/fragment_timer" />
 
     <include app:graph="@navigation/nav_graph_translator" />
+
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="ru.kosykt.githubusers.ui.usersfragment.UsersFragment"
+        android:label="UsersFragment"
+        tools:layout="@layout/fragment_users" />
 </navigation>

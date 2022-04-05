@@ -6,6 +6,7 @@ object Modules {
     const val utils = ":utils"
     const val myTimer = ":myTimer"
     const val myTranslator = ":myTranslator"
+    const val githubUsers = ":githubUsers"
 }
 
 object Config {

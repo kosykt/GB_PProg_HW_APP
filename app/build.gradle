@@ -48,6 +48,7 @@ dependencies {
     implementation project(Modules.utils)
     implementation project(Modules.myTimer)
     implementation project(Modules.myTranslator)
+    implementation project(Modules.githubUsers)
 
     //Dagger
     implementation Dagger.dagger_d

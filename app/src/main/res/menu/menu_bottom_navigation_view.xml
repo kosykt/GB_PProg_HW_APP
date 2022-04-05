@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_baseline_timer"
         android:title="@string/bottom_view_icon_timer_title" />
 
+    <item
+        android:id="@+id/usersFragment"
+        android:icon="@drawable/ic_baseline_list"
+        android:title="@string/github_users" />
+
 </menu>
