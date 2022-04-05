@@ -4,6 +4,7 @@ import com.example.gb_pprog.di.modules.*
 import com.example.mytranslator.di.TranslatorSubcomponent
 import com.example.mytimer.di.TimerSubcomponent
 import dagger.Component
+import ru.kosykt.githubusers.di.GithubSubcomponent
 import javax.inject.Singleton
 
 @Singleton
@@ -21,4 +22,5 @@ interface AppComponent {
 
     fun provideTranslatorSubcomponent(): TranslatorSubcomponent
     fun provideTimerSubcomponent(): TimerSubcomponent
+    fun provideGithubSubcomponent(): GithubSubcomponent
 }

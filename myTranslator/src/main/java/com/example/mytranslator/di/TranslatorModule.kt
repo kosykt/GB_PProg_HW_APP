@@ -33,12 +33,6 @@ interface TranslatorModule {
 
         @TranslatorScope
         @Provides
-        fun provideGlide(): ImageLoader {
-            return GlideImageLoader()
-        }
-
-        @TranslatorScope
-        @Provides
         fun provideGetTranslateUseCase(
             domainRepository: DomainRepository
         ): GetTranslateUseCase {
