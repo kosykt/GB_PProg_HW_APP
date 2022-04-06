@@ -25,7 +25,7 @@ class UsersFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentUsersBinding? = null")
 
     private val adapter by lazy {
-        UsersAdapter()
+        UsersAdapter(imageLoader)
     }
 
     private val viewModel: UsersFragmentViewModel by lazy {
@@ -52,5 +52,10 @@ class UsersFragment : Fragment() {
         viewModel.users.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

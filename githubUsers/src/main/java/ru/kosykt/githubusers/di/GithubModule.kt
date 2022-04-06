@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.kosykt.githubusers.data.GithubUsersRepositoryImpl
+import ru.kosykt.githubusers.data.network.GithubRetrofitService
 import ru.kosykt.githubusers.domain.GetUsersListUseCase
 import ru.kosykt.githubusers.domain.GithubUsersRepository
 import ru.kosykt.githubusers.ui.usersfragment.UsersFragmentViewModel

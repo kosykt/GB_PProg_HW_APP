@@ -38,6 +38,19 @@ dependencies {
     //Modules
     implementation project(Modules.utils)
 
+    // RxJava
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+
+    // Retrofit
+    implementation Retrofit.retrofit
+    implementation Retrofit.retrofit_converter_gson
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+
+    //okHttp
+    implementation OkHttpDeps.ok_http
+    implementation OkHttpDeps.ok_http_logging_interceptor
+
     //Dagger
     implementation Dagger.dagger_d
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -46,6 +59,10 @@ dependencies {
     //LifecycleComponents
     implementation LifecycleComponents.runtime_ktx
     implementation LifecycleComponents.viewmodel_ktx
+
+    //Jetpack navigation
+    implementation JetpackNavigation.navigation_fragment
+    implementation JetpackNavigation.navigation_ui
 
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx

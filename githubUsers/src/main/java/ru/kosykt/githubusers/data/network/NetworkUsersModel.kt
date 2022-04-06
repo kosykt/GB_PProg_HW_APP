@@ -1,6 +1,6 @@
-package ru.kosykt.githubusers.domain
+package ru.kosykt.githubusers.data.network
 
-data class DomainUserModel(
+data class NetworkUsersModel(
     val avatar_url: String,
     val events_url: String,
     val followers_url: String,

@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.kosykt.githubusers.databinding.UsersItemBinding
 import ru.kosykt.githubusers.domain.DomainUserModel
+import ru.kosykt.utils.imageloader.ImageLoader
 
-class UsersAdapter() :
-    ListAdapter<DomainUserModel, UsersAdapter.UsersViewHolder>(UsersItemCallback) {
+class UsersAdapter(
+    private val imageLoader: ImageLoader
+) : ListAdapter<DomainUserModel, UsersAdapter.UsersViewHolder>(UsersItemCallback) {
 
     inner class UsersViewHolder(private val vb: UsersItemBinding) :
         RecyclerView.ViewHolder(vb.root) {
-        fun show(model: DomainUserModel) {
-            vb.usersItemTv.text = model.name
+        fun showUser(model: DomainUserModel) {
+            vb.usersItemTv.text = model.login
         }
     }
 
@@ -29,7 +31,7 @@ class UsersAdapter() :
     }
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
-        holder.show(currentList[position])
+        holder.showUser(currentList[position])
     }
 
     companion object UsersItemCallback : DiffUtil.ItemCallback<DomainUserModel>() {
