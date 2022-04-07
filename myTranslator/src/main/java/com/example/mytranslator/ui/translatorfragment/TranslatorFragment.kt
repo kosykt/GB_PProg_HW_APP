@@ -17,7 +17,6 @@ import com.example.mytranslator.R
 import com.example.mytranslator.databinding.FragmentTranslatorBinding
 import com.example.mytranslator.di.TranslatorSubcomponentProvider
 import com.example.mytranslator.ui.detailsfragment.DetailsModel
-import kotlinx.coroutines.flow.collect
 import ru.kosykt.utils.imageloader.ImageLoader
 import javax.inject.Inject
 

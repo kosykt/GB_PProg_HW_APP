@@ -2,11 +2,14 @@ package ru.kosykt.githubusers.ui.usersfragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.kosykt.githubusers.databinding.FragmentUsersBinding
 import ru.kosykt.githubusers.di.GithubSubcomponentProvider
 import ru.kosykt.utils.imageloader.ImageLoader
@@ -49,13 +52,21 @@ class UsersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fuRv.adapter = adapter
-        viewModel.users.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
+        viewModel.users
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { list ->
+                    adapter.submitList(list)
+                },
+                {
+                    Log.e(this.javaClass.simpleName, "throwable: $it", it)
+                }
+            )
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }

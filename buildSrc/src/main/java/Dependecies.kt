@@ -35,8 +35,8 @@ object Versions {
     const val jetNav = "2.4.1"
 
     //Kotlin coroutines
-    const val coroutinesCore = "1.5.2"
-    const val coroutinesAndroid = "1.5.2"
+    const val coroutinesCore = "1.6.0"
+    const val coroutinesAndroid = "1.6.0"
 
     //Lifecycle KTX
     const val lifecycleViewModel = "2.4.0"
