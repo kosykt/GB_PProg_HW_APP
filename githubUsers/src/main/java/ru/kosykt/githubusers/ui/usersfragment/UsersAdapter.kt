@@ -6,16 +6,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.kosykt.githubusers.databinding.UsersItemBinding
-import ru.kosykt.githubusers.domain.DomainUserModel
+import ru.kosykt.githubusers.domain.models.DomainUserModel
 import ru.kosykt.utils.imageloader.ImageLoader
 
 class UsersAdapter(
-    private val imageLoader: ImageLoader
+    private val imageLoader: ImageLoader,
+    private val navigate: (DomainUserModel) -> Unit,
 ) : ListAdapter<DomainUserModel, UsersAdapter.UsersViewHolder>(UsersItemCallback) {
 
     inner class UsersViewHolder(private val vb: UsersItemBinding) :
         RecyclerView.ViewHolder(vb.root) {
         fun showUser(model: DomainUserModel) {
+            vb.root.setOnClickListener { navigate(model) }
             vb.usersItemTv.text = model.login
         }
     }

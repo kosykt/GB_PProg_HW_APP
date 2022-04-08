@@ -12,7 +12,7 @@
         android:title="@string/bottom_view_icon_timer_title" />
 
     <item
-        android:id="@+id/usersFragment"
+        android:id="@+id/nav_graph_github_users"
         android:icon="@drawable/ic_baseline_list"
         android:title="@string/github_users" />
 

@@ -1,4 +1,4 @@
-package ru.kosykt.githubusers.ui.usersfragment
+package ru.kosykt.githubusers.ui.userdetailsfragment
 
 import android.content.Context
 import android.os.Bundle
@@ -9,35 +9,29 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import ru.kosykt.githubusers.databinding.FragmentUsersBinding
+import ru.kosykt.githubusers.databinding.FragmentUserDetailsBinding
 import ru.kosykt.githubusers.di.GithubSubcomponentProvider
-import ru.kosykt.githubusers.domain.models.DomainUserModel
 import ru.kosykt.utils.NetworkStatus
-import ru.kosykt.utils.imageloader.ImageLoader
 import ru.kosykt.utils.myNetworkStatus
 import javax.inject.Inject
 
-class UsersFragment : Fragment() {
+class UserDetailsFragment : Fragment() {
 
     @Inject
     lateinit var vmFactory: ViewModelProvider.Factory
 
-    @Inject
-    lateinit var imageLoader: ImageLoader
+    private var _binding: FragmentUserDetailsBinding? = null
+    private val binding: FragmentUserDetailsBinding
+        get() = _binding ?: throw RuntimeException("FragmentUserDetailsBinding? = null")
 
-    private var _binding: FragmentUsersBinding? = null
-    private val binding: FragmentUsersBinding
-        get() = _binding ?: throw RuntimeException("FragmentUsersBinding? = null")
-
-    private val adapter by lazy {
-        UsersAdapter(imageLoader, this::navigateToDetailsFragment)
+    private val viewModel: UserDetailsViewModel by lazy {
+        ViewModelProvider(this, vmFactory)[UserDetailsViewModel::class.java]
     }
 
-    private val viewModel: UsersFragmentViewModel by lazy {
-        ViewModelProvider(this, vmFactory)[UsersFragmentViewModel::class.java]
+    private val adapter by lazy {
+        UserDetailsAdapter()
     }
 
     override fun onAttach(context: Context) {
@@ -50,13 +44,13 @@ class UsersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentUsersBinding.inflate(inflater, container, false)
+        _binding = FragmentUserDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fuRv.adapter = adapter
+        binding.udRv.adapter = adapter
         myNetworkStatus(requireContext().applicationContext).observe(viewLifecycleOwner) {
             when (it) {
                 NetworkStatus.AVAILABLE -> {
@@ -70,7 +64,7 @@ class UsersFragment : Fragment() {
     }
 
     private fun subscribeRx() {
-        viewModel.users
+        viewModel.userDetails
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -81,12 +75,6 @@ class UsersFragment : Fragment() {
                     Log.e(this.javaClass.simpleName, "throwable: $it", it)
                 }
             )
-    }
-
-    private fun navigateToDetailsFragment(model: DomainUserModel) {
-        findNavController().navigate(
-            UsersFragmentDirections.actionUsersFragmentToUserDetailsFragment(model)
-        )
     }
 
     override fun onDestroyView() {

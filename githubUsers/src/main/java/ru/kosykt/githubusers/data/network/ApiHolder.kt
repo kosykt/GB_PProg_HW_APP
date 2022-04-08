@@ -24,7 +24,7 @@ object ApiHolder {
     }
 
     private fun provideOkHttpInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
     }
 
     private fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {

@@ -2,38 +2,49 @@ package ru.kosykt.githubusers.data
 
 import io.reactivex.rxjava3.core.Single
 import ru.kosykt.githubusers.data.network.ApiHolder
-import ru.kosykt.githubusers.data.network.NetworkUsersModel
-import ru.kosykt.githubusers.domain.DomainUserModel
+import ru.kosykt.githubusers.data.network.models.NetworkOwner
+import ru.kosykt.githubusers.data.network.models.NetworkUserDetailsModel
+import ru.kosykt.githubusers.data.network.models.NetworkUsersModel
 import ru.kosykt.githubusers.domain.GithubUsersRepository
+import ru.kosykt.githubusers.domain.models.DomainOwner
+import ru.kosykt.githubusers.domain.models.DomainUserDetailsModel
+import ru.kosykt.githubusers.domain.models.DomainUserModel
 
 class GithubUsersRepositoryImpl() : GithubUsersRepository {
 
     override fun getUsersList(): Single<List<DomainUserModel>> {
         return ApiHolder.retrofitService.getUsers().map { list ->
-            list.toDomainModel()
+            list.toDomainUserModel()
+        }
+    }
+
+    override fun getUserDetails(url: String): Single<List<DomainUserDetailsModel>> {
+        return ApiHolder.retrofitService.getDetails(url).map { list ->
+            list.toDomainUserDetailsModel()
         }
     }
 }
 
-fun List<NetworkUsersModel>.toDomainModel() = this.map { it.toDomainModel() }
+fun List<NetworkUserDetailsModel>.toDomainUserDetailsModel() =
+    this.map { it.toDomainUserDetailsModel() }
 
-fun NetworkUsersModel.toDomainModel() = DomainUserModel(
-    avatar_url = this.avatar_url,
-    events_url = this.events_url,
-    followers_url = this.followers_url,
-    following_url = this.following_url,
-    gists_url = this.gists_url,
-    gravatar_id = this.gravatar_id,
-    html_url = this.html_url,
+fun NetworkUserDetailsModel.toDomainUserDetailsModel() = DomainUserDetailsModel(
+    id = this.id,
+    name = this.name,
+    owner = this.owner.toDomainOwner(),
+    url = this.url,
+
+)
+
+fun NetworkOwner.toDomainOwner() = DomainOwner(
+    id = id,
+)
+
+fun List<NetworkUsersModel>.toDomainUserModel() = this.map { it.toDomainUserModel() }
+
+fun NetworkUsersModel.toDomainUserModel() = DomainUserModel(
     id = this.id,
     login = this.login,
-    node_id = this.node_id,
-    organizations_url = this.organizations_url,
-    received_events_url = this.received_events_url,
-    repos_url = this.repos_url,
-    site_admin = this.site_admin,
-    starred_url = this.starred_url,
-    subscriptions_url = this.subscriptions_url,
-    type = this.type,
-    url = this.url,
+    avatarUrl = this.avatar_url,
+    reposUrl = this.repos_url
 )

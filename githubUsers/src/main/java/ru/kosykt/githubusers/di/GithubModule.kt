@@ -8,8 +8,10 @@ import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.kosykt.githubusers.data.GithubUsersRepositoryImpl
 import ru.kosykt.githubusers.data.network.GithubRetrofitService
+import ru.kosykt.githubusers.domain.GetUserDetailsUseCase
 import ru.kosykt.githubusers.domain.GetUsersListUseCase
 import ru.kosykt.githubusers.domain.GithubUsersRepository
+import ru.kosykt.githubusers.ui.userdetailsfragment.UserDetailsViewModel
 import ru.kosykt.githubusers.ui.usersfragment.UsersFragmentViewModel
 import ru.kosykt.utils.di.scopes.GithubScope
 import ru.kosykt.utils.di.viewmodelsfactory.ViewModelKey
@@ -20,8 +22,14 @@ interface GithubModule {
     @GithubScope
     @Binds
     @IntoMap
+    @ViewModelKey(UserDetailsViewModel::class)
+    fun bindUserDetailsViewModel(vm: UserDetailsViewModel): ViewModel
+
+    @GithubScope
+    @Binds
+    @IntoMap
     @ViewModelKey(UsersFragmentViewModel::class)
-    fun bindTranslatorViewModel(vm: UsersFragmentViewModel): ViewModel
+    fun bindUsersFragmentViewModel(vm: UsersFragmentViewModel): ViewModel
 
     companion object {
 
@@ -37,6 +45,14 @@ interface GithubModule {
             githubUsersRepository: GithubUsersRepository
         ): GetUsersListUseCase {
             return GetUsersListUseCase(githubUsersRepository)
+        }
+
+        @GithubScope
+        @Provides
+        fun provideGetUserDetailsUseCase(
+            githubUsersRepository: GithubUsersRepository
+        ): GetUserDetailsUseCase {
+            return GetUserDetailsUseCase(githubUsersRepository)
         }
 
         @GithubScope
