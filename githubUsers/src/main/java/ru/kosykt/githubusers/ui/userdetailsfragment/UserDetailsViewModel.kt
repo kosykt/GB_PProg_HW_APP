@@ -1,12 +1,16 @@
 package ru.kosykt.githubusers.ui.userdetailsfragment
 
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.core.Single
 import ru.kosykt.githubusers.domain.GetUserDetailsUseCase
+import ru.kosykt.githubusers.domain.models.DomainUserDetailsModel
 import javax.inject.Inject
 
 class UserDetailsViewModel @Inject constructor(
-    getUserDetailsUseCase: GetUserDetailsUseCase,
+    private val getUserDetailsUseCase: GetUserDetailsUseCase,
 ) : ViewModel() {
 
-    val userDetails = getUserDetailsUseCase.execute("https://api.github.com/users/mojombo/repos")
+    fun getDetails(url: String): Single<List<DomainUserDetailsModel>> {
+        return getUserDetailsUseCase.execute(url)
+    }
 }
